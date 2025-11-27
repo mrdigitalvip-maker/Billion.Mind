@@ -1,618 +1,205 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>BillionMind AI – Acelerador de Disciplina</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    :root {
-      --bg-main: #050509;
-      --bg-elevated: #0c0f18;
-      --bg-card: #111520;
-      --accent-main: #08e5a3;        /* verde esmeralda neon */
-      --accent-gold: #c9a45b;        /* ouro envelhecido */
-      --accent-soft: #394458;
-      --text-primary: #f8fafc;
-      --text-secondary: #9ca3af;
-      --border-subtle: #1f2933;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --shadow-soft: 0 22px 40px rgba(0, 0, 0, 0.8);
-      --shadow-card: 0 18px 35px rgba(0, 0, 0, 0.7);
-      --transition-fast: 0.18s ease-out;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pré-Lançamento Oficial | BillionMind AI</title>
+    <!-- Carrega o Tailwind CSS CDN para um estilo moderno e responsivo --><script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Configuração de Fonte Padrão */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Fundo escuro */
+            color: #ffffff;
+            transition: all 0.5s ease-in-out;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        /* Estilo para a seção de contagem regressiva */
+        .countdown-item {
+            background-color: #161b22; /* Fundo do bloco do contador */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter",
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #101827 0, #050509 60%);
-      color: var(--text-primary);
-      min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .app-shell {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 16px 16px 72px;
-    }
-
-    /* TOPO */
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 18px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #050509 0, #0c0f18 40%, #050509 100%);
-      border: 1px solid rgba(148, 163, 184, 0.15);
-      box-shadow: var(--shadow-soft);
-      position: sticky;
-      top: 8px;
-      z-index: 20;
-      backdrop-filter: blur(14px);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-logo {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: conic-gradient(from 210deg, #111827, #08e5a3, #c9a45b, #020617);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.9rem;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
-    }
-
-    .brand-text-main {
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      font-size: 0.86rem;
-      text-transform: uppercase;
-    }
-
-    .brand-tagline {
-      font-size: 0.7rem;
-      color: var(--text-secondary);
-    }
-
-    .top-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .chip-plan {
-      font-size: 0.68rem;
-      padding: 5px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(12, 148, 136, 0.5);
-      color: #a5f3fc;
-      background: radial-gradient(circle at top left, #0f172a, #020617);
-    }
-
-    .avatar {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 20%, #38bdf8, #1e293b);
-      border: 2px solid rgba(8, 229, 163, 0.8);
-      box-shadow: 0 10px 30px rgba(8, 229, 163, 0.55);
-    }
-
-    /* CONTEÚDO PRINCIPAL */
-
-    .main {
-      margin-top: 24px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
-      gap: 20px;
-    }
-
-    @media (max-width: 900px) {
-      .main {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .app-shell {
-        padding-bottom: 86px;
-      }
-    }
-
-    .hero {
-      background: linear-gradient(140deg, #050816 0%, #020617 50%, #050816 100%);
-      border-radius: var(--radius-lg);
-      padding: 20px 22px 18px;
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      box-shadow: var(--shadow-card);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .badge-beta {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(249, 250, 251, 0.06);
-      background: linear-gradient(120deg, #065f46 0, #111827 70%);
-      font-size: 0.68rem;
-      color: #bbf7d0;
-      margin-bottom: 10px;
-    }
-
-    .badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 12px #22c55e;
-    }
-
-    .hero-title {
-      font-size: 1.6rem;
-      line-height: 1.25;
-      margin-bottom: 8px;
-    }
-
-    .hero-title span {
-      background: linear-gradient(135deg, #22c55e, #a3e635, #facc15);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-subtitle {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      max-width: 480px;
-      margin-bottom: 16px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .btn {
-      border-radius: 999px;
-      padding: 9px 16px;
-      font-size: 0.85rem;
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
-        background var(--transition-fast), border var(--transition-fast),
-        color var(--transition-fast);
-      white-space: nowrap;
-      background: none;
-      color: var(--text-primary);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #22c55e, #a3e635);
-      color: #020617;
-      box-shadow: 0 12px 30px rgba(34, 197, 94, 0.45);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 18px 45px rgba(34, 197, 94, 0.55);
-    }
-
-    .btn-outline {
-      border-color: rgba(148, 163, 184, 0.4);
-      background: radial-gradient(circle at top left, #020617, #020617, #020617);
-      color: var(--text-secondary);
-    }
-
-    .btn-outline:hover {
-      border-color: rgba(250, 204, 21, 0.7);
-      color: #facc15;
-      transform: translateY(-1px);
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.8);
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      font-size: 0.72rem;
-      color: var(--text-secondary);
-      margin-top: 4px;
-    }
-
-    .hero-meta strong {
-      color: #e5e7eb;
-      font-weight: 600;
-    }
-
-    /* PROMPT / CAIXA CENTRAL */
-
-    .prompt-card {
-      margin-top: 18px;
-      background: radial-gradient(circle at top left, #020617, #020617 45%, #020617);
-      border-radius: var(--radius-lg);
-      padding: 14px 16px;
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      box-shadow: var(--shadow-card);
-    }
-
-    .prompt-label {
-      font-size: 0.75rem;
-      color: var(--text-secondary);
-      margin-bottom: 6px;
-    }
-
-    .prompt-input {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border-radius: 999px;
-      padding: 8px 10px;
-      background: #020617;
-      border: 1px solid rgba(31, 41, 55, 0.9);
-    }
-
-    .prompt-input textarea {
-      flex: 1;
-      resize: none;
-      border: none;
-      outline: none;
-      background: transparent;
-      color: var(--text-primary);
-      font-size: 0.85rem;
-      max-height: 80px;
-    }
-
-    .prompt-input textarea::placeholder {
-      color: #6b7280;
-    }
-
-    .btn-send {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at top left, #22c55e, #15803d);
-      box-shadow: 0 10px 28px rgba(16, 185, 129, 0.7);
-    }
-
-    .btn-send span {
-      border-right: 2px solid #020617;
-      border-bottom: 2px solid #020617;
-      width: 8px;
-      height: 8px;
-      transform: rotate(-45deg) translate(1px, -1px);
-    }
-
-    /* COLUNA DIREITA – CARDS ESTILO LASY */
-
-    .side {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .section-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .section-badge {
-      font-size: 0.7rem;
-      color: var(--text-secondary);
-    }
-
-    .cards-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .card {
-      background: linear-gradient(145deg, #020617, #020617 50%, #020617);
-      border-radius: var(--radius-md);
-      padding: 10px 10px 12px;
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      cursor: pointer;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
-        border var(--transition-fast), background var(--transition-fast);
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.95);
-      border-color: rgba(56, 189, 248, 0.7);
-    }
-
-    .card-thumb {
-      height: 76px;
-      border-radius: 12px;
-      background: radial-gradient(circle at 0 0, #22c55e, #0f172a 35%, #020617 80%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card-thumb::after {
-      content: "";
-      position: absolute;
-      inset: 12px;
-      border-radius: 10px;
-      border: 1px solid rgba(15, 23, 42, 0.9);
-      backdrop-filter: blur(6px);
-    }
-
-    .card-title {
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    .card-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.72rem;
-      color: var(--text-secondary);
-    }
-
-    .tag {
-      padding: 2px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(15, 118, 110, 0.8);
-      color: #99f6e4;
-      font-size: 0.7rem;
-    }
-
-    .chip-small {
-      padding: 2px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.3);
-      font-size: 0.68rem;
-      color: var(--text-secondary);
-    }
-
-    /* BOTTOM NAV – IGUAL ESTILO APP */
-
-    .bottom-nav {
-      position: fixed;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 12px;
-      z-index: 40;
-      background: linear-gradient(135deg, #020617, #020617, #020617);
-      border-radius: 999px;
-      padding: 8px 10px;
-      border: 1px solid rgba(30, 64, 175, 0.55);
-      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.95);
-      display: flex;
-      gap: 4px;
-    }
-
-    .bottom-nav button {
-      border: none;
-      background: transparent;
-      color: #9ca3af;
-      font-size: 0.7rem;
-      padding: 7px 10px;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: background var(--transition-fast),
-        color var(--transition-fast), transform var(--transition-fast);
-    }
-
-    .bottom-nav button.active {
-      background: radial-gradient(circle at top left, #22c55e, #16a34a);
-      color: #020617;
-      transform: translateY(-1px);
-    }
-
-    .bottom-nav button:hover:not(.active) {
-      background: rgba(15, 23, 42, 0.9);
-      color: #e5e7eb;
-    }
-
-    /* BOTÃO FLOANTE DE SUPORTE / CHAT */
-
-    .fab-support {
-      position: fixed;
-      right: 18px;
-      bottom: 78px;
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 20%, #38bdf8, #0f172a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 18px 38px rgba(8, 47, 73, 0.9);
-      border: 2px solid rgba(8, 229, 163, 0.9);
-      cursor: pointer;
-    }
-
-    .fab-support::before {
-      content: "";
-      width: 15px;
-      height: 11px;
-      border-radius: 6px;
-      border: 2px solid #e5e7eb;
-      border-bottom-width: 4px;
-      position: relative;
-    }
-
-    .fab-support::after {
-      content: "";
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      border-left: 2px solid #e5e7eb;
-      border-bottom: 2px solid #e5e7eb;
-      transform: rotate(45deg);
-      bottom: 8px;
-      right: 8px;
-    }
-  </style>
+        /* Animação de pulso para a data de lançamento */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.03); opacity: 0.95; }
+        }
+        .pulse-effect {
+            animation: pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        }
+    </style>
 </head>
-<body>
-  <div class="app-shell">
-    <!-- TOPO -->
-    <header class="topbar">
-      <div class="brand">
-        <div class="brand-logo">B</div>
-        <div>
-          <div class="brand-text-main">BILLIONMIND AI</div>
-          <div class="brand-tagline">Acelerador de Disciplina · Capital de Vida</div>
-        </div>
-      </div>
-      <div class="top-right">
-        <div class="chip-plan">Modo Visionário • Free</div>
-        <div class="avatar"></div>
-      </div>
-    </header>
+<body class="min-h-screen antialiased flex flex-col items-center">
 
-    <!-- CONTEÚDO -->
-    <main class="main">
-      <!-- ESQUERDA -->
-      <section>
-        <div class="hero">
-          <div class="badge-beta">
-            <span class="badge-dot"></span>
-            Versão Preview · Foco em Alta Performance
-          </div>
-          <h1 class="hero-title">
-            Transforme sua disciplina em <span>Capital de Vida</span>.
-          </h1>
-          <p class="hero-subtitle">
-            BillionMind AI acompanha seus Protocolos Diários, calcula seu
-            Capital de Vida (CV) e te coloca no nível Visionário, Executor,
-            Elite ou VIP — como um “home broker” da sua disciplina.
-          </p>
+    <!-- Conteúdo centralizado e limitado à largura máxima --><div class="w-full max-w-7xl mx-auto flex flex-col items-center">
 
-          <div class="hero-actions">
-            <button class="btn btn-primary">Começar sessão de hoje</button>
-            <button class="btn btn-outline">Explorar Painel de Performance</button>
-          </div>
+        <!-- Cabeçalho (Header) --><header class="w-full p-4 md:p-8">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-extrabold text-white tracking-tight">
+                    <span class="text-purple-400">BillionMind</span> AI
+                </h1>
+                <!-- Botão no Cabeçalho (Direciona para o Canal do WhatsApp) --><a href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35" 
+                   target="_blank"
+                   class="px-4 py-2 bg-purple-600 text-white text-sm font-semibold rounded-lg shadow-lg hover:bg-purple-700 transition duration-300 transform hover:scale-105">
+                    Quero Ser Notificado
+                </a>
+            </div>
+        </header>
 
-          <div class="hero-meta">
-            <span><strong>CV atual:</strong> 1.320 • Nível Executor</span>
-            <span><strong>Protocolos concluídos:</strong> 7 dias seguidos</span>
-          </div>
-        </div>
+        <!-- Seção Principal com Contador Regressivo --><main class="w-full p-4 md:p-8">
+            <div class="text-center mb-16 mt-8 md:mt-16">
+                <p class="text-lg md:text-xl text-purple-400 font-semibold mb-3 tracking-wider">A INTELIGÊNCIA ARTIFICIAL QUE EXPANDE SEU POTENCIAL</p>
+                <h2 class="text-5xl sm:text-7xl md:text-8xl font-black leading-tight mb-6">
+                    Lançamento Oficial
+                </h2>
+                <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">
+                    Prepare-se para transformar a maneira como você trabalha e vive. O <span class="text-purple-400 font-bold">BillionMind AI</span> redefine a produtividade e a tomada de decisões.
+                </p>
+            </div>
 
-        <section class="prompt-card">
-          <div class="prompt-label">Peça ao BillionMind para montar sua rotina de hoje</div>
-          <div class="prompt-input">
-            <textarea
-              rows="2"
-              placeholder="Ex.: Monte um Protocolo diário focado em vendas, treino físico e estudo de 2 horas."
-            ></textarea>
-            <button class="btn-send" title="Enviar">
-              <span></span>
-            </button>
-          </div>
-        </section>
-      </section>
+            <!-- Bloco do Contador --><div class="bg-gray-900 border border-gray-700 p-6 sm:p-10 rounded-2xl shadow-2xl mb-16 max-w-4xl mx-auto">
+                <p class="text-xl font-bold text-center mb-6 text-white">
+                    Lançamento em: <br class="sm:hidden">
+                    <span id="launch-info" class="text-purple-400 text-2xl md:text-3xl font-extrabold">
+                        Sábado, 29 de Novembro, às 19:30 (BRT)
+                    </span>
+                </p>
 
-      <!-- DIREITA -->
-      <aside class="side">
-        <div>
-          <div class="section-title">Protocolos em destaque</div>
-          <div class="section-badge">Rotinas recomendadas para acelerar seu CV</div>
+                <div id="countdown" class="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-8">
+                    <!-- Dias --><div class="countdown-item p-4 sm:p-6 rounded-xl text-center border-b-4 border-purple-600">
+                        <div id="days" class="text-5xl md:text-6xl font-extrabold text-white">00</div>
+                        <div class="text-sm md:text-base font-medium text-gray-400 mt-1">DIAS</div>
+                    </div>
+                    <!-- Horas --><div class="countdown-item p-4 sm:p-6 rounded-xl text-center border-b-4 border-purple-600">
+                        <div id="hours" class="text-5xl md:text-6xl font-extrabold text-white">00</div>
+                        <div class="text-sm md:text-base font-medium text-gray-400 mt-1">HORAS</div>
+                    </div>
+                    <!-- Minutos --><div class="countdown-item p-4 sm:p-6 rounded-xl text-center border-b-4 border-purple-600">
+                        <div id="minutes" class="text-5xl md:text-6xl font-extrabold text-white">00</div>
+                        <div class="text-sm md:text-base font-medium text-gray-400 mt-1">MINUTOS</div>
+                    </div>
+                    <!-- Segundos --><div class="countdown-item p-4 sm:p-6 rounded-xl text-center border-b-4 border-purple-600">
+                        <div id="seconds" class="text-5xl md:text-6xl font-extrabold text-white">00</div>
+                        <div class="text-sm md:text-base font-medium text-gray-400 mt-1">SEGUNDOS</div>
+                    </div>
+                </div>
+            </div>
 
-          <div class="cards-list">
-            <article class="card">
-              <div class="card-thumb"></div>
-              <div class="card-title">Forja da Disciplina 30X</div>
-              <div class="card-meta">
-                <span class="tag">+120 CV/dia</span>
-                <span class="chip-small">Foco • Deep Work • Rotina</span>
-              </div>
-            </article>
+            <!-- Seção: O Que Você Precisa Saber Sobre o BillionMind AI --><section class="mb-16">
+                <h3 class="text-4xl font-bold text-center mb-10 text-white">
+                    O <span class="text-purple-400">Poder da AI</span> em Suas Mãos
+                </h3>
+                <div class="grid md:grid-cols-3 gap-8 text-center max-w-6xl mx-auto">
+                    
+                    <!-- Benefício 1 --><div class="p-6 bg-gray-800 rounded-xl border border-gray-700 hover:border-purple-600 transition duration-300">
+                        <div class="text-purple-400 text-4xl mb-4">🧠</div>
+                        <h4 class="text-xl font-bold mb-2">Análise Preditiva</h4>
+                        <p class="text-gray-400">
+                            Utilize modelos de IA avançados para prever tendências e otimizar estratégias, transformando dados em decisões bilionárias.
+                        </p>
+                    </div>
+                    
+                    <!-- Benefício 2 --><div class="p-6 bg-gray-800 rounded-xl border border-gray-700 hover:border-purple-600 transition duration-300">
+                        <div class="text-purple-400 text-4xl mb-4">⚡</div>
+                        <h4 class="text-xl font-bold mb-2">Automação Inteligente</h4>
+                        <p class="text-gray-400">
+                            Automatize tarefas repetitivas com precisão de IA, liberando seu tempo para foco em inovação e crescimento.
+                        </p>
+                    </div>
 
-            <article class="card">
-              <div class="card-thumb" style="background: radial-gradient(circle at 0 0, #facc15, #0f172a 40%, #020617 85%);"></div>
-              <div class="card-title">Blueprint Financeiro – Modo Elite</div>
-              <div class="card-meta">
-                <span class="tag">+250 CV por módulo</span>
-                <span class="chip-small">Finanças • Renda • Negócios</span>
-              </div>
-            </article>
+                    <!-- Benefício 3 --><div class="p-6 bg-gray-800 rounded-xl border border-gray-700 hover:border-purple-600 transition duration-300">
+                        <div class="text-purple-400 text-4xl mb-4">🔒</div>
+                        <h4 class="text-xl font-bold mb-2">Segurança de Dados</h4>
+                        <p class="text-gray-400">
+                            Suas informações críticas são protegidas com criptografia de ponta e sincronização segura em todos os seus dispositivos.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Call to Action (CTA) para o Canal do WhatsApp --><section id="cta" class="text-center bg-purple-900 bg-opacity-30 border border-purple-700 p-8 md:p-12 rounded-2xl max-w-4xl mx-auto shadow-2xl pulse-effect">
+                <h3 class="text-3xl md:text-4xl font-extrabold mb-4">Seja o Primeiro a Saber!</h3>
+                <p class="text-lg md:text-xl text-purple-200 mb-8">
+                    Clique abaixo e entre no nosso canal exclusivo no WhatsApp para receber o link de lançamento exatamente às 19:30 de sábado.
+                </p>
+                
+                <!-- Botão de Ação Principal (Substitui o formulário) --><a href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35"
+                   target="_blank"
+                   class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-green-500 text-white font-black text-xl rounded-lg shadow-2xl hover:bg-green-600 transition duration-300 transform hover:scale-105 border-b-4 border-green-700">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.036 21.688c-.67 0-1.282-.185-1.78-.54l-3.328-1.921c-.498-.288-.87-.768-1.07-1.332L4.01 15.532c-.201-.564-.201-1.187 0-1.751l.849-2.302c.2-.564.572-1.044 1.07-1.332l3.328-1.921c.498-.288 1.11-.473 1.78-.473h1.86c.67 0 1.282.185 1.78.473l3.328 1.921c.498-.288.87.768 1.07 1.332l.849 2.302c.201.564.201 1.187 0 1.751l-.849 2.302c-.2.564-.572 1.044-1.07 1.332l-3.328 1.921c-.498.288-1.11.473-1.78.473h-1.86zM12 2C6.477 2 2 6.477 2 12c0 1.487.315 2.924.912 4.21l-.963 3.515c-.07.26.012.54.218.736.206.195.494.277.754.207l3.515-.963C8.428 21.685 10.198 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm1.68 15.118h-3.36c-.198 0-.36-.162-.36-.36V9.118c0-.198.162-.36.36-.36h3.36c.198 0 .36.162.36.36v5.64c0 .198-.162.36-.36.36z"/>
+                    </svg>
+                    Acessar Canal VIP no WhatsApp
+                </a>
+            </section>
+        </main>
 
-            <article class="card">
-              <div class="card-thumb" style="background: radial-gradient(circle at 0 0, #0ea5e9, #0f172a 40%, #020617 85%);"></div>
-              <div class="card-title">Protocolo Foco Implacável (Pomodoro VIP)</div>
-              <div class="card-meta">
-                <span class="tag">Sessões de 50 min</span>
-                <span class="chip-small">Modo VIP • Bloqueio de distrações</span>
-              </div>
-            </article>
-          </div>
-        </div>
+        <!-- Rodapé (Footer) --><footer class="w-full p-4 md:p-8 mt-12 border-t border-gray-800 text-center">
+            <p class="text-gray-500 text-sm">
+                &copy; 2025 BillionMind AI. Todos os direitos reservados.
+            </p>
+            <p class="text-gray-500 text-sm mt-1">
+                Lançamento: <span class="font-semibold text-purple-400">29 de Novembro de 2025, 19:30 BRT</span>
+            </p>
+        </footer>
 
-        <div>
-          <div class="section-title">Seu CV Analytics</div>
-          <div class="section-badge">Resumo rápido da sua performance</div>
+    </div>
 
-          <div class="cards-list">
-            <article class="card">
-              <div class="card-title">Capital de Vida nas últimas 4 semanas</div>
-              <div class="card-meta">
-                <span>CV em ascensão · +23%</span>
-                <span class="chip-small">Ver gráfico detalhado</span>
-              </div>
-            </article>
-            <article class="card">
-              <div class="card-title">KPIs monitorados</div>
-              <div class="card-meta">
-                <span>Foco • Renda • Treino</span>
-                <span class="chip-small">Adicionar novo KPI</span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </aside>
-    </main>
-  </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Data alvo: Próximo Sábado (29/11/2025) às 19:30.
+            // A data é configurada para um horário específico.
+            // Usamos 'GMT-03:00' para simular o fuso horário de Brasília (BRT).
+            const targetDate = new Date("November 29, 2025 19:30:00 GMT-0300").getTime();
+            
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+            const launchInfoEl = document.getElementById('launch-info');
+            const countdownEl = document.getElementById('countdown');
 
-  <!-- NAV INFERIOR -->
-  <nav class="bottom-nav">
-    <button class="active">Início</button>
-    <button>Protocolos</button>
-    <button>CV Analytics</button>
-    <button>Blueprint</button>
-    <button>Perfil</button>
-  </nav>
+            // Função para formatar números com dois dígitos (ex: 05, 12)
+            const formatTime = (time) => String(Math.max(0, time)).padStart(2, '0');
 
-  <!-- BOTÃO DE SUPORTE / CHAT -->
-  <div class="fab-support" title="Suporte / Mentoria"></div>
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                // Cálculo do tempo em unidades
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Exibe os resultados nos elementos
+                daysEl.innerHTML = formatTime(days);
+                hoursEl.innerHTML = formatTime(hours);
+                minutesEl.innerHTML = formatTime(minutes);
+                secondsEl.innerHTML = formatTime(seconds);
+
+                // Se a contagem regressiva terminar
+                if (distance < 0) {
+                    clearInterval(interval);
+                    daysEl.innerHTML = hoursEl.innerHTML = minutesEl.innerHTML = secondsEl.innerHTML = '00';
+                    countdownEl.innerHTML = '<p class="text-4xl font-extrabold text-green-400">LANÇADO AGORA! Visite nossa loja de aplicativos!</p>';
+                    launchInfoEl.innerHTML = 'O BillionMind AI está no ar!';
+                }
+            }
+
+            // Atualiza o contador a cada 1 segundo
+            const interval = setInterval(updateCountdown, 1000);
+            
+            // Garante que o contador comece imediatamente
+            updateCountdown();
+
+            // Como o formulário foi substituído por um link direto, o código de manipulação de formulário não é mais necessário,
+            // mas mantemos o script de contagem regressiva.
+        });
+    </script>
 </body>
 </html>
+
+
