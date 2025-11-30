@@ -12,68 +12,59 @@
         font-family: Arial, Helvetica, sans-serif;
         color: #fff;
         background: #000;
+        line-height: 1.8;
     }
 
-    /* FUNDO LUXUOSO */
-    .hero {
-        background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba');
-        background-size: cover;
-        background-position: center;
-        width: 100%;
-        padding: 80px 20px;
-        position: relative;
-    }
-
-    .hero::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.72);
-        backdrop-filter: blur(2px);
-    }
-
-    .hero-content {
-        position: relative;
-        z-index: 2;
-        text-align: center;
+    /* LUXO MINIMALISTA */
+    .page {
         max-width: 900px;
         margin: auto;
+        padding: 40px 20px;
     }
 
     h1 {
-        font-size: 40px;
-        color: #d4af37;
+        font-size: 42px;
+        text-align: center;
         font-weight: 700;
-        letter-spacing: 2px;
+        color: #d4af37;
         margin-bottom: 10px;
+        letter-spacing: 3px;
     }
 
-    .subtitle {
+    h2 {
+        color: #d4af37;
+        font-size: 28px;
+        margin-top: 40px;
+    }
+
+    h3 {
+        color: #d4af37;
         font-size: 22px;
-        opacity: 0.9;
-        margin-bottom: 30px;
+        margin-top: 25px;
     }
 
-    /* BLOCO GIGANTE DE CONTEÚDO */
-    .block {
-        background: rgba(255,255,255,0.05);
-        border-left: 4px solid #d4af37;
-        padding: 30px;
-        margin: 40px auto;
-        max-width: 900px;
-        border-radius: 14px;
-        backdrop-filter: blur(6px);
-        box-shadow: 0 0 25px rgba(212,175,55,0.2);
+    p, li {
+        font-size: 18px;
+        color: #e6e6e6;
+        margin-bottom: 12px;
     }
 
+    /* DIVISOR */
+    .divider {
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(to right, #d4af37, transparent);
+        margin: 40px 0;
+        opacity: 0.7;
+    }
+
+    /* ACORDEÃO */
     details {
-        margin-bottom: 25px;
-        background: rgba(0,0,0,0.45);
+        margin-bottom: 28px;
         padding: 20px;
-        border-radius: 12px;
-        border: 1px solid rgba(212,175,55,0.3);
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(212,175,55,0.25);
+        border-radius: 10px;
     }
 
     summary {
@@ -83,171 +74,2029 @@
         cursor: pointer;
     }
 
-    p, li {
-        font-size: 18px;
-        margin-top: 10px;
-        line-height: 1.8;
-    }
-
-    /* SEGUNDO FUNDO (CARROS) */
-    .luxury-section {
-        background-image: url('https://images.unsplash.com/photo-1529421308418-6b6b3f1d5268');
-        background-size: cover;
-        background-position: center;
-        padding: 80px 20px;
-        position: relative;
-    }
-
-    .luxury-section::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(0,0,0,0.75);
-    }
-
-    .luxury-inner {
-        position: relative;
-        z-index: 2;
-        max-width: 900px;
-        margin: auto;
-    }
-
     /* BOTÃO CENTRAL */
-    .center-btn {
+    .cta {
         display: block;
-        margin: 60px auto;
-        padding: 18px 28px;
+        margin: 50px auto;
+        width: 280px;
+        padding: 18px;
         text-align: center;
         background: #d4af37;
         color: #000;
         font-weight: bold;
         border-radius: 10px;
         font-size: 20px;
-        width: 280px;
         text-decoration: none;
-        transition: 0.3s;
     }
 
-    .center-btn:hover {
+    .cta:hover {
         background: #f0d68a;
     }
 
-    footer {
-        margin-top: 60px;
-        text-align: center;
-        opacity: 0.85;
-    }
-
-    footer a {
-        color: #d4af37;
-        font-weight: bold;
-        text-decoration: none;
-    }
 </style>
 </head>
-
 <body>
 
-<!-- HERO -->
-<div class="hero">
-    <div class="hero-content">
-        <h1>THE MILLIONAIRE MINDSET</h1>
-        <p class="subtitle">Disciplina • Riqueza • Lifestyle • Realização</p>
-    </div>
-</div>
+<!-- CAPA INTERNA -->
+<div class="page">
 
-<!-- SEÇÃO GIGANTE 1 -->
-<div class="block">
+<h1>THE MILLIONAIRE MINDSET</h1>
+<p style="text-align:center; font-size:20px; opacity:0.85;">
+Edição Premium – Black & Gold
+</p>
 
-<h2 style="color:#d4af37;">INTRODUÇÃO</h2>
-<p>Este é o e-book oficial que você adquiriu. A versão premium, completa, reforçada e ampliada.</p>
+<div class="divider"></div>
 
-<details>
-<summary>📘 O que você está prestes a aprender</summary>
+<h2>Introdução</h2>
 <p>
-✔ Mentalidade de dono  
-✔ Rotina milionária  
-✔ Disciplina inabalável  
-✔ Como criar renda  
-✔ Como criar imagem de poder  
-✔ Como visualizar e construir um lifestyle de luxo  
-✔ Como elevar sua vida inteira ao próximo nível  
+Bem-vindo(a) à edição premium do e-book <b>THE MILLIONAIRE MINDSET</b>.  
+Este material foi criado para ser um guia completo de transformação mental, emocional e financeira.
+</p>
+
+<p>
+Aqui você terá acesso a mais de <b>100 páginas equivalentes</b> de conteúdo profundo, dividido em três grandes jornadas:
+</p>
+
+<ul>
+    <li><b>Disciplina Absoluta</b> – A base de toda vida milionária</li>
+    <li><b>Renda Extra & Mentalidade de Dono</b> – Como pensar como quem cria dinheiro</li>
+    <li><b>Lifestyle de Luxo & Identidade</b> – Como se tornar a versão milionária de si mesmo</li>
+</ul>
+
+<p>
+Este é um material de ALTO VALOR.  
+Você irá estudar, aplicar, revisar e evoluir capítulo por capítulo.
+</p>
+
+<div class="divider"></div>
+
+<!-- JORNADA 01 – DISCIPLINA ABSOLUTA -->
+<h2>JORNADA 01 — DISCIPLINA ABSOLUTA</h2>
+<p>
+A disciplina é o alicerce da vida milionária.  
+Nada funciona sem ela: não existe consistência, foco, dinheiro, evolução ou clareza sem disciplina.
+</p>
+
+<div class="divider"></div>
+
+<!-- CAPÍTULO 1 -->
+<details>
+<summary>📘 CAPÍTULO 1 — O Que é Autodisciplina Real</summary>
+<p>
+Autodisciplina não é acordar motivado.  
+Autodisciplina é <b>fazer mesmo quando você não quer</b>.  
+É decidir que sua vida é importante demais para ser controlada pelas emoções do momento.
+</p>
+
+<p>
+Pessoas comuns agem quando estão empolgadas.  
+Milionários agem quando decidiram — independentemente da emoção.
+</p>
+
+<p>
+A disciplina é a capacidade de manter sua palavra consigo mesmo.  
+Sem ela, tudo desmorona.
 </p>
 </details>
 
-</div>
-
-<!-- SEÇÃO FUNDO LUXO -->
-<div class="luxury-section">
-<div class="luxury-inner">
-
-<h2 style="color:#d4af37;">JORNADA 01 — 30 DIAS DE DISCIPLINA ABSOLUTA</h2>
-
+<!-- CAPÍTULO 2 -->
 <details>
-<summary>• Sistema de despertar com propósito</summary>
-<p>Você começa o dia com frases que reprogramam sua identidade.</p>
+<summary>📘 CAPÍTULO 2 — A Disciplina Cria Liberdade</summary>
+<p>
+Parece contraditório, mas é real:  
+<b>Disciplina = Liberdade.</b>
+</p>
+
+<p>
+A falta de disciplina te prende em um ciclo de:
+</p>
+<ul>
+    <li>atrasar sua vida,</li>
+    <li>acumular responsabilidades,</li>
+    <li>viver estressado,</li>
+    <li>ter medo do futuro.</li>
+</ul>
+
+<p>
+Quando você domina a disciplina, você domina o tempo.  
+E quando domina o tempo, domina sua vida.
+</p>
 </details>
 
+<!-- CAPÍTULO 3 -->
 <details>
-<summary>• Blocos de Foco</summary>
-<p>3 blocos → Ação, dinheiro, evolução.</p>
+<summary>📘 CAPÍTULO 3 — Sistema do Despertar Milionário</summary>
+<p>
+Seu dia começa antes mesmo de você sair da cama.  
+O primeiro pensamento é como um comando que molda toda sua energia.
+</p>
+
+<p>Todos os dias, ao acordar, repita:</p>
+<p style="font-style:italic; border-left:4px solid #d4af37; padding-left:14px;">
+“Hoje ajo como a versão milionária de mim mesmo.  
+O mundo responde à minha disciplina.”
+</p>
+
+<p>
+Esse ritual ativa foco, identidade e responsabilidade.
+</p>
 </details>
 
+<!-- CAPÍTULO 4 -->
 <details>
-<summary>• Ritual noturno</summary>
-<p>A chave para fechar o dia com clareza e crescer diariamente.</p>
+<summary>📘 CAPÍTULO 4 — Acordando com Identidade Milionária</summary>
+<p>
+Sua identidade é a raiz de tudo.  
+Você não age conforme deseja — age conforme acredita ser.
+</p>
+
+<p>
+O segredo dos milionários é simples:  
+<b>eles constroem uma identidade que obriga comportamentos de alto padrão.</b>
+</p>
+
+<p>
+Você vai acordar visualizando a versão de si mesmo que:
+</p>
+<ul>
+    <li>tem controle,</li>
+    <li>tem visão,</li>
+    <li>tem foco,</li>
+    <li>tem objetivo.</li>
+</ul>
 </details>
 
-</div>
-</div>
-
-<!-- SEÇÃO GIGANTE 2 -->
-<div class="block">
-
-<h2 style="color:#d4af37;">JORNADA 02 — RENDA EXTRA E MENTALIDADE MILIONÁRIA</h2>
-
+<!-- CAPÍTULO 5 -->
 <details>
-<summary>• Uma ação de dinheiro todo dia</summary>
-<p>O segredo dos milionários é consistência.</p>
+<summary>📘 CAPÍTULO 5 — Ritual Matinal de 15 Minutos</summary>
+<p>
+O ritual matinal cria ritmo.  
+Ele pode ser simples, desde que seja consistente:
+</p>
+
+<ul>
+    <li>2 minutos — frase de identidade.</li>
+    <li>5 minutos — planejamento rápido do dia.</li>
+    <li>5 minutos — respiração + foco.</li>
+    <li>3 minutos — leitura de afirmações de disciplina.</li>
+</ul>
+
+<p>
+Não é sobre ser perfeito.  
+É sobre nunca quebrar o ritual.
+</p>
 </details>
 
+<!-- CAPÍTULO 6 -->
 <details>
-<summary>• Como pensar como dono</summary>
-<p>Você aprende a controlar a própria vida.</p>
+<summary>📘 CAPÍTULO 6 — Blocos de Foco Profundo</summary>
+<p>
+Nunca trabalhe horas seguidas sem estratégia.  
+Milionários trabalham com <b>blocos de foco</b>.
+</p>
+
+<p>Use a estrutura:</p>
+
+<ul>
+    <li><b>45 min — Tarefa principal</b></li>
+    <li><b>30 min — Ação que gera dinheiro</b></li>
+    <li><b>20 min — Evolução pessoal</b></li>
+</ul>
+
+<p>
+Essa tríade cria avanço agressivo em pouco tempo.
+</p>
 </details>
 
-</div>
-
-<!-- FUNDO LUXO 2 -->
-<div class="luxury-section" style="background-image:url('https://images.unsplash.com/photo-1507038732509-8d8e0a4d0f0d');">
-<div class="luxury-inner">
-
-<h2 style="color:#d4af37;">JORNADA 03 — LIFESTYLE DE LUXO</h2>
-
+<!-- CAPÍTULO 7 -->
 <details>
-<summary>• Como definir metas de luxo</summary>
-<p>Carro, casa, viagem, experiências e liberdade.</p>
+<summary>📘 CAPÍTULO 7 — Como Aumentar o Foco em 48h</summary>
+<p>
+Quer dobrar seu foco rapidamente?  
+Siga estas regras por 2 dias:
+</p>
+
+<ul>
+    <li>Desative notificações.</li>
+    <li>Ambiente limpo e silencioso.</li>
+    <li>Áudio binaural ou música ambiente.</li>
+    <li>Tarefas uma por vez.</li>
+    <li>Sem conversa enquanto trabalha.</li>
+</ul>
+
+<p>
+48 horas de foco podem mudar a sua semana inteira.
+</p>
 </details>
 
+<!-- CAPÍTULO 8 -->
 <details>
-<summary>• Como criar identidade milionária</summary>
-<p>Você descobre como deve agir, pensar e se posicionar.</p>
+<summary>📘 CAPÍTULO 8 — Micro-hábitos Destrutivos</summary>
+<p>
+As pequenas ações que você nem percebe podem estar destruindo sua vida:
+</p>
+
+<ul>
+    <li>adiar tarefas pequenas,</li>
+    <li>mexer no celular sem motivo,</li>
+    <li>aceitar qualquer distração,</li>
+    <li>dormir sem planejamento,</li>
+    <li>acordar sem objetivo.</li>
+</ul>
+
+<p>
+Pequenas falhas repetidas criam grandes queda de desempenho.
+</p>
 </details>
 
-</div>
-</div>
+<!-- CAPÍTULO 9 -->
+<details>
+<summary>📘 CAPÍTULO 9 — Superando Procrastinação</summary>
+<p>
+Procrastinação não é preguiça — é medo.  
+Medo de falhar, medo de não conseguir, medo de começar.
+</p>
 
-<!-- BOTÃO CENTRALIZADO -->
-<a class="center-btn" href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35" target="_blank">
-ENTRAR NO CANAL VIP
+<p>
+Para vencer:
+</p>
+
+<ul>
+    <li>comece com tarefas pequenas;</li>
+    <li>divida grandes metas em micro-etapas;</li>
+    <li>ignore perfeccionismo;</li>
+    <li>aceite progresso imperfeito.</li>
+</ul>
+</details>
+
+<!-- CAPÍTULO 10 -->
+<details>
+<summary>📘 CAPÍTULO 10 — Disciplina Emocional</summary>
+<p>
+A maior batalha que você terá na vida é contra suas próprias emoções.
+</p>
+
+<p>
+Disciplina emocional não é ignorar sentimentos.  
+É <b>não permitir que eles decidam sua vida</b>.
+</p>
+
+<p>
+Milionários não agem quando “sentem vontade”.  
+Eles agem porque se comprometeram.
+</p>
+</details>
+
+<div class="divider"></div>
+<!-- CAPÍTULO 11 -->
+<details>
+<summary>📘 CAPÍTULO 11 — Como Manter Disciplina Sem Motivação</summary>
+<p>
+A motivação é instável. Às vezes está alta, às vezes desaparece completamente.  
+A disciplina verdadeira nasce quando você entende que não precisa querer — só precisa fazer.
+</p>
+
+<p>
+Quando a motivação falhar:
+</p>
+<ul>
+    <li>faça apenas o mínimo viável;</li>
+    <li>use timers (5 ou 10 minutos) para destravar a ação;</li>
+    <li>reduza o tamanho da tarefa, mas não pule o dia;</li>
+    <li>lembre-se: pequenas ações > zero ação.</li>
+</ul>
+
+<p>
+A motivação cria o começo.  
+A disciplina cria o resultado.
+</p>
+</details>
+
+<!-- CAPÍTULO 12 -->
+<details>
+<summary>📘 CAPÍTULO 12 — Como Manter Disciplina Sob Pressão</summary>
+<p>
+Pressão é inevitável. Você será testado pelo trabalho, pela vida, pelo emocional, pelo ambiente.  
+A questão não é evitar a pressão — é aprender a se mover dentro dela.
+</p>
+
+<p>
+Quando estiver sob pressão:
+</p>
+<ul>
+    <li>respire fundo e desacelere por 60 segundos;</li>
+    <li>faça uma lista rápida do que realmente importa agora;</li>
+    <li>execute apenas o essencial;</li>
+    <li>evite decisões emocionais.</li>
+</ul>
+
+<p>
+A disciplina sob pressão cria respeito próprio.
+</p>
+</details>
+
+<!-- CAPÍTULO 13 -->
+<details>
+<summary>📘 CAPÍTULO 13 — Disciplina Quando Ninguém Te Apoia</summary>
+<p>
+A maioria das pessoas não vai entender sua evolução.  
+Elas têm medo do seu crescimento porque isso expõe a falta de movimento delas.
+</p>
+
+<p>Quando ninguém te apoia:</p>
+<ul>
+    <li>não discuta — apenas evolua;</li>
+    <li>não explique — apenas mostre através dos resultados;</li>
+    <li>não busque validação — busque avanço.</li>
+</ul>
+
+<p>
+A solidão faz parte do processo de crescimento.
+</p>
+</details>
+
+<!-- CAPÍTULO 14 -->
+<details>
+<summary>📘 CAPÍTULO 14 — Revisão Diária</summary>
+<p>
+Todo milionário que evolui rapidamente faz uma revisão diária simples:
+</p>
+
+<ul>
+    <li>O que fiz hoje que trouxe resultado?</li>
+    <li>O que perdi tempo fazendo?</li>
+    <li>O que farei melhor amanhã?</li>
+</ul>
+
+<p>
+Sem revisão, você repete erros.  
+Com revisão, você acelera sua vida.
+</p>
+</details>
+
+<!-- CAPÍTULO 15 -->
+<details>
+<summary>📘 CAPÍTULO 15 — Ritual Noturno de Clareza</summary>
+<p>
+O cérebro precisa saber que o dia terminou.  
+O ritual noturno cria ordem e prepara sua mente para um próximo dia mais limpo.
+</p>
+
+<p>Prática:</p>
+<ul>
+    <li>organize o ambiente por 5 minutos;</li>
+    <li>anote a primeira tarefa do próximo dia;</li>
+    <li>revise mentalmente seus acertos;</li>
+    <li>faça respiração profunda antes de dormir.</li>
+</ul>
+</details>
+
+<!-- CAPÍTULO 16 -->
+<details>
+<summary>📘 CAPÍTULO 16 — Planejamento de 7 Dias</summary>
+<p>
+Nunca comece uma semana sem saber o que precisa ser feito.  
+A falta de planejamento semanal é um dos maiores sabotadores da disciplina.
+</p>
+
+<p>Checklist semanal:</p>
+<ul>
+    <li>3 metas principais;</li>
+    <li>tarefas essenciais;</li>
+    <li>tarefas opcionais;</li>
+    <li>tarefas delegáveis;</li>
+    <li>descanso planejado.</li>
+</ul>
+</details>
+
+<!-- CAPÍTULO 17 -->
+<details>
+<summary>📘 CAPÍTULO 17 — Checklist de Disciplina</summary>
+<p>
+Use este checklist todos os dias:
+</p>
+
+<ul>
+    <li>acordei no horário?</li>
+    <li>cumpri o ritual matinal?</li>
+    <li>executei meu bloco de foco principal?</li>
+    <li>fiz minha ação de dinheiro?</li>
+    <li>revisão noturna feita?</li>
+</ul>
+
+<p>
+Checklist = consistência.
+</p>
+</details>
+
+<!-- CAPÍTULO 18 -->
+<details>
+<summary>📘 CAPÍTULO 18 — Como Eliminar Distrações</summary>
+<p>
+A distração é inimiga número 1 de qualquer pessoa que quer crescer rápido.
+</p>
+
+<p>Remova imediatamente:</p>
+<ul>
+    <li>notificações desnecessárias;</li>
+    <li>pessoas que interrompem o tempo todo;</li>
+    <li>ambientes barulhentos;</li>
+    <li>tarefas que não produzem nada.</li>
+</ul>
+
+<p>
+A vida fica até 3x mais produtiva quando você remove o ruído.
+</p>
+</details>
+
+<!-- CAPÍTULO 19 -->
+<details>
+<summary>📘 CAPÍTULO 19 — Como Voltar à Disciplina Após Cair</summary>
+<p>
+Cair faz parte.  
+Nenhum milionário cresceu em linha reta.
+</p>
+
+<p>
+O segredo está em <b>voltar rápido</b>.
+</p>
+
+<p>Regra de ouro:</p>
+
+<ul>
+    <li>queimou um dia? volte no dia seguinte.</li>
+    <li>queimou a semana? volte na próxima.</li>
+    <li>queimou o mês? volte no próximo.</li>
+</ul>
+
+<p>
+Nunca deixe uma queda virar hábito.
+</p>
+</details>
+
+<!-- CAPÍTULO 20 -->
+<details>
+<summary>📘 CAPÍTULO 20 — O Ciclo da Consistência</summary>
+<p>
+A consistência é formada por um ciclo simples:
+</p>
+
+<ul>
+    <li>disciplina →</li>
+    <li>pequenos resultados →</li>
+    <li>confiança →</li>
+    <li>maior disciplina →</li>
+    <li>grandes resultados.</li>
+</ul>
+
+<p>
+A maioria para no início porque não espera os pequenos resultados virarem grandes.  
+Você não vai parar.
+</p>
+</details>
+
+<div class="divider"></div>
+<!-- CAPÍTULO 21 -->
+<details>
+<summary>📘 CAPÍTULO 21 — Desafio “7 Dias de Disciplina Extrema”</summary>
+<p>
+Este desafio foi criado para quebrar bloqueios mentais e provar que você consegue muito mais do que imagina.  
+Durante 7 dias:
+</p>
+
+<ul>
+    <li>acorde no mesmo horário;</li>
+    <li>faça o ritual matinal completo;</li>
+    <li>execute o bloco de foco principal;</li>
+    <li>faça uma ação de dinheiro por dia;</li>
+    <li>evite distrações ao máximo;</li>
+    <li>revise o dia antes de dormir.</li>
+</ul>
+
+<p>
+7 dias são suficientes para mudar o ritmo da sua vida.
+</p>
+</details>
+
+<!-- CAPÍTULO 22 -->
+<details>
+<summary>📘 CAPÍTULO 22 — Desafio “21 Dias de Reconstrução”</summary>
+<p>
+O desafio dos 21 dias cria a base para uma nova personalidade.  
+Aqui você foca em:
+</p>
+
+<ul>
+    <li>consistência leve porém contínua;</li>
+    <li>avanços diários;</li>
+    <li>eliminar micro-hábitos ruins;</li>
+    <li>fortalecer sua identidade.</li>
+</ul>
+
+<p>
+21 dias criam uma nova percepção de si mesmo.
+</p>
+</details>
+
+<!-- CAPÍTULO 23 -->
+<details>
+<summary>📘 CAPÍTULO 23 — Desafio “30 Dias de Identidade Milionária”</summary>
+<p>
+Este é o desafio mais profundo desta jornada.  
+Por 30 dias você vai agir como a versão milionária de si mesmo.
+</p>
+
+<p>Durante 30 dias:</p>
+<ul>
+    <li>vista-se melhor;</li>
+    <li>fale com mais clareza;</li>
+    <li>faça escolhas melhores;</li>
+    <li>evite conversas inúteis;</li>
+    <li>cumpra promessas pessoais;</li>
+    <li>aja com postura de dono.</li>
+</ul>
+
+<p>
+A identidade cria a realidade.
+</p>
+</details>
+
+<!-- CAPÍTULO 24 -->
+<details>
+<summary>📘 CAPÍTULO 24 — Como Realmente Mudar um Hábito</summary>
+<p>
+Mudar um hábito não é força de vontade — é sistema.  
+Você muda hábitos ao:
+</p>
+
+<ul>
+    <li>tornar a ação mais fácil do que a alternativa ruim;</li>
+    <li>reduzir atritos;</li>
+    <li>criar gatilhos visuais;</li>
+    <li>trabalhar com micro-etapas.</li>
+</ul>
+
+<p>
+Hábito novo = versão nova.
+</p>
+</details>
+
+<!-- CAPÍTULO 25 -->
+<details>
+<summary>📘 CAPÍTULO 25 — Disciplina e Autoconfiança</summary>
+<p>
+Autoconfiança não vem de elogios ou autoestima.  
+Ela vem de você provar a si mesmo que cumpre o que promete.
+</p>
+
+<p>
+Toda vez que você cumpre uma pequena tarefa, sua autoconfiança aumenta.  
+Toda vez que quebra sua palavra, ela diminui.
+</p>
+
+<p>
+Confiança é construída, não sentida.
+</p>
+</details>
+
+<!-- CAPÍTULO 26 -->
+<details>
+<summary>📘 CAPÍTULO 26 — Disciplina e Dinheiro</summary>
+<p>
+Dinheiro é consequência direta de disciplina.  
+Pessoas indisciplinadas:
+</p>
+
+<ul>
+    <li>gastam impulsivamente;</li>
+    <li>trabalham sem foco;</li>
+    <li>desistem rápido;</li>
+    <li>não planejam;</li>
+    <li>não evoluem.</li>
+</ul>
+
+<p>
+A disciplina é o alicerce da riqueza.
+</p>
+</details>
+
+<!-- CAPÍTULO 27 -->
+<details>
+<summary>📘 CAPÍTULO 27 — Disciplina e Imagem</summary>
+<p>
+Sua imagem comunica sua identidade.  
+Sua imagem comunica sua mentalidade.  
+Sua imagem comunica seu futuro.
+</p>
+
+<p>
+A disciplina molda seu jeito de andar, falar, se vestir e se posicionar.  
+E tudo isso altera como o mundo responde a você.
+</p>
+</details>
+
+<!-- CAPÍTULO 28 -->
+<details>
+<summary>📘 CAPÍTULO 28 — Disciplina e Solitude</summary>
+<p>
+A solitude é onde você cresce, cria, decide e evolui.  
+Pessoas indisciplinadas fogem de ficar sozinhas.  
+Pessoas disciplinadas usam o silêncio para criar poder.
+</p>
+</details>
+
+<!-- CAPÍTULO 29 -->
+<details>
+<summary>📘 CAPÍTULO 29 — Disciplina e Clareza Mental</summary>
+<p>
+Quanto mais disciplinado você é, menos confuso fica.  
+A mente bagunçada vem de hábitos bagunçados.
+</p>
+
+<p>
+Organize seu dia → e sua mente se organiza junto.  
+Organize sua vida → e suas emoções se alinham.
+</p>
+</details>
+
+<!-- CAPÍTULO 30 -->
+<details>
+<summary>📘 CAPÍTULO 30 — Conclusão da Jornada 01</summary>
+<p>
+Você acaba de completar a parte mais importante do processo:  
+<b>a construção da disciplina que sustenta a vida milionária.</b>
+</p>
+
+<p>
+Agora você está pronto para a Jornada 02 — Renda Extra e Mentalidade de Dono.
+</p>
+</details>
+
+<div class="divider"></div>
+
+<!-- BOTÃO CENTRAL DO E-BOOK -->
+<a class="cta" href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35" target="_blank">
+ENTRAR NO CANAL VIP AGORA
 </a>
 
-<footer>
-    Siga no Instagram:
-    <br>
-    <a href="https://www.instagram.com/mrdigital_vip?igsh=b3NhbWVsNWdlanEw" target="_blank">@mrdigital_vip</a>
-</footer>
+<div class="divider"></div>
+<!-- JORNADA 02 — RENDA EXTRA & MENTALIDADE DE DONO -->
+<h2>JORNADA 02 — RENDA EXTRA & MENTALIDADE DE DONO</h2>
+<p>
+Agora começa a segunda fase da sua transformação.  
+Aqui você vai aprender a pensar como um criador de oportunidades, não como alguém que espera que a vida melhore sozinha.
+</p>
+
+<div class="divider"></div>
+
+<!-- CAPÍTULO 31 -->
+<details>
+<summary>📘 CAPÍTULO 31 — O Que é Mentalidade de Dono</summary>
+<p>
+A mentalidade de dono é uma das maiores diferenças entre pessoas comuns e milionários.  
+Pessoas comuns pensam em sobreviver.  
+Donos pensam em construir.
+</p>
+
+<p>
+Mentalidade de dono significa:
+</p>
+<ul>
+    <li>assumir responsabilidade total pela própria vida;</li>
+    <li>parar de culpar circunstâncias;</li>
+    <li>agir como protagonista e não como espectador;</li>
+    <li>tomar decisões com visão de longo prazo.</li>
+</ul>
+
+<p>
+Quem pensa como dono, cresce como dono.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 32 -->
+<details>
+<summary>📘 CAPÍTULO 32 — Como Pensam os Milionários</summary>
+<p>
+Milionários não se preocupam com “como vou fazer tudo?”.  
+Eles pensam:
+</p>
+
+<p style="font-style:italic; border-left:4px solid #d4af37; padding-left:14px;">
+“Qual é o próximo passo que posso fazer agora?”
+</p>
+
+<p>
+Eles:
+</p>
+<ul>
+    <li>simplificam problemas;</li>
+    <li>evitam drama emocional;</li>
+    <li>tomam decisões rápidas;</li>
+    <li>planejam com clareza;</li>
+    <li>entendem que riqueza é construída em silêncio.</li>
+</ul>
+</details>
+
+
+<!-- CAPÍTULO 33 -->
+<details>
+<summary>📘 CAPÍTULO 33 — Mapa completo de habilidades</summary>
+<p>
+Para criar renda, você precisa primeiro mapear o que já sabe.  
+Liste:
+</p>
+
+<ul>
+    <li>habilidades técnicas,</li>
+    <li>habilidades sociais,</li>
+    <li>habilidades digitais,</li>
+    <li>habilidades manuais,</li>
+    <li>habilidades criativas.</li>
+</ul>
+
+<p>
+Tudo o que você sabe fazer pode ser monetizado — desde que seja colocado em movimento.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 34 -->
+<details>
+<summary>📘 CAPÍTULO 34 — Como Identificar Oportunidades Escondidas</summary>
+<p>
+Oportunidades não desaparecem — elas mudam de forma.  
+E pessoas com mentalidade de dono conseguem enxergar:
+</p>
+
+<ul>
+    <li>problemas que podem virar produto,</li>
+    <li>habilidades que podem virar serviço,</li>
+    <li>conhecimentos que podem virar conteúdo,</li>
+    <li>necessidades que podem virar renda.</li>
+</ul>
+
+<p>
+Olhe para seu dia.  
+Há dinheiro em tudo que resolve dor, economiza tempo ou gera prazer.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 35 -->
+<details>
+<summary>📘 CAPÍTULO 35 — Sete Formas de Criar Renda Imediata</summary>
+<p>
+Aqui estão 7 caminhos reais que funcionam para começar hoje:
+</p>
+
+<ul>
+    <li>venda de serviços;</li>
+    <li>criação de produtos digitais;</li>
+    <li>venda de conhecimento;</li>
+    <li>consultoria simples;</li>
+    <li>gestão de redes sociais;</li>
+    <li>edição de vídeo e foto;</li>
+    <li>trabalhos rápidos (freelas).</li>
+</ul>
+
+<p>
+Escolha 1 e comece.  
+A consistência transforma qualquer caminho escolhido.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 36 -->
+<details>
+<summary>📘 CAPÍTULO 36 — A Regra da Ação de Dinheiro</summary>
+<p>
+A regra é simples e poderosa:
+</p>
+
+<p style="font-style:italic; border-left:4px solid #d4af37; padding-left:14px;">
+“Todos os dias, faça ao menos UMA ação que pode gerar dinheiro.”
+</p>
+
+<ul>
+    <li>ofereça um serviço,</li>
+    <li>crie uma postagem,</li>
+    <li>mande uma mensagem,</li>
+    <li>atualize seu portfólio,</li>
+    <li>aprenda algo monetizável.</li>
+</ul>
+
+<p>
+A ação diária constrói riqueza de forma silenciosa.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 37 -->
+<details>
+<summary>📘 CAPÍTULO 37 — Estudo Monetizável</summary>
+<p>
+Existem dois tipos de estudo:
+</p>
+
+<ul>
+    <li><b>estudo passivo</b> — consome conteúdo e não muda nada;</li>
+    <li><b>estudo monetizável</b> — aprende algo que vira dinheiro.</li>
+</ul>
+
+<p>
+Toda semana, dedique 1 hora para aprender algo que pode ser vendido:
+</p>
+
+<ul>
+    <li>edição,</li>
+    <li>design,</li>
+    <li>copywriting,</li>
+    <li>social media,</li>
+    <li>técnicas de vendas,</li>
+    <li>automação,</li>
+    <li>funis digitais.</li>
+</ul>
+</details>
+
+
+<!-- CAPÍTULO 38 -->
+<details>
+<summary>📘 CAPÍTULO 38 — Vendendo Sem Parecer Vendedor</summary>
+<p>
+As pessoas não compram produtos —  
+<b>compram transformação.</b>
+</p>
+
+<p>
+Para vender de forma natural:
+</p>
+<ul>
+    <li>mostre o resultado,</li>
+    <li>explique o benefício,</li>
+    <li>conte sua experiência,</li>
+    <li>ofereça sem pressão.</li>
+</ul>
+
+<p>
+Venda com naturalidade e clareza.  
+Milionários vendem porque ajudam.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 39 -->
+<details>
+<summary>📘 CAPÍTULO 39 — Construindo Reputação</summary>
+<p>
+Reputação é a moeda mais valiosa que você tem.  
+E você constrói reputação assim:
+</p>
+
+<ul>
+    <li>cumprindo prazos;</li>
+    <li>falando a verdade;</li>
+    <li>entregando mais do que prometeu;</li>
+    <li>sendo educado e firme;</li>
+    <li>resolvendo rápido.</li>
+</ul>
+
+<p>
+Quanto melhor sua reputação, mais dinheiro aparece.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 40 -->
+<details>
+<summary>📘 CAPÍTULO 40 — Como Começar um Negócio do Zero</summary>
+<p>
+Todo grande empreendedor começou com nada além de:
+</p>
+
+<ul>
+    <li>habilidades simples,</li>
+    <li>um celular,</li>
+    <li>vontade de aprender,</li>
+    <li>e disciplina para continuar.</li>
+</ul>
+
+<p>
+Para começar um negócio do zero:
+</p>
+
+<ul>
+    <li>escolha um nicho;</li>
+    <li>descubra uma dor;</li>
+    <li>crie uma solução simples;</li>
+    <li>entregue para 5 pessoas;</li>
+    <li>melhore e repita.</li>
+</ul>
+
+<p>
+Negócios grandes nascem de ações pequenas repetidas.
+</p>
+</details>
+
+<div class="divider"></div>
+<!-- CAPÍTULO 41 -->
+<details>
+<summary>📘 CAPÍTULO 41 — Funis Simples que Geram Dinheiro</summary>
+<p>
+A maioria das pessoas complica funis.  
+Mas os milionários usam estruturas simples e repetíveis.
+</p>
+
+<p>O funil mais eficiente é:</p>
+<ul>
+    <li><b>Conteúdo</b> → mostra sua autoridade</li>
+    <li><b>Chamada</b> → leva para o produto/serviço</li>
+    <li><b>Oferta simples</b> → clara e objetiva</li>
+    <li><b>Entrega rápida</b> → o cliente se impressiona</li>
+</ul>
+
+<p>
+Você não precisa de complexidade.  
+Precisa de clareza, constância e uma boa oferta.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 42 -->
+<details>
+<summary>📘 CAPÍTULO 42 — Como Usar as Redes Sociais com Intenção</summary>
+<p>
+Pessoas comuns usam redes sociais para se distrair.  
+Pessoas milionárias usam redes sociais para:
+</p>
+
+<ul>
+    <li>construir marca,</li>
+    <li>atrair clientes,</li>
+    <li>testar ideias,</li>
+    <li>vender todos os dias.</li>
+</ul>
+
+<p>
+Se você usa seu perfil apenas para consumir, está perdendo dinheiro.  
+Transforme suas redes em ferramenta de negócios.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 43 -->
+<details>
+<summary>📘 CAPÍTULO 43 — A Psicologia da Venda Fácil</summary>
+<p>
+Vender não é manipular.  
+Vender é deixar claro que você resolve um problema específico.
+</p>
+
+<p>Para vender fácil:</p>
+<ul>
+    <li>entenda exatamente a dor do cliente;</li>
+    <li>mostre como sua solução resolve o problema;</li>
+    <li>use provas simples (prints, depoimentos, exemplos);</li>
+    <li>ofereça algo impossível de recusar.</li>
+</ul>
+
+<p>
+A venda fácil nasce da clareza, não da pressão.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 44 -->
+<details>
+<summary>📘 CAPÍTULO 44 — Economia Pessoal Milionária</summary>
+<p>
+Milionários controlam o dinheiro.  
+Pessoas comuns deixam o dinheiro controlar elas.
+</p>
+
+<p>Regra dos 3 blocos:</p>
+<ul>
+    <li><b>50%</b> — vida (contas, comida, cotidiano)</li>
+    <li><b>30%</b> — crescimento (estudos, ferramentas, projetos)</li>
+    <li><b>20%</b> — reserva e investimentos</li>
+</ul>
+
+<p>
+Se você administra mal seu dinheiro, ele vira um inimigo.  
+Se administra bem, ele vira sua liberdade.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 45 -->
+<details>
+<summary>📘 CAPÍTULO 45 — Como Multiplicar Seu Tempo</summary>
+<p>
+Todo milionário entende isso:  
+<b>não existe falta de tempo — existem prioridades ruins.</b>
+</p>
+
+<p>Para multiplicar seu tempo:</p>
+<ul>
+    <li>faça só o que gera resultado;</li>
+    <li>elimine atividades inúteis;</li>
+    <li>delegue o que consome energia demais;</li>
+    <li>automatize o que for possível.</li>
+</ul>
+
+<p>
+Tempo é a moeda mais valiosa do mundo.  
+Quem controla o tempo controla a vida.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 46 -->
+<details>
+<summary>📘 CAPÍTULO 46 — Como Criar um Produto Digital</summary>
+<p>
+Produtos digitais são a forma mais rápida e lucrativa de ganhar dinheiro hoje.
+</p>
+
+<p>Os 3 passos principais:</p>
+<ul>
+    <li><b>1. Dor</b> — o que as pessoas querem resolver?</li>
+    <li><b>2. Solução</b> — o que você sabe que pode ajudar?</li>
+    <li><b>3. Entrega</b> — e-book, vídeo, áudio, planilha, app.</li>
+</ul>
+
+<p>
+O digital te permite trabalhar de qualquer lugar e vender enquanto dorme.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 47 -->
+<details>
+<summary>📘 CAPÍTULO 47 — Como Construir Autoridade</summary>
+<p>
+Autoridade não é fama.  
+Autoridade é quando as pessoas confiam na sua palavra porque você:
+</p>
+
+<ul>
+    <li>tem constância,</li>
+    <li>fala com clareza,</li>
+    <li>mostra resultados,</li>
+    <li>não some depois da venda.</li>
+</ul>
+
+<p>
+A autoridade faz seus preços aumentarem automaticamente.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 48 -->
+<details>
+<summary>📘 CAPÍTULO 48 — Como Gerar Demanda</summary>
+<p>
+Para gerar demanda, você precisa antes:
+</p>
+
+<ul>
+    <li>mostrar sua visão,</li>
+    <li>mostrar seu processo,</li>
+    <li>mostrar sua transformação,</li>
+    <li>mostrar seu valor.</li>
+</ul>
+
+<p>
+As pessoas não compram porque você vende.  
+Elas compram porque querem fazer parte do seu movimento.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 49 -->
+<details>
+<summary>📘 CAPÍTULO 49 — Consistência Financeira</summary>
+<p>
+Riqueza não é ter um mês bom.  
+Riqueza é ter meses bons repetidos.
+</p>
+
+<p>
+Isso acontece quando você:
+</p>
+<ul>
+    <li>vende todos os dias,</li>
+    <li>se expõe todos os dias,</li>
+    <li>melhora a oferta,</li>
+    <li>melhora a entrega,</li>
+    <li>se educa financeiramente.</li>
+</ul>
+
+<p>
+Renda é disciplina aplicada ao dinheiro.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 50 -->
+<details>
+<summary>📘 CAPÍTULO 50 — Como Administrar Seu Crescimento</summary>
+<p>
+Quanto mais você cresce, mais precisará administrar:
+</p>
+
+<ul>
+    <li>suas emoções,</li>
+    <li>seus padrões,</li>
+    <li>seus relacionamentos,</li>
+    <li>seu tempo,</li>
+    <li>seu dinheiro.</li>
+</ul>
+
+<p>
+Milionários não crescem descontrolados —  
+eles crescem organizados.
+</p>
+</details>
+
+<div class="divider"></div>
+<!-- CAPÍTULO 51 -->
+<details>
+<summary>📘 CAPÍTULO 51 — Mentalidade Antifalha</summary>
+<p>
+Milionários não evitam falhar —  
+eles constroem um sistema para <b>não parar</b> quando falham.
+</p>
+
+<p>
+A mentalidade antifalha é baseada em:
+</p>
+<ul>
+    <li>aprendizado rápido,</li>
+    <li>correção imediata,</li>
+    <li>persistência inteligente.</li>
+</ul>
+
+<p>
+Falhar não te atrasa.  
+Parar sim.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 52 -->
+<details>
+<summary>📘 CAPÍTULO 52 — Como Lidar com Críticas</summary>
+<p>
+Quem critica muito é quem produz pouco.  
+Ninguém com resultados reais perde tempo derrubando os outros.
+</p>
+
+<p>
+Para lidar com críticas:
+</p>
+<ul>
+    <li>corte emocionalmente,</li>
+    <li>não tente agradar,</li>
+    <li>deixe o resultado responder,</li>
+    <li>não perca energia com invejoso.</li>
+</ul>
+
+<p>
+A crítica só te atinge se você está vazio.  
+Encha sua vida de propósito e disciplina.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 53 -->
+<details>
+<summary>📘 CAPÍTULO 53 — Como Lidar com Pressão Externa e Interna</summary>
+<p>
+Existem dois tipos de pressão:
+</p>
+<ul>
+    <li><b>externa</b> — expectativas, cobranças, comparações;</li>
+    <li><b>interna</b> — autocobrança, perfeccionismo, medo do fracasso.</li>
+</ul>
+
+<p>
+As duas diminuem quando você aumenta a clareza.  
+Organização mental reduz caos emocional.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 54 -->
+<details>
+<summary>📘 CAPÍTULO 54 — Como Lidar com Dificuldades Financeiras</summary>
+<p>
+Quando o dinheiro aperta, a mente aperta junto.  
+Mas é justamente nesses momentos que nascem as maiores oportunidades.
+</p>
+
+<p>Faça isso:</p>
+<ul>
+    <li>não dramatize o problema,</li>
+    <li>reduza custos rapidamente,</li>
+    <li>faça 3 ações de dinheiro por dia,</li>
+    <li>evite dívidas desnecessárias.</li>
+</ul>
+
+<p>
+Dificuldade financeira é um convite para evoluir.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 55 -->
+<details>
+<summary>📘 CAPÍTULO 55 — Como Lidar com Conflitos Emocionais</summary>
+<p>
+Conflitos emocionais drenam sua energia de foco e produtividade.  
+A regra é simples:
+</p>
+
+<p style="font-style:italic; border-left:4px solid #d4af37; padding-left:14px;">
+“Não tome decisões grandes quando estiver emocionalmente instável.”
+</p>
+
+<p>
+Respire, organize, espere — e então aja.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 56 -->
+<details>
+<summary>📘 CAPÍTULO 56 — Como Lidar com o Medo de Começar</summary>
+<p>
+O medo não desaparece quando você pensa.  
+Ele desaparece quando você começa.
+</p>
+
+<p>
+Ação cura medo.  
+Movimento cura dúvida.  
+Progresso cura insegurança.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 57 -->
+<details>
+<summary>📘 CAPÍTULO 57 — Crescimento Silencioso</summary>
+<p>
+Os maiores avanços acontecem fora dos holofotes.  
+Crescer em silêncio reduz pressão, reduz comparação e aumenta foco.
+</p>
+
+<p>O crescimento silencioso é baseado em:</p>
+<ul>
+    <li>disciplina,</li>
+    <li>ritmo,</li>
+    <li>constância,</li>
+    <li>melhoria contínua.</li>
+</ul>
+</details>
+
+
+<!-- CAPÍTULO 58 -->
+<details>
+<summary>📘 CAPÍTULO 58 — O Jogo da Paciência e Ritmo</summary>
+<p>
+Você não controla o tempo do sucesso, mas controla o ritmo do trabalho.  
+Milionários tratam riqueza como maratona, não como corrida de 100 metros.
+</p>
+
+<p>
+Paciência + disciplina + ritmo = inevitável evolução.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 59 -->
+<details>
+<summary>📘 CAPÍTULO 59 — A Arte de Pensar Longo Prazo</summary>
+<p>
+Riqueza não é sorte — é visão.  
+Pessoas que pensam apenas no mês ficam presas no mês.  
+Pessoas que pensam no próximo ano constroem liberdade.
+</p>
+
+<p>
+Pergunte-se diariamente:
+</p>
+<ul>
+    <li>isso me aproxima ou me afasta da minha visão?</li>
+    <li>isso tem impacto nos próximos 12 meses?</li>
+</ul>
+</details>
+
+
+<!-- CAPÍTULO 60 -->
+<details>
+<summary>📘 CAPÍTULO 60 — O Poder da Repetição Inteligente</summary>
+<p>
+Repetir não é ser monótono — é aperfeiçoar.  
+Tudo o que você repetir com intenção melhora:
+</p>
+
+<ul>
+    <li>forma de falar,</li>
+    <li>forma de vender,</li>
+    <li>forma de trabalhar,</li>
+    <li>forma de pensar,</li>
+    <li>forma de agir.</li>
+</ul>
+
+<p>
+A repetição inteligente transforma você em uma máquina de resultados.
+</p>
+</details>
+
+<div class="divider"></div>
+<!-- CAPÍTULO 61 -->
+<details>
+<summary>📘 CAPÍTULO 61 — Como Blindar Sua Mente</summary>
+<p>
+A mente é o território mais valioso que você possui.  
+Se você não a proteger, o mundo vai ocupá-la com medo, dúvidas e distrações.
+</p>
+
+<p>Para blindar sua mente:</p>
+<ul>
+    <li>se afaste de pessoas negativas,</li>
+    <li>consuma conteúdo que eleva,</li>
+    <li>evite discussões vazias,</li>
+    <li>faça silêncio quando necessário.</li>
+</ul>
+
+<p>
+Proteção mental = clareza máxima.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 62 -->
+<details>
+<summary>📘 CAPÍTULO 62 — Como Se Tornar Mentalmente Inabalável</summary>
+<p>
+Ser inabalável não é não sentir emoções.  
+É agir com estabilidade mesmo quando tudo ao redor muda.
+</p>
+
+<p>Para isso, pratique:</p>
+<ul>
+    <li>controle de respiração,</li>
+    <li>clareza de prioridades,</li>
+    <li>ação constante mesmo cansado,</li>
+    <li>fortalecimento da identidade.</li>
+</ul>
+
+<p>
+A mente forte vence antes mesmo de começar.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 63 -->
+<details>
+<summary>📘 CAPÍTULO 63 — Como Criar Conexões de Alto Valor</summary>
+<p>
+Seu círculo define sua velocidade.  
+Pessoas certas aceleram, pessoas erradas travam.
+</p>
+
+<p>Para criar conexões valiosas:</p>
+<ul>
+    <li>seja útil,</li>
+    <li>fale com clareza,</li>
+    <li>mostre profissionalismo,</li>
+    <li>entregue valor antes de pedir algo.</li>
+</ul>
+
+<p>
+Relacionamentos movem o mundo.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 64 -->
+<details>
+<summary>📘 CAPÍTULO 64 — Como Se Tornar Alguém Que as Pessoas Respeitam</summary>
+<p>
+Respeito não é pedido — é conquistado.  
+E é conquistado quando você:
+</p>
+
+<ul>
+    <li>fala pouco e faz muito;</li>
+    <li>se posiciona com firmeza;</li>
+    <li>mantém palavra;</li>
+    <li>não se mistura com mediocridade.</li>
+</ul>
+
+<p>
+Pessoas respeitadas têm voz e influência.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 65 -->
+<details>
+<summary>📘 CAPÍTULO 65 — Como Pensar como um Visionário</summary>
+<p>
+Visionários enxergam o que os outros ignoram:  
+<b>o futuro.</b>
+</p>
+
+<p>
+Para pensar como visionário:
+</p>
+<ul>
+    <li>observe tendências,</li>
+    <li>busque novas habilidades,</li>
+    <li>não tenha medo do novo,</li>
+    <li>mantenha a mente aberta.</li>
+</ul>
+
+<p>
+Quem pensa no amanhã controla o hoje.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 66 -->
+<details>
+<summary>📘 CAPÍTULO 66 — Como Tomar Decisões Corretas Consistentemente</summary>
+<p>
+Decisões movem a vida.  
+Uma decisão errada repetida várias vezes destrói seu futuro —  
+uma decisão certa repetida constrói riqueza.
+</p>
+
+<p>
+Para decidir melhor:
+</p>
+<ul>
+    <li>faça perguntas de impacto;</li>
+    <li>pense a longo prazo;</li>
+    <li>desconsidere opiniões fracas;</li>
+    <li>observe padrões.</li>
+</ul>
+</details>
+
+
+<!-- CAPÍTULO 67 -->
+<details>
+<summary>📘 CAPÍTULO 67 — Como Criar Crescimento Consistente</summary>
+<p>
+Crescimento não acontece por picos.  
+Acontece por ritmo.
+</p>
+
+<p>Você cresce quando:</p>
+<ul>
+    <li>produz um pouco todos os dias,</li>
+    <li>estuda um pouco todos os dias,</li>
+    <li>melhora um pouco todos os dias.</li>
+</ul>
+
+<p>
+1% ao dia = evolução inevitável.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 68 -->
+<details>
+<summary>📘 CAPÍTULO 68 — Como Transformar Crises em Oportunidades</summary>
+<p>
+Toda crise contém uma oportunidade escondida.  
+Os milionários não fogem da crise —  
+eles perguntam:
+</p>
+
+<p style="font-style:italic; border-left:4px solid #d4af37; padding-left:14px;">
+“Como posso ganhar com isso?”
+</p>
+
+<p>
+Crises:
+</p>
+<ul>
+    <li>abrem novos problemas para resolver,</li>
+    <li>mudam comportamentos,</li>
+    <li>criam novas demandas,</li>
+    <li>abrem espaço para quem age rápido.</li>
+</ul>
+</details>
+
+
+<!-- CAPÍTULO 69 -->
+<details>
+<summary>📘 CAPÍTULO 69 — Como Estar Sempre Um Passo à Frente</summary>
+<p>
+Estar à frente não é sorte — é observação.  
+Você só precisa enxergar o que os outros estão ignorando.
+</p>
+
+<p>
+Pergunte-se:
+</p>
+<ul>
+    <li>qual é o próximo passo lógico?</li>
+    <li>qual é a tendência daqui a 3 meses?</li>
+    <li>quem preciso me tornar?</li>
+</ul>
+</details>
+
+
+<!-- CAPÍTULO 70 -->
+<details>
+<summary>📘 CAPÍTULO 70 — A Regra da Evolução Infinita</summary>
+<p>
+A regra final desta jornada é simples:
+</p>
+
+<p style="font-style:italic; border-left:4px solid #d4af37; padding-left:14px;">
+“Nunca pare de evoluir.”
+</p>
+
+<p>
+Quando você domina disciplina e mentalidade de dono,  
+a evolução se torna um processo natural —  
+quase automático.
+</p>
+</details>
+
+<div class="divider"></div>
+<!-- JORNADA 03 — LIFESTYLE DE LUXO & IDENTIDADE -->
+<h2>JORNADA 03 — LIFESTYLE DE LUXO & IDENTIDADE</h2>
+<p>
+Esta jornada é sobre comportamento, estética, postura e identidade.  
+A riqueza externa começa dentro — e se manifesta no jeito que você vive.
+</p>
+
+<div class="divider"></div>
+
+<!-- CAPÍTULO 71 -->
+<details>
+<summary>📘 CAPÍTULO 71 — O Que é Lifestyle Consciente</summary>
+<p>
+Lifestyle não é ostentação.  
+É viver com intenção, elegância, clareza e propósito.
+</p>
+
+<p>
+Um lifestyle consciente é baseado em:
+</p>
+<ul>
+    <li>hábitos estáveis,</li>
+    <li>ambiente organizado,</li>
+    <li>estética alinhada ao futuro,</li>
+    <li>disciplina emocional.</li>
+</ul>
+
+<p>
+Não é sobre parecer rico —  
+é sobre se comportar como alguém que cria riqueza.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 72 -->
+<details>
+<summary>📘 CAPÍTULO 72 — Luxo x Ostentação</summary>
+<p>
+Luxo é silêncio.  
+Ostentação é barulho.
+</p>
+
+<p>
+O luxo real não precisa ser mostrado — ele é percebido no olhar, na postura, na calma, na forma como você se comporta.
+</p>
+
+<p>
+Ostentação é insegurança disfarçada.  
+Luxo é identidade consolidada.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 73 -->
+<details>
+<summary>📘 CAPÍTULO 73 — A Construção da Identidade</summary>
+<p>
+Sua identidade é a raiz de todos os seus comportamentos.  
+Você não muda de vida até mudar a forma como se vê.
+</p>
+
+<p>Para construir sua identidade milionária:</p>
+<ul>
+    <li>decida quem você quer ser;</li>
+    <li>elimine hábitos que contradizem essa versão;</li>
+    <li>vista-se como sua versão futura;</li>
+    <li>se comporte como ela agora.</li>
+</ul>
+
+<p>
+Primeiro você cria a identidade.  
+Depois ela cria sua vida.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 74 -->
+<details>
+<summary>📘 CAPÍTULO 74 — O Poder da Imagem</summary>
+<p>
+A imagem comunica sua mentalidade antes de você abrir a boca.  
+Ela diz:
+</p>
+
+<ul>
+    <li>se você é disciplinado,</li>
+    <li>se você tem visão,</li>
+    <li>se você se respeita,</li>
+    <li>se você leva a vida a sério.</li>
+</ul>
+
+<p>
+Milionários cuidam da imagem porque entendem que ela abre portas — ou fecha.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 75 -->
+<details>
+<summary>📘 CAPÍTULO 75 — Como Criar Presença Poderosa</summary>
+<p>
+Presença não é ser arrogante.  
+Presença é transmitir energia estável, firme e segura.
+</p>
+
+<p>
+Você cria presença quando:
+</p>
+<ul>
+    <li>olha nos olhos,</li>
+    <li>fala com clareza,</li>
+    <li>mantém postura ereta,</li>
+    <li>controla o tom de voz.</li>
+</ul>
+
+<p>
+Uma pessoa com presença vale mais em qualquer ambiente.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 76 -->
+<details>
+<summary>📘 CAPÍTULO 76 — Vestindo-se Como Sua Versão Milionária</summary>
+<p>
+Você não precisa de roupas caras —  
+precisa de roupas alinhadas à sua identidade futura.
+</p>
+
+<p>Use roupas que comuniquem:</p>
+<ul>
+    <li>autocuidado,</li>
+    <li>organização,</li>
+    <li>estética,</li>
+    <li>profissionalismo,</li>
+    <li>elegância.</li>
+</ul>
+</details>
+
+
+<!-- CAPÍTULO 77 -->
+<details>
+<summary>📘 CAPÍTULO 77 — Ambientes Que Moldam sua Mente</summary>
+<p>
+Seu ambiente te transforma.  
+Ambiente bagunçado → mente bagunçada.  
+Ambiente limpo → mente clara.
+</p>
+
+<p>
+Organize sua casa, seu quarto, seu local de trabalho.  
+Ambientes ricos criam mentes ricas.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 78 -->
+<details>
+<summary>📘 CAPÍTULO 78 — Carros e Escolhas Inteligentes</summary>
+<p>
+Carro de luxo não é sobre status — é sobre experiência.  
+Mas antes de um carro caro, você precisa de:
+</p>
+
+<ul>
+    <li>estabilidade financeira,</li>
+    <li>reserva,</li>
+    <li>renda crescente,</li>
+    <li>planejamento.</li>
+</ul>
+
+<p>
+Carro de luxo é consequência, não começo.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 79 -->
+<details>
+<summary>📘 CAPÍTULO 79 — Mansões & Alto Padrão</summary>
+<p>
+Moradia é o ambiente onde sua mente evolui.  
+Uma boa casa aumenta sua produtividade, seu foco e sua autoestima.
+</p>
+
+<p>
+Mas lembre-se: luxo é construção.  
+Nunca comparação.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 80 -->
+<details>
+<summary>📘 CAPÍTULO 80 — Viagens Que Mudam Sua Mentalidade</summary>
+<p>
+Viajar é uma das formas mais rápidas de expandir sua visão.  
+Quando você muda seu ambiente, muda sua mente.
+</p>
+
+<p>
+Viagens trabalham:
+</p>
+<ul>
+    <li>criatividade,</li>
+    <li>visão,</li>
+    <li>cultura,</li>
+    <li>ambição.</li>
+</ul>
+
+<p>
+Viajar te lembra que existe muito mais esperando por você.
+</p>
+</details>
+
+<div class="divider"></div>
+<!-- CAPÍTULO 81 -->
+<details>
+<summary>📘 CAPÍTULO 81 — O Poder da Solitude Rica</summary>
+<p>
+A solitude rica é a capacidade de ficar sozinho sem se sentir vazio.  
+É o estado onde você cria, planeja, pensa e evolui.
+</p>
+
+<p>
+Os maiores insights da sua vida vão acontecer quando você estiver sozinho, silencioso e focado.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 82 -->
+<details>
+<summary>📘 CAPÍTULO 82 — Jantares & Conexões de Alto Nível</summary>
+<p>
+Ambientes definem a qualidade das conexões.  
+Jantares, eventos e encontros profissionais são onde surgem as maiores oportunidades de carreira e negócios.
+</p>
+
+<p>
+Vá bem vestido, fale pouco, observe muito, conecte-se com intenção.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 83 -->
+<details>
+<summary>📘 CAPÍTULO 83 — Sociedades Que Elevam Você</summary>
+<p>
+Você cresce mais rápido com pessoas que:
+</p>
+
+<ul>
+    <li>pensam grande,</li>
+    <li>querem avançar,</li>
+    <li>planejam o futuro,</li>
+    <li>têm disciplina real.</li>
+</ul>
+
+<p>
+Escolha com quem você anda como se escolhesse seu futuro — porque é isso mesmo.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 84 -->
+<details>
+<summary>📘 CAPÍTULO 84 — Postura de Milionário</summary>
+<p>
+Postura é comportamento silencioso que comunica força.  
+Você se posiciona como milionário quando:
+</p>
+
+<ul>
+    <li>fala com firmeza,</li>
+    <li>não explica demais,</li>
+    <li>age com calma,</li>
+    <li>não reage impulsivamente.</li>
+</ul>
+</details>
+
+
+<!-- CAPÍTULO 85 -->
+<details>
+<summary>📘 CAPÍTULO 85 — Como Falar Como Milionário</summary>
+<p>
+Milionários não falam muito — falam o necessário.  
+E sempre com:
+</p>
+
+<ul>
+    <li>clareza,</li>
+    <li>objetividade,</li>
+    <li>calma,</li>
+    <li>segurança.</li>
+</ul>
+
+<p>
+A forma como você fala determina como o mundo te escuta.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 86 -->
+<details>
+<summary>📘 CAPÍTULO 86 — Como Agir Como Milionário</summary>
+<p>
+Ação milionária é ação com consistência.  
+É fazer o que precisa ser feito mesmo quando ninguém está olhando.
+</p>
+
+<p>
+O comportamento cria o destino — sempre.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 87 -->
+<details>
+<summary>📘 CAPÍTULO 87 — Como Tomar Decisões com Poder</summary>
+<p>
+Decisão poderosa é decisão com propósito.  
+Para decidir com força, pergunte:
+</p>
+
+<ul>
+    <li>isso me aproxima da minha visão?</li>
+    <li>isso aumenta ou diminui meu valor?</li>
+    <li>isso mantém minha identidade milionária?</li>
+</ul>
+</details>
+
+
+<!-- CAPÍTULO 88 -->
+<details>
+<summary>📘 CAPÍTULO 88 — Hábitos de Riqueza</summary>
+<p>
+Hábitos de riqueza são hábitos que se acumulam ao longo do tempo, como:
+</p>
+
+<ul>
+    <li>ler todos os dias,</li>
+    <li>estudar algo monetizável semanalmente,</li>
+    <li>investir todo mês,</li>
+    <li>organizar a vida,</li>
+    <li>cuidar da saúde,</li>
+    <li>se afastar de pessoas tóxicas.</li>
+</ul>
+
+<p>
+A riqueza se constrói em silêncio.
+</p>
+</details>
+
+
+<!-- CAPÍTULO 89 -->
+<details>
+<summary>📘 CAPÍTULO 89 — Psicologia do Lifestyle</summary>
+<p>
+O lifestyle de luxo é mais psicológico do que financeiro.  
+Você pode viver uma vida elegante mesmo sem gastar muito — tudo depende de:
+</p>
+
+<ul>
+    <li>organização,</li>
+    <li>estética,</li>
+    <li>bom gosto,</li>
+    <li>disciplina,</li>
+    <li>equilíbrio.</li>
+</ul>
+</details>
+
+
+<!-- CAPÍTULO 90 -->
+<details>
+<summary>📘 CAPÍTULO 90 — Como Prever Sua Própria Evolução</summary>
+<p>
+Você sabe que está evoluindo quando:
+</p>
+
+<ul>
+    <li>se compare menos e produza mais;</li>
+    <li>reclame menos e aja mais;</li>
+    <li>fale menos e construa mais;</li>
+    <li>tenha mais paciência e menos pressa.</li>
+</ul>
+
+<p>
+A evolução é visível por dentro antes de ser visível por fora.
+</p>
+</details>
+
+<div class="divider"></div>
+<!-- CONCLUSÃO FINAL -->
+<h2>CONCLUSÃO FINAL — SUA NOVA IDENTIDADE COMEÇA AGORA</h2>
+<p>
+Você acaba de concluir um dos conteúdos mais profundos, completos e transformadores sobre disciplina, mentalidade, riqueza e identidade milionária.
+</p>
+
+<p>
+Este e-book não foi feito para ser apenas lido —  
+foi feito para ser vivido.
+</p>
+
+<p>
+Ao longo dessas páginas, você aprendeu:
+</p>
+
+<ul>
+    <li>como construir disciplina inabalável,</li>
+    <li>como pensar como dono,</li>
+    <li>como gerar renda extra de forma inteligente,</li>
+    <li>como desenvolver postura e presença,</li>
+    <li>como criar um lifestyle de luxo autêntico,</li>
+    <li>como evoluir continuamente.</li>
+</ul>
+
+<p>
+Tudo isso agora faz parte da sua identidade.  
+E a partir de hoje, você não é mais alguém tentando evoluir —  
+você é alguém que <b>evolui todos os dias</b>.
+</p>
+
+<div class="divider"></div>
+
+<h2>O PRÓXIMO PASSO</h2>
+<p>
+O caminho para sua vida milionária continua.  
+E para acelerar sua jornada, você terá acesso a conteúdos exclusivos, avisos importantes e direcionamentos dentro do nosso canal VIP.
+</p>
+
+<p>
+Este é o lugar onde você continua evoluindo diariamente com disciplina, visão e foco.
+</p>
+
+<!-- BOTÃO FINAL -->
+<a class="cta" href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35" target="_blank">
+ENTRAR AGORA NO CANAL VIP
+</a>
+
+<div class="divider"></div>
+
+<!-- ENCERRAMENTO -->
+<h2>AGRADECIMENTO</h2>
+<p>
+Obrigado por chegar até aqui.  
+Isso já diz muito sobre sua força, sua visão e sua determinação.
+</p>
+
+<p>
+A maioria para no meio.  
+Poucos chegam ao final.  
+Menos ainda colocam em prática.  
+Você está no grupo de pessoas que realmente fazem acontecer.
+</p>
+
+<p style="font-style:italic; opacity:0.85;">
+Que este e-book seja o início da sua versão mais forte, mais disciplinada e mais milionária.
+</p>
+
+<p style="text-align:center; margin-top:40px; color:#d4af37; font-size:22px;">
+THE MILLIONAIRE MINDSET  
+<br>— Sua nova identidade começa hoje.
+</p>
+
+</div> <!-- fecha .page -->
 
 </body>
 </html>
