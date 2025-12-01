@@ -1,2102 +1,2929 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>The Millionaire Mindset – Premium Edition</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>BillionMind Creator – App + IA + Mentalidade 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg-main: #020716;
+      --bg-card: #050b1f;
+      --bg-card-soft: #081126;
+      --accent: #00c8ff;
+      --accent-soft: rgba(0, 200, 255, 0.15);
+      --gold: #f7c86a;
+      --text-main: #f5f7ff;
+      --text-soft: #b1b7d6;
+      --danger: #ff4b81;
+      --radius-xl: 18px;
+      --radius-lg: 14px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --max-width: 980px;
+      --border-glow: 1px solid rgba(0, 200, 255, 0.45);
+      --glass: rgba(11, 20, 46, 0.75);
+    }
 
-<style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        color: #fff;
-        background: #000;
-        line-height: 1.8;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Inter", sans-serif;
+      background: radial-gradient(circle at top, #051435 0, #02030b 45%, #000 90%);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    /* LUXO MINIMALISTA */
+    /* Fundo animado de partículas cibernéticas */
+    .cyber-bg {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      z-index: -1;
+      background: radial-gradient(circle at top, #071535 0, #000 70%);
+    }
+    .cyber-bg span {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(0, 200, 255, 0.8);
+      box-shadow:
+        0 0 10px rgba(0, 200, 255, 0.7),
+        0 0 25px rgba(0, 200, 255, 0.4);
+      animation: floatParticle 18s linear infinite;
+    }
+    .cyber-bg span:nth-child(odd) {
+      background: rgba(247, 200, 106, 0.9);
+      box-shadow:
+        0 0 10px rgba(247, 200, 106, 0.8),
+        0 0 26px rgba(247, 200, 106, 0.4);
+    }
+
+    @keyframes floatParticle {
+      0% {
+        transform: translate3d(0, 0, 0) scale(0.9);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      50% {
+        transform: translate3d(120px, -220px, 0) scale(1.1);
+      }
+      100% {
+        transform: translate3d(-220px, -520px, 0) scale(0.9);
+        opacity: 0;
+      }
+    }
+
     .page {
-        max-width: 900px;
-        margin: auto;
-        padding: 40px 20px;
+      max-width: var(--max-width);
+      margin: 32px auto 64px;
+      padding: 0 16px 40px;
+      position: relative;
     }
 
-    h1 {
-        font-size: 42px;
-        text-align: center;
-        font-weight: 700;
-        color: #d4af37;
-        margin-bottom: 10px;
-        letter-spacing: 3px;
+    header.top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: linear-gradient(
+        120deg,
+        rgba(0, 200, 255, 0.14),
+        rgba(5, 11, 31, 0.95),
+        rgba(247, 200, 106, 0.09)
+      );
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(0, 200, 255, 0.35);
+      backdrop-filter: blur(22px);
     }
 
-    h2 {
-        color: #d4af37;
-        font-size: 28px;
-        margin-top: 40px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    h3 {
-        color: #d4af37;
-        font-size: 22px;
-        margin-top: 25px;
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffffff, #f7c86a 30%, #0a1024 70%);
+      box-shadow:
+        0 0 18px rgba(247, 200, 106, 0.8),
+        0 0 36px rgba(0, 200, 255, 0.7);
+      border: 1px solid rgba(247, 200, 106, 0.7);
     }
 
-    p, li {
-        font-size: 18px;
-        color: #e6e6e6;
-        margin-bottom: 12px;
+    .brand-text-main {
+      font-size: 0.92rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .brand-text-sub {
+      font-size: 0.7rem;
+      color: var(--text-soft);
     }
 
-    /* DIVISOR */
-    .divider {
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(to right, #d4af37, transparent);
-        margin: 40px 0;
-        opacity: 0.7;
+    .badge-year {
+      font-size: 0.75rem;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(0, 200, 255, 0.12);
+      border: 1px solid rgba(0, 200, 255, 0.5);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(0, 200, 255, 0.9);
     }
 
-    /* ACORDEÃO */
-    details {
-        margin-bottom: 28px;
-        padding: 20px;
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(212,175,55,0.25);
-        border-radius: 10px;
+    /* HERO / CAPA */
+    .hero {
+      margin-bottom: 32px;
+      padding: 26px 22px 26px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at top right, rgba(0, 200, 255, 0.12), transparent 55%),
+        radial-gradient(circle at bottom left, rgba(247, 200, 106, 0.16), transparent 60%),
+        var(--bg-card);
+      border: 1px solid rgba(0, 200, 255, 0.35);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
     }
 
-    summary {
-        font-size: 22px;
-        font-weight: bold;
-        color: #d4af37;
-        cursor: pointer;
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(0, 200, 255, 0.1), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(247, 200, 106, 0.08), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
     }
 
-    /* BOTÃO CENTRAL */
-    .cta {
-        display: block;
-        margin: 50px auto;
-        width: 280px;
-        padding: 18px;
-        text-align: center;
-        background: #d4af37;
-        color: #000;
-        font-weight: bold;
-        border-radius: 10px;
-        font-size: 20px;
-        text-decoration: none;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 28px;
+      position: relative;
+      z-index: 1;
     }
 
-    .cta:hover {
-        background: #f0d68a;
+    .eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
     }
 
-</style>
+    .hero-title {
+      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .hero-title span {
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 0.98rem;
+      color: var(--text-soft);
+      max-width: 520px;
+      margin-bottom: 18px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      padding: 6px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 200, 255, 0.4);
+      background: rgba(4, 11, 35, 0.85);
+      color: var(--text-soft);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      padding: 11px 20px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #f7c86a, #ffdf9a);
+      color: #1b1305;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: default;
+      box-shadow:
+        0 0 18px rgba(247, 200, 106, 0.9),
+        0 16px 30px rgba(0, 0, 0, 0.7);
+      white-space: nowrap;
+    }
+
+    .hero-note {
+      font-size: 0.74rem;
+      color: var(--text-soft);
+      max-width: 260px;
+    }
+
+    .hero-right-card {
+      border-radius: 22px;
+      padding: 16px 14px 18px;
+      background: radial-gradient(circle at top, rgba(0, 200, 255, 0.12), transparent 60%),
+        rgba(5, 13, 40, 0.95);
+      border: 1px solid rgba(0, 200, 255, 0.5);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .hero-pill {
+      font-size: 0.7rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(0, 200, 255, 0.18);
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #35ff95;
+      box-shadow: 0 0 10px rgba(53, 255, 149, 0.9);
+    }
+
+    .hero-right-title {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      text-align: right;
+    }
+
+    .hero-display {
+      margin-top: 6px;
+      border-radius: 16px;
+      padding: 14px 12px;
+      background: radial-gradient(circle at top, #0f2b55, #050a1a 65%);
+      border: 1px solid rgba(0, 200, 255, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-display-main {
+      font-size: 0.7rem;
+      color: var(--text-soft);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .hero-display-value {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .hero-display-pill {
+      font-size: 0.75rem;
+      color: #35ff95;
+      background: rgba(9, 169, 91, 0.25);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .hero-chart-bar-wrap {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      gap: 5px;
+      margin-top: 10px;
+      align-items: flex-end;
+    }
+
+    .hero-chart-bar {
+      width: 100%;
+      border-radius: 999px;
+      background: linear-gradient(to top, rgba(0, 200, 255, 0.1), rgba(0, 200, 255, 0.9));
+      box-shadow: 0 0 12px rgba(0, 200, 255, 0.6);
+    }
+
+    .hero-chart-bar:nth-child(5),
+    .hero-chart-bar:nth-child(6),
+    .hero-chart-bar:nth-child(7) {
+      background: linear-gradient(to top, rgba(247, 200, 106, 0.1), rgba(247, 200, 106, 0.95));
+      box-shadow: 0 0 12px rgba(247, 200, 106, 0.8);
+    }
+
+    .hero-meta-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-size: 0.7rem;
+      color: var(--text-soft);
+    }
+
+    /* Cards base */
+    .section {
+      margin-bottom: 28px;
+      border-radius: 22px;
+      padding: 20px 18px 18px;
+      background: var(--glass);
+      border: 1px solid rgba(0, 200, 255, 0.28);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(18px);
+    }
+
+    .section-header {
+      margin-bottom: 12px;
+    }
+
+    .section-eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+
+    .section-sub {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+    }
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      color: var(--gold);
+    }
+
+    .pill-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 200, 255, 0.45);
+      background: rgba(4, 12, 36, 0.95);
+      font-size: 0.75rem;
+      color: var(--text-soft);
+    }
+
+    /* Sumário */
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .toc-card {
+      border-radius: 16px;
+      padding: 12px 12px 13px;
+      background: rgba(5, 11, 31, 0.9);
+      border: 1px solid rgba(0, 200, 255, 0.25);
+    }
+
+    .toc-label {
+      font-size: 0.78rem;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .toc-title {
+      font-size: 0.95rem;
+      margin-bottom: 3px;
+    }
+
+    .toc-desc {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    /* Bloco de quote */
+    .quote {
+      border-left: 3px solid rgba(0, 200, 255, 0.7);
+      padding-left: 12px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      header.top-nav {
+        padding: 8px 12px;
+        border-radius: 16px;
+      }
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero {
+        padding: 20px 16px 20px;
+      }
+      .hero-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- CAPA INTERNA -->
+<div class="cyber-bg">
+  <!-- partículas posicionadas -->
+  <span style="top: 80%; left: 8%; animation-delay: 0s;"></span>
+  <span style="top: 60%; left: 22%; animation-delay: 3s;"></span>
+  <span style="top: 72%; left: 40%; animation-delay: 6s;"></span>
+  <span style="top: 85%; left: 58%; animation-delay: 1.5s;"></span>
+  <span style="top: 66%; left: 80%; animation-delay: 4.2s;"></span>
+  <span style="top: 40%; left: 12%; animation-delay: 7.3s;"></span>
+  <span style="top: 32%; left: 48%; animation-delay: 2.4s;"></span>
+  <span style="top: 18%; left: 76%; animation-delay: 5.1s;"></span>
+  <span style="top: 10%; left: 30%; animation-delay: 8.7s;"></span>
+  <span style="top: 5%; left: 55%; animation-delay: 10.2s;"></span>
+</div>
+
 <div class="page">
-
-<h1>THE MILLIONAIRE MINDSET</h1>
-<p style="text-align:center; font-size:20px; opacity:0.85;">
-Edição Premium – Black & Gold
-</p>
-
-<div class="divider"></div>
-
-<h2>Introdução</h2>
-<p>
-Bem-vindo(a) à edição premium do e-book <b>THE MILLIONAIRE MINDSET</b>.  
-Este material foi criado para ser um guia completo de transformação mental, emocional e financeira.
-</p>
-
-<p>
-Aqui você terá acesso a mais de <b>100 páginas equivalentes</b> de conteúdo profundo, dividido em três grandes jornadas:
-</p>
-
-<ul>
-    <li><b>Disciplina Absoluta</b> – A base de toda vida milionária</li>
-    <li><b>Renda Extra & Mentalidade de Dono</b> – Como pensar como quem cria dinheiro</li>
-    <li><b>Lifestyle de Luxo & Identidade</b> – Como se tornar a versão milionária de si mesmo</li>
-</ul>
-
-<p>
-Este é um material de ALTO VALOR.  
-Você irá estudar, aplicar, revisar e evoluir capítulo por capítulo.
-</p>
-
-<div class="divider"></div>
-
-<!-- JORNADA 01 – DISCIPLINA ABSOLUTA -->
-<h2>JORNADA 01 — DISCIPLINA ABSOLUTA</h2>
-<p>
-A disciplina é o alicerce da vida milionária.  
-Nada funciona sem ela: não existe consistência, foco, dinheiro, evolução ou clareza sem disciplina.
-</p>
-
-<div class="divider"></div>
-
-<!-- CAPÍTULO 1 -->
-<details>
-<summary>📘 CAPÍTULO 1 — O Que é Autodisciplina Real</summary>
-<p>
-Autodisciplina não é acordar motivado.  
-Autodisciplina é <b>fazer mesmo quando você não quer</b>.  
-É decidir que sua vida é importante demais para ser controlada pelas emoções do momento.
-</p>
-
-<p>
-Pessoas comuns agem quando estão empolgadas.  
-Milionários agem quando decidiram — independentemente da emoção.
-</p>
-
-<p>
-A disciplina é a capacidade de manter sua palavra consigo mesmo.  
-Sem ela, tudo desmorona.
-</p>
-</details>
-
-<!-- CAPÍTULO 2 -->
-<details>
-<summary>📘 CAPÍTULO 2 — A Disciplina Cria Liberdade</summary>
-<p>
-Parece contraditório, mas é real:  
-<b>Disciplina = Liberdade.</b>
-</p>
-
-<p>
-A falta de disciplina te prende em um ciclo de:
-</p>
-<ul>
-    <li>atrasar sua vida,</li>
-    <li>acumular responsabilidades,</li>
-    <li>viver estressado,</li>
-    <li>ter medo do futuro.</li>
-</ul>
-
-<p>
-Quando você domina a disciplina, você domina o tempo.  
-E quando domina o tempo, domina sua vida.
-</p>
-</details>
-
-<!-- CAPÍTULO 3 -->
-<details>
-<summary>📘 CAPÍTULO 3 — Sistema do Despertar Milionário</summary>
-<p>
-Seu dia começa antes mesmo de você sair da cama.  
-O primeiro pensamento é como um comando que molda toda sua energia.
-</p>
-
-<p>Todos os dias, ao acordar, repita:</p>
-<p style="font-style:italic; border-left:4px solid #d4af37; padding-left:14px;">
-“Hoje ajo como a versão milionária de mim mesmo.  
-O mundo responde à minha disciplina.”
-</p>
-
-<p>
-Esse ritual ativa foco, identidade e responsabilidade.
-</p>
-</details>
-
-<!-- CAPÍTULO 4 -->
-<details>
-<summary>📘 CAPÍTULO 4 — Acordando com Identidade Milionária</summary>
-<p>
-Sua identidade é a raiz de tudo.  
-Você não age conforme deseja — age conforme acredita ser.
-</p>
-
-<p>
-O segredo dos milionários é simples:  
-<b>eles constroem uma identidade que obriga comportamentos de alto padrão.</b>
-</p>
-
-<p>
-Você vai acordar visualizando a versão de si mesmo que:
-</p>
-<ul>
-    <li>tem controle,</li>
-    <li>tem visão,</li>
-    <li>tem foco,</li>
-    <li>tem objetivo.</li>
-</ul>
-</details>
-
-<!-- CAPÍTULO 5 -->
-<details>
-<summary>📘 CAPÍTULO 5 — Ritual Matinal de 15 Minutos</summary>
-<p>
-O ritual matinal cria ritmo.  
-Ele pode ser simples, desde que seja consistente:
-</p>
-
-<ul>
-    <li>2 minutos — frase de identidade.</li>
-    <li>5 minutos — planejamento rápido do dia.</li>
-    <li>5 minutos — respiração + foco.</li>
-    <li>3 minutos — leitura de afirmações de disciplina.</li>
-</ul>
-
-<p>
-Não é sobre ser perfeito.  
-É sobre nunca quebrar o ritual.
-</p>
-</details>
-
-<!-- CAPÍTULO 6 -->
-<details>
-<summary>📘 CAPÍTULO 6 — Blocos de Foco Profundo</summary>
-<p>
-Nunca trabalhe horas seguidas sem estratégia.  
-Milionários trabalham com <b>blocos de foco</b>.
-</p>
-
-<p>Use a estrutura:</p>
-
-<ul>
-    <li><b>45 min — Tarefa principal</b></li>
-    <li><b>30 min — Ação que gera dinheiro</b></li>
-    <li><b>20 min — Evolução pessoal</b></li>
-</ul>
-
-<p>
-Essa tríade cria avanço agressivo em pouco tempo.
-</p>
-</details>
-
-<!-- CAPÍTULO 7 -->
-<details>
-<summary>📘 CAPÍTULO 7 — Como Aumentar o Foco em 48h</summary>
-<p>
-Quer dobrar seu foco rapidamente?  
-Siga estas regras por 2 dias:
-</p>
-
-<ul>
-    <li>Desative notificações.</li>
-    <li>Ambiente limpo e silencioso.</li>
-    <li>Áudio binaural ou música ambiente.</li>
-    <li>Tarefas uma por vez.</li>
-    <li>Sem conversa enquanto trabalha.</li>
-</ul>
-
-<p>
-48 horas de foco podem mudar a sua semana inteira.
-</p>
-</details>
-
-<!-- CAPÍTULO 8 -->
-<details>
-<summary>📘 CAPÍTULO 8 — Micro-hábitos Destrutivos</summary>
-<p>
-As pequenas ações que você nem percebe podem estar destruindo sua vida:
-</p>
-
-<ul>
-    <li>adiar tarefas pequenas,</li>
-    <li>mexer no celular sem motivo,</li>
-    <li>aceitar qualquer distração,</li>
-    <li>dormir sem planejamento,</li>
-    <li>acordar sem objetivo.</li>
-</ul>
-
-<p>
-Pequenas falhas repetidas criam grandes queda de desempenho.
-</p>
-</details>
-
-<!-- CAPÍTULO 9 -->
-<details>
-<summary>📘 CAPÍTULO 9 — Superando Procrastinação</summary>
-<p>
-Procrastinação não é preguiça — é medo.  
-Medo de falhar, medo de não conseguir, medo de começar.
-</p>
-
-<p>
-Para vencer:
-</p>
-
-<ul>
-    <li>comece com tarefas pequenas;</li>
-    <li>divida grandes metas em micro-etapas;</li>
-    <li>ignore perfeccionismo;</li>
-    <li>aceite progresso imperfeito.</li>
-</ul>
-</details>
-
-<!-- CAPÍTULO 10 -->
-<details>
-<summary>📘 CAPÍTULO 10 — Disciplina Emocional</summary>
-<p>
-A maior batalha que você terá na vida é contra suas próprias emoções.
-</p>
-
-<p>
-Disciplina emocional não é ignorar sentimentos.  
-É <b>não permitir que eles decidam sua vida</b>.
-</p>
-
-<p>
-Milionários não agem quando “sentem vontade”.  
-Eles agem porque se comprometeram.
-</p>
-</details>
-
-<div class="divider"></div>
-<!-- CAPÍTULO 11 -->
-<details>
-<summary>📘 CAPÍTULO 11 — Como Manter Disciplina Sem Motivação</summary>
-<p>
-A motivação é instável. Às vezes está alta, às vezes desaparece completamente.  
-A disciplina verdadeira nasce quando você entende que não precisa querer — só precisa fazer.
-</p>
-
-<p>
-Quando a motivação falhar:
-</p>
-<ul>
-    <li>faça apenas o mínimo viável;</li>
-    <li>use timers (5 ou 10 minutos) para destravar a ação;</li>
-    <li>reduza o tamanho da tarefa, mas não pule o dia;</li>
-    <li>lembre-se: pequenas ações > zero ação.</li>
-</ul>
-
-<p>
-A motivação cria o começo.  
-A disciplina cria o resultado.
-</p>
-</details>
-
-<!-- CAPÍTULO 12 -->
-<details>
-<summary>📘 CAPÍTULO 12 — Como Manter Disciplina Sob Pressão</summary>
-<p>
-Pressão é inevitável. Você será testado pelo trabalho, pela vida, pelo emocional, pelo ambiente.  
-A questão não é evitar a pressão — é aprender a se mover dentro dela.
-</p>
-
-<p>
-Quando estiver sob pressão:
-</p>
-<ul>
-    <li>respire fundo e desacelere por 60 segundos;</li>
-    <li>faça uma lista rápida do que realmente importa agora;</li>
-    <li>execute apenas o essencial;</li>
-    <li>evite decisões emocionais.</li>
-</ul>
-
-<p>
-A disciplina sob pressão cria respeito próprio.
-</p>
-</details>
-
-<!-- CAPÍTULO 13 -->
-<details>
-<summary>📘 CAPÍTULO 13 — Disciplina Quando Ninguém Te Apoia</summary>
-<p>
-A maioria das pessoas não vai entender sua evolução.  
-Elas têm medo do seu crescimento porque isso expõe a falta de movimento delas.
-</p>
-
-<p>Quando ninguém te apoia:</p>
-<ul>
-    <li>não discuta — apenas evolua;</li>
-    <li>não explique — apenas mostre através dos resultados;</li>
-    <li>não busque validação — busque avanço.</li>
-</ul>
-
-<p>
-A solidão faz parte do processo de crescimento.
-</p>
-</details>
-
-<!-- CAPÍTULO 14 -->
-<details>
-<summary>📘 CAPÍTULO 14 — Revisão Diária</summary>
-<p>
-Todo milionário que evolui rapidamente faz uma revisão diária simples:
-</p>
-
-<ul>
-    <li>O que fiz hoje que trouxe resultado?</li>
-    <li>O que perdi tempo fazendo?</li>
-    <li>O que farei melhor amanhã?</li>
-</ul>
-
-<p>
-Sem revisão, você repete erros.  
-Com revisão, você acelera sua vida.
-</p>
-</details>
-
-<!-- CAPÍTULO 15 -->
-<details>
-<summary>📘 CAPÍTULO 15 — Ritual Noturno de Clareza</summary>
-<p>
-O cérebro precisa saber que o dia terminou.  
-O ritual noturno cria ordem e prepara sua mente para um próximo dia mais limpo.
-</p>
-
-<p>Prática:</p>
-<ul>
-    <li>organize o ambiente por 5 minutos;</li>
-    <li>anote a primeira tarefa do próximo dia;</li>
-    <li>revise mentalmente seus acertos;</li>
-    <li>faça respiração profunda antes de dormir.</li>
-</ul>
-</details>
-
-<!-- CAPÍTULO 16 -->
-<details>
-<summary>📘 CAPÍTULO 16 — Planejamento de 7 Dias</summary>
-<p>
-Nunca comece uma semana sem saber o que precisa ser feito.  
-A falta de planejamento semanal é um dos maiores sabotadores da disciplina.
-</p>
-
-<p>Checklist semanal:</p>
-<ul>
-    <li>3 metas principais;</li>
-    <li>tarefas essenciais;</li>
-    <li>tarefas opcionais;</li>
-    <li>tarefas delegáveis;</li>
-    <li>descanso planejado.</li>
-</ul>
-</details>
-
-<!-- CAPÍTULO 17 -->
-<details>
-<summary>📘 CAPÍTULO 17 — Checklist de Disciplina</summary>
-<p>
-Use este checklist todos os dias:
-</p>
-
-<ul>
-    <li>acordei no horário?</li>
-    <li>cumpri o ritual matinal?</li>
-    <li>executei meu bloco de foco principal?</li>
-    <li>fiz minha ação de dinheiro?</li>
-    <li>revisão noturna feita?</li>
-</ul>
-
-<p>
-Checklist = consistência.
-</p>
-</details>
-
-<!-- CAPÍTULO 18 -->
-<details>
-<summary>📘 CAPÍTULO 18 — Como Eliminar Distrações</summary>
-<p>
-A distração é inimiga número 1 de qualquer pessoa que quer crescer rápido.
-</p>
-
-<p>Remova imediatamente:</p>
-<ul>
-    <li>notificações desnecessárias;</li>
-    <li>pessoas que interrompem o tempo todo;</li>
-    <li>ambientes barulhentos;</li>
-    <li>tarefas que não produzem nada.</li>
-</ul>
-
-<p>
-A vida fica até 3x mais produtiva quando você remove o ruído.
-</p>
-</details>
-
-<!-- CAPÍTULO 19 -->
-<details>
-<summary>📘 CAPÍTULO 19 — Como Voltar à Disciplina Após Cair</summary>
-<p>
-Cair faz parte.  
-Nenhum milionário cresceu em linha reta.
-</p>
-
-<p>
-O segredo está em <b>voltar rápido</b>.
-</p>
-
-<p>Regra de ouro:</p>
-
-<ul>
-    <li>queimou um dia? volte no dia seguinte.</li>
-    <li>queimou a semana? volte na próxima.</li>
-    <li>queimou o mês? volte no próximo.</li>
-</ul>
-
-<p>
-Nunca deixe uma queda virar hábito.
-</p>
-</details>
-
-<!-- CAPÍTULO 20 -->
-<details>
-<summary>📘 CAPÍTULO 20 — O Ciclo da Consistência</summary>
-<p>
-A consistência é formada por um ciclo simples:
-</p>
-
-<ul>
-    <li>disciplina →</li>
-    <li>pequenos resultados →</li>
-    <li>confiança →</li>
-    <li>maior disciplina →</li>
-    <li>grandes resultados.</li>
-</ul>
-
-<p>
-A maioria para no início porque não espera os pequenos resultados virarem grandes.  
-Você não vai parar.
-</p>
-</details>
-
-<div class="divider"></div>
-<!-- CAPÍTULO 21 -->
-<details>
-<summary>📘 CAPÍTULO 21 — Desafio “7 Dias de Disciplina Extrema”</summary>
-<p>
-Este desafio foi criado para quebrar bloqueios mentais e provar que você consegue muito mais do que imagina.  
-Durante 7 dias:
-</p>
-
-<ul>
-    <li>acorde no mesmo horário;</li>
-    <li>faça o ritual matinal completo;</li>
-    <li>execute o bloco de foco principal;</li>
-    <li>faça uma ação de dinheiro por dia;</li>
-    <li>evite distrações ao máximo;</li>
-    <li>revise o dia antes de dormir.</li>
-</ul>
-
-<p>
-7 dias são suficientes para mudar o ritmo da sua vida.
-</p>
-</details>
-
-<!-- CAPÍTULO 22 -->
-<details>
-<summary>📘 CAPÍTULO 22 — Desafio “21 Dias de Reconstrução”</summary>
-<p>
-O desafio dos 21 dias cria a base para uma nova personalidade.  
-Aqui você foca em:
-</p>
-
-<ul>
-    <li>consistência leve porém contínua;</li>
-    <li>avanços diários;</li>
-    <li>eliminar micro-hábitos ruins;</li>
-    <li>fortalecer sua identidade.</li>
-</ul>
-
-<p>
-21 dias criam uma nova percepção de si mesmo.
-</p>
-</details>
-
-<!-- CAPÍTULO 23 -->
-<details>
-<summary>📘 CAPÍTULO 23 — Desafio “30 Dias de Identidade Milionária”</summary>
-<p>
-Este é o desafio mais profundo desta jornada.  
-Por 30 dias você vai agir como a versão milionária de si mesmo.
-</p>
-
-<p>Durante 30 dias:</p>
-<ul>
-    <li>vista-se melhor;</li>
-    <li>fale com mais clareza;</li>
-    <li>faça escolhas melhores;</li>
-    <li>evite conversas inúteis;</li>
-    <li>cumpra promessas pessoais;</li>
-    <li>aja com postura de dono.</li>
-</ul>
-
-<p>
-A identidade cria a realidade.
-</p>
-</details>
-
-<!-- CAPÍTULO 24 -->
-<details>
-<summary>📘 CAPÍTULO 24 — Como Realmente Mudar um Hábito</summary>
-<p>
-Mudar um hábito não é força de vontade — é sistema.  
-Você muda hábitos ao:
-</p>
-
-<ul>
-    <li>tornar a ação mais fácil do que a alternativa ruim;</li>
-    <li>reduzir atritos;</li>
-    <li>criar gatilhos visuais;</li>
-    <li>trabalhar com micro-etapas.</li>
-</ul>
-
-<p>
-Hábito novo = versão nova.
-</p>
-</details>
-
-<!-- CAPÍTULO 25 -->
-<details>
-<summary>📘 CAPÍTULO 25 — Disciplina e Autoconfiança</summary>
-<p>
-Autoconfiança não vem de elogios ou autoestima.  
-Ela vem de você provar a si mesmo que cumpre o que promete.
-</p>
-
-<p>
-Toda vez que você cumpre uma pequena tarefa, sua autoconfiança aumenta.  
-Toda vez que quebra sua palavra, ela diminui.
-</p>
-
-<p>
-Confiança é construída, não sentida.
-</p>
-</details>
-
-<!-- CAPÍTULO 26 -->
-<details>
-<summary>📘 CAPÍTULO 26 — Disciplina e Dinheiro</summary>
-<p>
-Dinheiro é consequência direta de disciplina.  
-Pessoas indisciplinadas:
-</p>
-
-<ul>
-    <li>gastam impulsivamente;</li>
-    <li>trabalham sem foco;</li>
-    <li>desistem rápido;</li>
-    <li>não planejam;</li>
-    <li>não evoluem.</li>
-</ul>
-
-<p>
-A disciplina é o alicerce da riqueza.
-</p>
-</details>
-
-<!-- CAPÍTULO 27 -->
-<details>
-<summary>📘 CAPÍTULO 27 — Disciplina e Imagem</summary>
-<p>
-Sua imagem comunica sua identidade.  
-Sua imagem comunica sua mentalidade.  
-Sua imagem comunica seu futuro.
-</p>
-
-<p>
-A disciplina molda seu jeito de andar, falar, se vestir e se posicionar.  
-E tudo isso altera como o mundo responde a você.
-</p>
-</details>
-
-<!-- CAPÍTULO 28 -->
-<details>
-<summary>📘 CAPÍTULO 28 — Disciplina e Solitude</summary>
-<p>
-A solitude é onde você cresce, cria, decide e evolui.  
-Pessoas indisciplinadas fogem de ficar sozinhas.  
-Pessoas disciplinadas usam o silêncio para criar poder.
-</p>
-</details>
-
-<!-- CAPÍTULO 29 -->
-<details>
-<summary>📘 CAPÍTULO 29 — Disciplina e Clareza Mental</summary>
-<p>
-Quanto mais disciplinado você é, menos confuso fica.  
-A mente bagunçada vem de hábitos bagunçados.
-</p>
-
-<p>
-Organize seu dia → e sua mente se organiza junto.  
-Organize sua vida → e suas emoções se alinham.
-</p>
-</details>
-
-<!-- CAPÍTULO 30 -->
-<details>
-<summary>📘 CAPÍTULO 30 — Conclusão da Jornada 01</summary>
-<p>
-Você acaba de completar a parte mais importante do processo:  
-<b>a construção da disciplina que sustenta a vida milionária.</b>
-</p>
-
-<p>
-Agora você está pronto para a Jornada 02 — Renda Extra e Mentalidade de Dono.
-</p>
-</details>
-
-<div class="divider"></div>
-
-<!-- BOTÃO CENTRAL DO E-BOOK -->
-<a class="cta" href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35" target="_blank">
-ENTRAR NO CANAL VIP AGORA
-</a>
-
-<div class="divider"></div>
-<!-- JORNADA 02 — RENDA EXTRA & MENTALIDADE DE DONO -->
-<h2>JORNADA 02 — RENDA EXTRA & MENTALIDADE DE DONO</h2>
-<p>
-Agora começa a segunda fase da sua transformação.  
-Aqui você vai aprender a pensar como um criador de oportunidades, não como alguém que espera que a vida melhore sozinha.
-</p>
-
-<div class="divider"></div>
-
-<!-- CAPÍTULO 31 -->
-<details>
-<summary>📘 CAPÍTULO 31 — O Que é Mentalidade de Dono</summary>
-<p>
-A mentalidade de dono é uma das maiores diferenças entre pessoas comuns e milionários.  
-Pessoas comuns pensam em sobreviver.  
-Donos pensam em construir.
-</p>
-
-<p>
-Mentalidade de dono significa:
-</p>
-<ul>
-    <li>assumir responsabilidade total pela própria vida;</li>
-    <li>parar de culpar circunstâncias;</li>
-    <li>agir como protagonista e não como espectador;</li>
-    <li>tomar decisões com visão de longo prazo.</li>
-</ul>
-
-<p>
-Quem pensa como dono, cresce como dono.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 32 -->
-<details>
-<summary>📘 CAPÍTULO 32 — Como Pensam os Milionários</summary>
-<p>
-Milionários não se preocupam com “como vou fazer tudo?”.  
-Eles pensam:
-</p>
-
-<p style="font-style:italic; border-left:4px solid #d4af37; padding-left:14px;">
-“Qual é o próximo passo que posso fazer agora?”
-</p>
-
-<p>
-Eles:
-</p>
-<ul>
-    <li>simplificam problemas;</li>
-    <li>evitam drama emocional;</li>
-    <li>tomam decisões rápidas;</li>
-    <li>planejam com clareza;</li>
-    <li>entendem que riqueza é construída em silêncio.</li>
-</ul>
-</details>
-
-
-<!-- CAPÍTULO 33 -->
-<details>
-<summary>📘 CAPÍTULO 33 — Mapa completo de habilidades</summary>
-<p>
-Para criar renda, você precisa primeiro mapear o que já sabe.  
-Liste:
-</p>
-
-<ul>
-    <li>habilidades técnicas,</li>
-    <li>habilidades sociais,</li>
-    <li>habilidades digitais,</li>
-    <li>habilidades manuais,</li>
-    <li>habilidades criativas.</li>
-</ul>
-
-<p>
-Tudo o que você sabe fazer pode ser monetizado — desde que seja colocado em movimento.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 34 -->
-<details>
-<summary>📘 CAPÍTULO 34 — Como Identificar Oportunidades Escondidas</summary>
-<p>
-Oportunidades não desaparecem — elas mudam de forma.  
-E pessoas com mentalidade de dono conseguem enxergar:
-</p>
-
-<ul>
-    <li>problemas que podem virar produto,</li>
-    <li>habilidades que podem virar serviço,</li>
-    <li>conhecimentos que podem virar conteúdo,</li>
-    <li>necessidades que podem virar renda.</li>
-</ul>
-
-<p>
-Olhe para seu dia.  
-Há dinheiro em tudo que resolve dor, economiza tempo ou gera prazer.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 35 -->
-<details>
-<summary>📘 CAPÍTULO 35 — Sete Formas de Criar Renda Imediata</summary>
-<p>
-Aqui estão 7 caminhos reais que funcionam para começar hoje:
-</p>
-
-<ul>
-    <li>venda de serviços;</li>
-    <li>criação de produtos digitais;</li>
-    <li>venda de conhecimento;</li>
-    <li>consultoria simples;</li>
-    <li>gestão de redes sociais;</li>
-    <li>edição de vídeo e foto;</li>
-    <li>trabalhos rápidos (freelas).</li>
-</ul>
-
-<p>
-Escolha 1 e comece.  
-A consistência transforma qualquer caminho escolhido.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 36 -->
-<details>
-<summary>📘 CAPÍTULO 36 — A Regra da Ação de Dinheiro</summary>
-<p>
-A regra é simples e poderosa:
-</p>
-
-<p style="font-style:italic; border-left:4px solid #d4af37; padding-left:14px;">
-“Todos os dias, faça ao menos UMA ação que pode gerar dinheiro.”
-</p>
-
-<ul>
-    <li>ofereça um serviço,</li>
-    <li>crie uma postagem,</li>
-    <li>mande uma mensagem,</li>
-    <li>atualize seu portfólio,</li>
-    <li>aprenda algo monetizável.</li>
-</ul>
-
-<p>
-A ação diária constrói riqueza de forma silenciosa.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 37 -->
-<details>
-<summary>📘 CAPÍTULO 37 — Estudo Monetizável</summary>
-<p>
-Existem dois tipos de estudo:
-</p>
-
-<ul>
-    <li><b>estudo passivo</b> — consome conteúdo e não muda nada;</li>
-    <li><b>estudo monetizável</b> — aprende algo que vira dinheiro.</li>
-</ul>
-
-<p>
-Toda semana, dedique 1 hora para aprender algo que pode ser vendido:
-</p>
-
-<ul>
-    <li>edição,</li>
-    <li>design,</li>
-    <li>copywriting,</li>
-    <li>social media,</li>
-    <li>técnicas de vendas,</li>
-    <li>automação,</li>
-    <li>funis digitais.</li>
-</ul>
-</details>
-
-
-<!-- CAPÍTULO 38 -->
-<details>
-<summary>📘 CAPÍTULO 38 — Vendendo Sem Parecer Vendedor</summary>
-<p>
-As pessoas não compram produtos —  
-<b>compram transformação.</b>
-</p>
-
-<p>
-Para vender de forma natural:
-</p>
-<ul>
-    <li>mostre o resultado,</li>
-    <li>explique o benefício,</li>
-    <li>conte sua experiência,</li>
-    <li>ofereça sem pressão.</li>
-</ul>
-
-<p>
-Venda com naturalidade e clareza.  
-Milionários vendem porque ajudam.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 39 -->
-<details>
-<summary>📘 CAPÍTULO 39 — Construindo Reputação</summary>
-<p>
-Reputação é a moeda mais valiosa que você tem.  
-E você constrói reputação assim:
-</p>
-
-<ul>
-    <li>cumprindo prazos;</li>
-    <li>falando a verdade;</li>
-    <li>entregando mais do que prometeu;</li>
-    <li>sendo educado e firme;</li>
-    <li>resolvendo rápido.</li>
-</ul>
-
-<p>
-Quanto melhor sua reputação, mais dinheiro aparece.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 40 -->
-<details>
-<summary>📘 CAPÍTULO 40 — Como Começar um Negócio do Zero</summary>
-<p>
-Todo grande empreendedor começou com nada além de:
-</p>
-
-<ul>
-    <li>habilidades simples,</li>
-    <li>um celular,</li>
-    <li>vontade de aprender,</li>
-    <li>e disciplina para continuar.</li>
-</ul>
-
-<p>
-Para começar um negócio do zero:
-</p>
-
-<ul>
-    <li>escolha um nicho;</li>
-    <li>descubra uma dor;</li>
-    <li>crie uma solução simples;</li>
-    <li>entregue para 5 pessoas;</li>
-    <li>melhore e repita.</li>
-</ul>
-
-<p>
-Negócios grandes nascem de ações pequenas repetidas.
-</p>
-</details>
-
-<div class="divider"></div>
-<!-- CAPÍTULO 41 -->
-<details>
-<summary>📘 CAPÍTULO 41 — Funis Simples que Geram Dinheiro</summary>
-<p>
-A maioria das pessoas complica funis.  
-Mas os milionários usam estruturas simples e repetíveis.
-</p>
-
-<p>O funil mais eficiente é:</p>
-<ul>
-    <li><b>Conteúdo</b> → mostra sua autoridade</li>
-    <li><b>Chamada</b> → leva para o produto/serviço</li>
-    <li><b>Oferta simples</b> → clara e objetiva</li>
-    <li><b>Entrega rápida</b> → o cliente se impressiona</li>
-</ul>
-
-<p>
-Você não precisa de complexidade.  
-Precisa de clareza, constância e uma boa oferta.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 42 -->
-<details>
-<summary>📘 CAPÍTULO 42 — Como Usar as Redes Sociais com Intenção</summary>
-<p>
-Pessoas comuns usam redes sociais para se distrair.  
-Pessoas milionárias usam redes sociais para:
-</p>
-
-<ul>
-    <li>construir marca,</li>
-    <li>atrair clientes,</li>
-    <li>testar ideias,</li>
-    <li>vender todos os dias.</li>
-</ul>
-
-<p>
-Se você usa seu perfil apenas para consumir, está perdendo dinheiro.  
-Transforme suas redes em ferramenta de negócios.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 43 -->
-<details>
-<summary>📘 CAPÍTULO 43 — A Psicologia da Venda Fácil</summary>
-<p>
-Vender não é manipular.  
-Vender é deixar claro que você resolve um problema específico.
-</p>
-
-<p>Para vender fácil:</p>
-<ul>
-    <li>entenda exatamente a dor do cliente;</li>
-    <li>mostre como sua solução resolve o problema;</li>
-    <li>use provas simples (prints, depoimentos, exemplos);</li>
-    <li>ofereça algo impossível de recusar.</li>
-</ul>
-
-<p>
-A venda fácil nasce da clareza, não da pressão.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 44 -->
-<details>
-<summary>📘 CAPÍTULO 44 — Economia Pessoal Milionária</summary>
-<p>
-Milionários controlam o dinheiro.  
-Pessoas comuns deixam o dinheiro controlar elas.
-</p>
-
-<p>Regra dos 3 blocos:</p>
-<ul>
-    <li><b>50%</b> — vida (contas, comida, cotidiano)</li>
-    <li><b>30%</b> — crescimento (estudos, ferramentas, projetos)</li>
-    <li><b>20%</b> — reserva e investimentos</li>
-</ul>
-
-<p>
-Se você administra mal seu dinheiro, ele vira um inimigo.  
-Se administra bem, ele vira sua liberdade.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 45 -->
-<details>
-<summary>📘 CAPÍTULO 45 — Como Multiplicar Seu Tempo</summary>
-<p>
-Todo milionário entende isso:  
-<b>não existe falta de tempo — existem prioridades ruins.</b>
-</p>
-
-<p>Para multiplicar seu tempo:</p>
-<ul>
-    <li>faça só o que gera resultado;</li>
-    <li>elimine atividades inúteis;</li>
-    <li>delegue o que consome energia demais;</li>
-    <li>automatize o que for possível.</li>
-</ul>
-
-<p>
-Tempo é a moeda mais valiosa do mundo.  
-Quem controla o tempo controla a vida.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 46 -->
-<details>
-<summary>📘 CAPÍTULO 46 — Como Criar um Produto Digital</summary>
-<p>
-Produtos digitais são a forma mais rápida e lucrativa de ganhar dinheiro hoje.
-</p>
-
-<p>Os 3 passos principais:</p>
-<ul>
-    <li><b>1. Dor</b> — o que as pessoas querem resolver?</li>
-    <li><b>2. Solução</b> — o que você sabe que pode ajudar?</li>
-    <li><b>3. Entrega</b> — e-book, vídeo, áudio, planilha, app.</li>
-</ul>
-
-<p>
-O digital te permite trabalhar de qualquer lugar e vender enquanto dorme.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 47 -->
-<details>
-<summary>📘 CAPÍTULO 47 — Como Construir Autoridade</summary>
-<p>
-Autoridade não é fama.  
-Autoridade é quando as pessoas confiam na sua palavra porque você:
-</p>
-
-<ul>
-    <li>tem constância,</li>
-    <li>fala com clareza,</li>
-    <li>mostra resultados,</li>
-    <li>não some depois da venda.</li>
-</ul>
-
-<p>
-A autoridade faz seus preços aumentarem automaticamente.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 48 -->
-<details>
-<summary>📘 CAPÍTULO 48 — Como Gerar Demanda</summary>
-<p>
-Para gerar demanda, você precisa antes:
-</p>
-
-<ul>
-    <li>mostrar sua visão,</li>
-    <li>mostrar seu processo,</li>
-    <li>mostrar sua transformação,</li>
-    <li>mostrar seu valor.</li>
-</ul>
-
-<p>
-As pessoas não compram porque você vende.  
-Elas compram porque querem fazer parte do seu movimento.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 49 -->
-<details>
-<summary>📘 CAPÍTULO 49 — Consistência Financeira</summary>
-<p>
-Riqueza não é ter um mês bom.  
-Riqueza é ter meses bons repetidos.
-</p>
-
-<p>
-Isso acontece quando você:
-</p>
-<ul>
-    <li>vende todos os dias,</li>
-    <li>se expõe todos os dias,</li>
-    <li>melhora a oferta,</li>
-    <li>melhora a entrega,</li>
-    <li>se educa financeiramente.</li>
-</ul>
-
-<p>
-Renda é disciplina aplicada ao dinheiro.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 50 -->
-<details>
-<summary>📘 CAPÍTULO 50 — Como Administrar Seu Crescimento</summary>
-<p>
-Quanto mais você cresce, mais precisará administrar:
-</p>
-
-<ul>
-    <li>suas emoções,</li>
-    <li>seus padrões,</li>
-    <li>seus relacionamentos,</li>
-    <li>seu tempo,</li>
-    <li>seu dinheiro.</li>
-</ul>
-
-<p>
-Milionários não crescem descontrolados —  
-eles crescem organizados.
-</p>
-</details>
-
-<div class="divider"></div>
-<!-- CAPÍTULO 51 -->
-<details>
-<summary>📘 CAPÍTULO 51 — Mentalidade Antifalha</summary>
-<p>
-Milionários não evitam falhar —  
-eles constroem um sistema para <b>não parar</b> quando falham.
-</p>
-
-<p>
-A mentalidade antifalha é baseada em:
-</p>
-<ul>
-    <li>aprendizado rápido,</li>
-    <li>correção imediata,</li>
-    <li>persistência inteligente.</li>
-</ul>
-
-<p>
-Falhar não te atrasa.  
-Parar sim.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 52 -->
-<details>
-<summary>📘 CAPÍTULO 52 — Como Lidar com Críticas</summary>
-<p>
-Quem critica muito é quem produz pouco.  
-Ninguém com resultados reais perde tempo derrubando os outros.
-</p>
-
-<p>
-Para lidar com críticas:
-</p>
-<ul>
-    <li>corte emocionalmente,</li>
-    <li>não tente agradar,</li>
-    <li>deixe o resultado responder,</li>
-    <li>não perca energia com invejoso.</li>
-</ul>
-
-<p>
-A crítica só te atinge se você está vazio.  
-Encha sua vida de propósito e disciplina.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 53 -->
-<details>
-<summary>📘 CAPÍTULO 53 — Como Lidar com Pressão Externa e Interna</summary>
-<p>
-Existem dois tipos de pressão:
-</p>
-<ul>
-    <li><b>externa</b> — expectativas, cobranças, comparações;</li>
-    <li><b>interna</b> — autocobrança, perfeccionismo, medo do fracasso.</li>
-</ul>
-
-<p>
-As duas diminuem quando você aumenta a clareza.  
-Organização mental reduz caos emocional.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 54 -->
-<details>
-<summary>📘 CAPÍTULO 54 — Como Lidar com Dificuldades Financeiras</summary>
-<p>
-Quando o dinheiro aperta, a mente aperta junto.  
-Mas é justamente nesses momentos que nascem as maiores oportunidades.
-</p>
-
-<p>Faça isso:</p>
-<ul>
-    <li>não dramatize o problema,</li>
-    <li>reduza custos rapidamente,</li>
-    <li>faça 3 ações de dinheiro por dia,</li>
-    <li>evite dívidas desnecessárias.</li>
-</ul>
-
-<p>
-Dificuldade financeira é um convite para evoluir.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 55 -->
-<details>
-<summary>📘 CAPÍTULO 55 — Como Lidar com Conflitos Emocionais</summary>
-<p>
-Conflitos emocionais drenam sua energia de foco e produtividade.  
-A regra é simples:
-</p>
-
-<p style="font-style:italic; border-left:4px solid #d4af37; padding-left:14px;">
-“Não tome decisões grandes quando estiver emocionalmente instável.”
-</p>
-
-<p>
-Respire, organize, espere — e então aja.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 56 -->
-<details>
-<summary>📘 CAPÍTULO 56 — Como Lidar com o Medo de Começar</summary>
-<p>
-O medo não desaparece quando você pensa.  
-Ele desaparece quando você começa.
-</p>
-
-<p>
-Ação cura medo.  
-Movimento cura dúvida.  
-Progresso cura insegurança.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 57 -->
-<details>
-<summary>📘 CAPÍTULO 57 — Crescimento Silencioso</summary>
-<p>
-Os maiores avanços acontecem fora dos holofotes.  
-Crescer em silêncio reduz pressão, reduz comparação e aumenta foco.
-</p>
-
-<p>O crescimento silencioso é baseado em:</p>
-<ul>
-    <li>disciplina,</li>
-    <li>ritmo,</li>
-    <li>constância,</li>
-    <li>melhoria contínua.</li>
-</ul>
-</details>
-
-
-<!-- CAPÍTULO 58 -->
-<details>
-<summary>📘 CAPÍTULO 58 — O Jogo da Paciência e Ritmo</summary>
-<p>
-Você não controla o tempo do sucesso, mas controla o ritmo do trabalho.  
-Milionários tratam riqueza como maratona, não como corrida de 100 metros.
-</p>
-
-<p>
-Paciência + disciplina + ritmo = inevitável evolução.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 59 -->
-<details>
-<summary>📘 CAPÍTULO 59 — A Arte de Pensar Longo Prazo</summary>
-<p>
-Riqueza não é sorte — é visão.  
-Pessoas que pensam apenas no mês ficam presas no mês.  
-Pessoas que pensam no próximo ano constroem liberdade.
-</p>
-
-<p>
-Pergunte-se diariamente:
-</p>
-<ul>
-    <li>isso me aproxima ou me afasta da minha visão?</li>
-    <li>isso tem impacto nos próximos 12 meses?</li>
-</ul>
-</details>
-
-
-<!-- CAPÍTULO 60 -->
-<details>
-<summary>📘 CAPÍTULO 60 — O Poder da Repetição Inteligente</summary>
-<p>
-Repetir não é ser monótono — é aperfeiçoar.  
-Tudo o que você repetir com intenção melhora:
-</p>
-
-<ul>
-    <li>forma de falar,</li>
-    <li>forma de vender,</li>
-    <li>forma de trabalhar,</li>
-    <li>forma de pensar,</li>
-    <li>forma de agir.</li>
-</ul>
-
-<p>
-A repetição inteligente transforma você em uma máquina de resultados.
-</p>
-</details>
-
-<div class="divider"></div>
-<!-- CAPÍTULO 61 -->
-<details>
-<summary>📘 CAPÍTULO 61 — Como Blindar Sua Mente</summary>
-<p>
-A mente é o território mais valioso que você possui.  
-Se você não a proteger, o mundo vai ocupá-la com medo, dúvidas e distrações.
-</p>
-
-<p>Para blindar sua mente:</p>
-<ul>
-    <li>se afaste de pessoas negativas,</li>
-    <li>consuma conteúdo que eleva,</li>
-    <li>evite discussões vazias,</li>
-    <li>faça silêncio quando necessário.</li>
-</ul>
-
-<p>
-Proteção mental = clareza máxima.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 62 -->
-<details>
-<summary>📘 CAPÍTULO 62 — Como Se Tornar Mentalmente Inabalável</summary>
-<p>
-Ser inabalável não é não sentir emoções.  
-É agir com estabilidade mesmo quando tudo ao redor muda.
-</p>
-
-<p>Para isso, pratique:</p>
-<ul>
-    <li>controle de respiração,</li>
-    <li>clareza de prioridades,</li>
-    <li>ação constante mesmo cansado,</li>
-    <li>fortalecimento da identidade.</li>
-</ul>
-
-<p>
-A mente forte vence antes mesmo de começar.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 63 -->
-<details>
-<summary>📘 CAPÍTULO 63 — Como Criar Conexões de Alto Valor</summary>
-<p>
-Seu círculo define sua velocidade.  
-Pessoas certas aceleram, pessoas erradas travam.
-</p>
-
-<p>Para criar conexões valiosas:</p>
-<ul>
-    <li>seja útil,</li>
-    <li>fale com clareza,</li>
-    <li>mostre profissionalismo,</li>
-    <li>entregue valor antes de pedir algo.</li>
-</ul>
-
-<p>
-Relacionamentos movem o mundo.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 64 -->
-<details>
-<summary>📘 CAPÍTULO 64 — Como Se Tornar Alguém Que as Pessoas Respeitam</summary>
-<p>
-Respeito não é pedido — é conquistado.  
-E é conquistado quando você:
-</p>
-
-<ul>
-    <li>fala pouco e faz muito;</li>
-    <li>se posiciona com firmeza;</li>
-    <li>mantém palavra;</li>
-    <li>não se mistura com mediocridade.</li>
-</ul>
-
-<p>
-Pessoas respeitadas têm voz e influência.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 65 -->
-<details>
-<summary>📘 CAPÍTULO 65 — Como Pensar como um Visionário</summary>
-<p>
-Visionários enxergam o que os outros ignoram:  
-<b>o futuro.</b>
-</p>
-
-<p>
-Para pensar como visionário:
-</p>
-<ul>
-    <li>observe tendências,</li>
-    <li>busque novas habilidades,</li>
-    <li>não tenha medo do novo,</li>
-    <li>mantenha a mente aberta.</li>
-</ul>
-
-<p>
-Quem pensa no amanhã controla o hoje.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 66 -->
-<details>
-<summary>📘 CAPÍTULO 66 — Como Tomar Decisões Corretas Consistentemente</summary>
-<p>
-Decisões movem a vida.  
-Uma decisão errada repetida várias vezes destrói seu futuro —  
-uma decisão certa repetida constrói riqueza.
-</p>
-
-<p>
-Para decidir melhor:
-</p>
-<ul>
-    <li>faça perguntas de impacto;</li>
-    <li>pense a longo prazo;</li>
-    <li>desconsidere opiniões fracas;</li>
-    <li>observe padrões.</li>
-</ul>
-</details>
-
-
-<!-- CAPÍTULO 67 -->
-<details>
-<summary>📘 CAPÍTULO 67 — Como Criar Crescimento Consistente</summary>
-<p>
-Crescimento não acontece por picos.  
-Acontece por ritmo.
-</p>
-
-<p>Você cresce quando:</p>
-<ul>
-    <li>produz um pouco todos os dias,</li>
-    <li>estuda um pouco todos os dias,</li>
-    <li>melhora um pouco todos os dias.</li>
-</ul>
-
-<p>
-1% ao dia = evolução inevitável.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 68 -->
-<details>
-<summary>📘 CAPÍTULO 68 — Como Transformar Crises em Oportunidades</summary>
-<p>
-Toda crise contém uma oportunidade escondida.  
-Os milionários não fogem da crise —  
-eles perguntam:
-</p>
-
-<p style="font-style:italic; border-left:4px solid #d4af37; padding-left:14px;">
-“Como posso ganhar com isso?”
-</p>
-
-<p>
-Crises:
-</p>
-<ul>
-    <li>abrem novos problemas para resolver,</li>
-    <li>mudam comportamentos,</li>
-    <li>criam novas demandas,</li>
-    <li>abrem espaço para quem age rápido.</li>
-</ul>
-</details>
-
-
-<!-- CAPÍTULO 69 -->
-<details>
-<summary>📘 CAPÍTULO 69 — Como Estar Sempre Um Passo à Frente</summary>
-<p>
-Estar à frente não é sorte — é observação.  
-Você só precisa enxergar o que os outros estão ignorando.
-</p>
-
-<p>
-Pergunte-se:
-</p>
-<ul>
-    <li>qual é o próximo passo lógico?</li>
-    <li>qual é a tendência daqui a 3 meses?</li>
-    <li>quem preciso me tornar?</li>
-</ul>
-</details>
-
-
-<!-- CAPÍTULO 70 -->
-<details>
-<summary>📘 CAPÍTULO 70 — A Regra da Evolução Infinita</summary>
-<p>
-A regra final desta jornada é simples:
-</p>
-
-<p style="font-style:italic; border-left:4px solid #d4af37; padding-left:14px;">
-“Nunca pare de evoluir.”
-</p>
-
-<p>
-Quando você domina disciplina e mentalidade de dono,  
-a evolução se torna um processo natural —  
-quase automático.
-</p>
-</details>
-
-<div class="divider"></div>
-<!-- JORNADA 03 — LIFESTYLE DE LUXO & IDENTIDADE -->
-<h2>JORNADA 03 — LIFESTYLE DE LUXO & IDENTIDADE</h2>
-<p>
-Esta jornada é sobre comportamento, estética, postura e identidade.  
-A riqueza externa começa dentro — e se manifesta no jeito que você vive.
-</p>
-
-<div class="divider"></div>
-
-<!-- CAPÍTULO 71 -->
-<details>
-<summary>📘 CAPÍTULO 71 — O Que é Lifestyle Consciente</summary>
-<p>
-Lifestyle não é ostentação.  
-É viver com intenção, elegância, clareza e propósito.
-</p>
-
-<p>
-Um lifestyle consciente é baseado em:
-</p>
-<ul>
-    <li>hábitos estáveis,</li>
-    <li>ambiente organizado,</li>
-    <li>estética alinhada ao futuro,</li>
-    <li>disciplina emocional.</li>
-</ul>
-
-<p>
-Não é sobre parecer rico —  
-é sobre se comportar como alguém que cria riqueza.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 72 -->
-<details>
-<summary>📘 CAPÍTULO 72 — Luxo x Ostentação</summary>
-<p>
-Luxo é silêncio.  
-Ostentação é barulho.
-</p>
-
-<p>
-O luxo real não precisa ser mostrado — ele é percebido no olhar, na postura, na calma, na forma como você se comporta.
-</p>
-
-<p>
-Ostentação é insegurança disfarçada.  
-Luxo é identidade consolidada.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 73 -->
-<details>
-<summary>📘 CAPÍTULO 73 — A Construção da Identidade</summary>
-<p>
-Sua identidade é a raiz de todos os seus comportamentos.  
-Você não muda de vida até mudar a forma como se vê.
-</p>
-
-<p>Para construir sua identidade milionária:</p>
-<ul>
-    <li>decida quem você quer ser;</li>
-    <li>elimine hábitos que contradizem essa versão;</li>
-    <li>vista-se como sua versão futura;</li>
-    <li>se comporte como ela agora.</li>
-</ul>
-
-<p>
-Primeiro você cria a identidade.  
-Depois ela cria sua vida.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 74 -->
-<details>
-<summary>📘 CAPÍTULO 74 — O Poder da Imagem</summary>
-<p>
-A imagem comunica sua mentalidade antes de você abrir a boca.  
-Ela diz:
-</p>
-
-<ul>
-    <li>se você é disciplinado,</li>
-    <li>se você tem visão,</li>
-    <li>se você se respeita,</li>
-    <li>se você leva a vida a sério.</li>
-</ul>
-
-<p>
-Milionários cuidam da imagem porque entendem que ela abre portas — ou fecha.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 75 -->
-<details>
-<summary>📘 CAPÍTULO 75 — Como Criar Presença Poderosa</summary>
-<p>
-Presença não é ser arrogante.  
-Presença é transmitir energia estável, firme e segura.
-</p>
-
-<p>
-Você cria presença quando:
-</p>
-<ul>
-    <li>olha nos olhos,</li>
-    <li>fala com clareza,</li>
-    <li>mantém postura ereta,</li>
-    <li>controla o tom de voz.</li>
-</ul>
-
-<p>
-Uma pessoa com presença vale mais em qualquer ambiente.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 76 -->
-<details>
-<summary>📘 CAPÍTULO 76 — Vestindo-se Como Sua Versão Milionária</summary>
-<p>
-Você não precisa de roupas caras —  
-precisa de roupas alinhadas à sua identidade futura.
-</p>
-
-<p>Use roupas que comuniquem:</p>
-<ul>
-    <li>autocuidado,</li>
-    <li>organização,</li>
-    <li>estética,</li>
-    <li>profissionalismo,</li>
-    <li>elegância.</li>
-</ul>
-</details>
-
-
-<!-- CAPÍTULO 77 -->
-<details>
-<summary>📘 CAPÍTULO 77 — Ambientes Que Moldam sua Mente</summary>
-<p>
-Seu ambiente te transforma.  
-Ambiente bagunçado → mente bagunçada.  
-Ambiente limpo → mente clara.
-</p>
-
-<p>
-Organize sua casa, seu quarto, seu local de trabalho.  
-Ambientes ricos criam mentes ricas.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 78 -->
-<details>
-<summary>📘 CAPÍTULO 78 — Carros e Escolhas Inteligentes</summary>
-<p>
-Carro de luxo não é sobre status — é sobre experiência.  
-Mas antes de um carro caro, você precisa de:
-</p>
-
-<ul>
-    <li>estabilidade financeira,</li>
-    <li>reserva,</li>
-    <li>renda crescente,</li>
-    <li>planejamento.</li>
-</ul>
-
-<p>
-Carro de luxo é consequência, não começo.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 79 -->
-<details>
-<summary>📘 CAPÍTULO 79 — Mansões & Alto Padrão</summary>
-<p>
-Moradia é o ambiente onde sua mente evolui.  
-Uma boa casa aumenta sua produtividade, seu foco e sua autoestima.
-</p>
-
-<p>
-Mas lembre-se: luxo é construção.  
-Nunca comparação.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 80 -->
-<details>
-<summary>📘 CAPÍTULO 80 — Viagens Que Mudam Sua Mentalidade</summary>
-<p>
-Viajar é uma das formas mais rápidas de expandir sua visão.  
-Quando você muda seu ambiente, muda sua mente.
-</p>
-
-<p>
-Viagens trabalham:
-</p>
-<ul>
-    <li>criatividade,</li>
-    <li>visão,</li>
-    <li>cultura,</li>
-    <li>ambição.</li>
-</ul>
-
-<p>
-Viajar te lembra que existe muito mais esperando por você.
-</p>
-</details>
-
-<div class="divider"></div>
-<!-- CAPÍTULO 81 -->
-<details>
-<summary>📘 CAPÍTULO 81 — O Poder da Solitude Rica</summary>
-<p>
-A solitude rica é a capacidade de ficar sozinho sem se sentir vazio.  
-É o estado onde você cria, planeja, pensa e evolui.
-</p>
-
-<p>
-Os maiores insights da sua vida vão acontecer quando você estiver sozinho, silencioso e focado.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 82 -->
-<details>
-<summary>📘 CAPÍTULO 82 — Jantares & Conexões de Alto Nível</summary>
-<p>
-Ambientes definem a qualidade das conexões.  
-Jantares, eventos e encontros profissionais são onde surgem as maiores oportunidades de carreira e negócios.
-</p>
-
-<p>
-Vá bem vestido, fale pouco, observe muito, conecte-se com intenção.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 83 -->
-<details>
-<summary>📘 CAPÍTULO 83 — Sociedades Que Elevam Você</summary>
-<p>
-Você cresce mais rápido com pessoas que:
-</p>
-
-<ul>
-    <li>pensam grande,</li>
-    <li>querem avançar,</li>
-    <li>planejam o futuro,</li>
-    <li>têm disciplina real.</li>
-</ul>
-
-<p>
-Escolha com quem você anda como se escolhesse seu futuro — porque é isso mesmo.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 84 -->
-<details>
-<summary>📘 CAPÍTULO 84 — Postura de Milionário</summary>
-<p>
-Postura é comportamento silencioso que comunica força.  
-Você se posiciona como milionário quando:
-</p>
-
-<ul>
-    <li>fala com firmeza,</li>
-    <li>não explica demais,</li>
-    <li>age com calma,</li>
-    <li>não reage impulsivamente.</li>
-</ul>
-</details>
-
-
-<!-- CAPÍTULO 85 -->
-<details>
-<summary>📘 CAPÍTULO 85 — Como Falar Como Milionário</summary>
-<p>
-Milionários não falam muito — falam o necessário.  
-E sempre com:
-</p>
-
-<ul>
-    <li>clareza,</li>
-    <li>objetividade,</li>
-    <li>calma,</li>
-    <li>segurança.</li>
-</ul>
-
-<p>
-A forma como você fala determina como o mundo te escuta.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 86 -->
-<details>
-<summary>📘 CAPÍTULO 86 — Como Agir Como Milionário</summary>
-<p>
-Ação milionária é ação com consistência.  
-É fazer o que precisa ser feito mesmo quando ninguém está olhando.
-</p>
-
-<p>
-O comportamento cria o destino — sempre.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 87 -->
-<details>
-<summary>📘 CAPÍTULO 87 — Como Tomar Decisões com Poder</summary>
-<p>
-Decisão poderosa é decisão com propósito.  
-Para decidir com força, pergunte:
-</p>
-
-<ul>
-    <li>isso me aproxima da minha visão?</li>
-    <li>isso aumenta ou diminui meu valor?</li>
-    <li>isso mantém minha identidade milionária?</li>
-</ul>
-</details>
-
-
-<!-- CAPÍTULO 88 -->
-<details>
-<summary>📘 CAPÍTULO 88 — Hábitos de Riqueza</summary>
-<p>
-Hábitos de riqueza são hábitos que se acumulam ao longo do tempo, como:
-</p>
-
-<ul>
-    <li>ler todos os dias,</li>
-    <li>estudar algo monetizável semanalmente,</li>
-    <li>investir todo mês,</li>
-    <li>organizar a vida,</li>
-    <li>cuidar da saúde,</li>
-    <li>se afastar de pessoas tóxicas.</li>
-</ul>
-
-<p>
-A riqueza se constrói em silêncio.
-</p>
-</details>
-
-
-<!-- CAPÍTULO 89 -->
-<details>
-<summary>📘 CAPÍTULO 89 — Psicologia do Lifestyle</summary>
-<p>
-O lifestyle de luxo é mais psicológico do que financeiro.  
-Você pode viver uma vida elegante mesmo sem gastar muito — tudo depende de:
-</p>
-
-<ul>
-    <li>organização,</li>
-    <li>estética,</li>
-    <li>bom gosto,</li>
-    <li>disciplina,</li>
-    <li>equilíbrio.</li>
-</ul>
-</details>
-
-
-<!-- CAPÍTULO 90 -->
-<details>
-<summary>📘 CAPÍTULO 90 — Como Prever Sua Própria Evolução</summary>
-<p>
-Você sabe que está evoluindo quando:
-</p>
-
-<ul>
-    <li>se compare menos e produza mais;</li>
-    <li>reclame menos e aja mais;</li>
-    <li>fale menos e construa mais;</li>
-    <li>tenha mais paciência e menos pressa.</li>
-</ul>
-
-<p>
-A evolução é visível por dentro antes de ser visível por fora.
-</p>
-</details>
-
-<div class="divider"></div>
-<!-- CONCLUSÃO FINAL -->
-<h2>CONCLUSÃO FINAL — SUA NOVA IDENTIDADE COMEÇA AGORA</h2>
-<p>
-Você acaba de concluir um dos conteúdos mais profundos, completos e transformadores sobre disciplina, mentalidade, riqueza e identidade milionária.
-</p>
-
-<p>
-Este e-book não foi feito para ser apenas lido —  
-foi feito para ser vivido.
-</p>
-
-<p>
-Ao longo dessas páginas, você aprendeu:
-</p>
-
-<ul>
-    <li>como construir disciplina inabalável,</li>
-    <li>como pensar como dono,</li>
-    <li>como gerar renda extra de forma inteligente,</li>
-    <li>como desenvolver postura e presença,</li>
-    <li>como criar um lifestyle de luxo autêntico,</li>
-    <li>como evoluir continuamente.</li>
-</ul>
-
-<p>
-Tudo isso agora faz parte da sua identidade.  
-E a partir de hoje, você não é mais alguém tentando evoluir —  
-você é alguém que <b>evolui todos os dias</b>.
-</p>
-
-<div class="divider"></div>
-
-<h2>O PRÓXIMO PASSO</h2>
-<p>
-O caminho para sua vida milionária continua.  
-E para acelerar sua jornada, você terá acesso a conteúdos exclusivos, avisos importantes e direcionamentos dentro do nosso canal VIP.
-</p>
-
-<p>
-Este é o lugar onde você continua evoluindo diariamente com disciplina, visão e foco.
-</p>
-
-<!-- BOTÃO FINAL -->
-<a class="cta" href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35" target="_blank">
-ENTRAR AGORA NO CANAL VIP
-</a>
-
-<div class="divider"></div>
-
-<!-- ENCERRAMENTO -->
-<h2>AGRADECIMENTO</h2>
-<p>
-Obrigado por chegar até aqui.  
-Isso já diz muito sobre sua força, sua visão e sua determinação.
-</p>
-
-<p>
-A maioria para no meio.  
-Poucos chegam ao final.  
-Menos ainda colocam em prática.  
-Você está no grupo de pessoas que realmente fazem acontecer.
-</p>
-
-<p style="font-style:italic; opacity:0.85;">
-Que este e-book seja o início da sua versão mais forte, mais disciplinada e mais milionária.
-</p>
-
-<p style="text-align:center; margin-top:40px; color:#d4af37; font-size:22px;">
-THE MILLIONAIRE MINDSET  
-<br>— Sua nova identidade começa hoje.
-</p>
-
-</div> <!-- fecha .page -->
+  <header class="top-nav">
+    <div class="brand">
+      <div class="brand-logo"></div>
+      <div>
+        <div class="brand-text-main">BILLIONMIND CREATOR</div>
+        <div class="brand-text-sub">App • IA • Mentalidade 2026+</div>
+      </div>
+    </div>
+    <div class="badge-year">
+      <span class="badge-dot"></span>
+      2026 · futuro em construção
+    </div>
+  </header>
+
+  <!-- HERO / CAPA -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">E-BOOK DIGITAL · 100 PÁGINAS</div>
+        <h1 class="hero-title">
+          Torne-se o <span>criador</span> que controla a IA, constrói apps
+          e monetiza a própria mente.
+        </h1>
+        <p class="hero-sub">
+          Este não é mais um livro de motivação. É o manual prático para você
+          usar inteligência artificial, criar o seu próprio aplicativo e
+          moldar uma mentalidade que continua valendo em 2026, 2027 e nos
+          próximos anos – enquanto a maioria ainda está tentando entender o
+          que está acontecendo.
+        </p>
+        <div class="hero-tags">
+          <span class="tag">Criação de app com HTML + IA</span>
+          <span class="tag">Publicação em Vercel passo a passo</span>
+          <span class="tag">Supabase, assinaturas e estrutura</span>
+          <span class="tag">Mentalidade de alta performance</span>
+        </div>
+        <div class="hero-cta-row">
+          <button class="btn-primary">LEITURA GUIADA · COMEÇAR AGORA</button>
+          <p class="hero-note">
+            Siga as seções na ordem. Cada capítulo foi escrito para ser
+            aplicado, não apenas lido.
+          </p>
+        </div>
+      </div>
+
+      <!-- "imagem" de painel de ganhos estilo app -->
+      <div class="hero-right-card">
+        <div class="hero-right-header">
+          <div class="hero-pill">
+            <span class="hero-dot"></span>
+            Painel de criador · LIVE
+          </div>
+          <div class="hero-right-title">
+            Seu app · Seus usuários<br />
+            Sua mente no comando
+          </div>
+        </div>
+
+        <div class="hero-display">
+          <div class="hero-display-main">
+            <span>Receita recorrente estimada (R$/mês)</span>
+            <span class="hero-display-pill">+142% vs. início do ano</span>
+          </div>
+          <div class="hero-display-value">R$ 18.742,00</div>
+
+          <div class="hero-chart-bar-wrap">
+            <div class="hero-chart-bar" style="height: 28px;"></div>
+            <div class="hero-chart-bar" style="height: 34px;"></div>
+            <div class="hero-chart-bar" style="height: 40px;"></div>
+            <div class="hero-chart-bar" style="height: 52px;"></div>
+            <div class="hero-chart-bar" style="height: 72px;"></div>
+            <div class="hero-chart-bar" style="height: 80px;"></div>
+            <div class="hero-chart-bar" style="height: 93px;"></div>
+            <div class="hero-chart-bar" style="height: 60px;"></div>
+          </div>
+
+          <div class="hero-meta-row">
+            <span>Base atual: 873 usuários ativos</span>
+            <span>Ticket médio potencial: R$ 142,56</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRODUÇÃO -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">INTRODUÇÃO</div>
+      <h2 class="section-title">Bem-vindo ao jogo dos criadores de IA.</h2>
+      <p class="section-sub">
+        O mundo não está mais dividindo pessoas entre “quem sabe mexer em
+        tecnologia” e “quem não sabe”. A divisão real, de 2026 em diante, é:
+        <span class="highlight">quem sabe controlar a IA</span> e
+        <span class="highlight">quem vira apenas usuário passivo dela</span>.
+      </p>
+    </div>
+
+    <p>
+      Inteligência artificial já escreve textos, gera códigos, cria imagens,
+      responde mensagens, monta landing pages e até desenha aplicativos
+      inteiros em minutos. Isso assusta quem pensa como funcionário, mas
+      abre um universo gigantesco para quem pensa como dono de sistema.
+    </p>
+
+    <p>
+      Este e-book existe para uma coisa muito específica:
+      <strong>colocar você do lado de quem constrói, não de quem é substituído.</strong>
+    </p>
+
+    <div class="quote">
+      “A IA não veio para te roubar o lugar. Ela veio para roubar o lugar de quem
+      insiste em pensar como se ainda estivesse em 2010.”
+    </div>
+
+    <p>
+      Aqui você vai aprender, na prática:
+    </p>
+    <ul style="margin-left: 16px; font-size: 0.9rem; color: var(--text-soft); margin-bottom: 8px;">
+      <li>Como criar um aplicativo próprio usando HTML, IA e ferramentas modernas.</li>
+      <li>Como publicar esse app na Vercel para que qualquer pessoa no mundo possa acessar.</li>
+      <li>Como usar Supabase e assinaturas para transformar código em receita recorrente.</li>
+      <li>Como construir uma mentalidade de <span class="highlight">criador de sistemas</span>, não apenas “usuário de app”.</li>
+    </ul>
+
+    <p>
+      Você não precisa decorar termos técnicos. Precisa apenas seguir com atenção,
+      aplicar capítulo por capítulo e se permitir entrar em um novo modo de pensar:
+      <span class="highlight">modo dono da IA</span>.
+    </p>
+  </section>
+
+  <!-- SUMÁRIO / MAPA DAS 100 PÁGINAS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">VISÃO GERAL</div>
+      <h2 class="section-title">Como este livro está organizado.</h2>
+      <p class="section-sub">
+        São aproximadamente 100 páginas distribuídas em duas grandes forças:
+        <span class="highlight">Construção de Aplicativo</span> e
+        <span class="highlight">Mentalidade de Alta Performance</span>.
+      </p>
+    </div>
+
+    <div class="toc-grid">
+      <div class="toc-card">
+        <div class="toc-label">PARTE I · PÁG. 1–50</div>
+        <div class="toc-title">Criando seu próprio aplicativo com IA</div>
+        <div class="toc-desc">
+          Conceito, identidade visual, HTML, componentes, publicação na Vercel,
+          Supabase, assinaturas e base técnica para escalar como produto digital.
+        </div>
+      </div>
+
+      <div class="toc-card">
+        <div class="toc-label">PARTE II · PÁG. 51–100</div>
+        <div class="toc-title">Construindo a mente do criador</div>
+        <div class="toc-desc">
+          Disciplina, visão de longo prazo, relação saudável com dinheiro,
+          postura de dono, ambiente, rotina e decisões que mantêm você no
+          controle da IA – e não o contrário.
+        </div>
+      </div>
+
+      <div class="toc-card">
+        <div class="toc-label">BÔNUS</div>
+        <div class="toc-title">Roteiros de ação rápida</div>
+        <div class="toc-desc">
+          Checklists, micro-rotinas, perguntas de ajuste e caminhos sugeridos
+          para seu primeiro app e suas primeiras vendas.
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 14px;">
+      Sempre que encontrar o selo
+      <span class="pill-inline">⚙️ APLICAÇÃO PRÁTICA</span>,
+      significa que é hora de parar de ler por alguns minutos e
+      <strong>executar</strong> o que está sendo proposto.
+    </p>
+  </section>
+
+  <!-- CAPÍTULO 1 – A NOVA ERA DA IA (2026+) -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">CAPÍTULO 01</div>
+      <h2 class="section-title">2026 em diante: a IA como infraestrutura invisível.</h2>
+      <p class="section-sub">
+        Você não está mais entrando “no mundo da IA”. Você está vivendo em um
+        mundo onde tudo que funciona bem é sustentado por IA – mesmo quando as
+        pessoas não percebem.
+      </p>
+    </div>
+
+    <p>
+      Até alguns anos atrás, inteligência artificial era tratada como algo
+      distante: pesquisa de laboratório, coisa de filme, empresas gigantes.
+      Entre 2023 e 2025, ela desceu para a palma da mão de qualquer pessoa:
+      geradores de imagem, assistentes de texto, copilots de código, apps que
+      se constroem com uma frase.
+    </p>
+
+    <p>
+      Em 2026, a IA deixa de ser “novidade” e passa a ser
+      <strong>infraestrutura</strong>. Assim como hoje ninguém comemora por ter
+      energia elétrica em casa, ninguém vai comemorar por “usar IA”.
+      Simplesmente será esperado que os produtos, serviços e conteúdos que
+      funcionam no mundo tenham IA por trás.
+    </p>
+
+    <p>
+      Isso cria um problema para quem insiste em pensar de forma antiga:
+      <span class="highlight">quanto mais a IA avança, mais ela comprime o espaço
+      para trabalho repetitivo</span>. O que ela não comprime é:
+    </p>
+
+    <ul style="margin-left: 16px; font-size: 0.9rem; color: var(--text-soft); margin-bottom: 8px;">
+      <li>Visão de produto.</li>
+      <li>Capacidade de decidir o que construir.</li>
+      <li>Entendimento de pessoas, dores e desejos.</li>
+      <li>Coragem para lançar, testar, ajustar.</li>
+    </ul>
+
+    <p>
+      A pergunta certa não é “o que a IA vai fazer comigo?”, e sim:
+      <strong>“que tipo de sistema eu posso criar com ela?”</strong>
+    </p>
+
+    <div class="quote">
+      Você não vence tentando ser mais rápido que a máquina.
+      Você vence construindo um sistema onde a máquina trabalha para você.
+    </div>
+
+    <p>
+      É aqui que entra o seu papel: este livro foi escrito para transformar
+      você em alguém que sabe <span class="highlight">conversar com a IA</span>,
+      <span class="highlight">organizar ideias em estrutura de app</span> e
+      <span class="highlight">publicar algo real no mundo</span>.
+    </p>
+  </section>
+
+  <!-- CAPÍTULO 2 – PERFIL DO CRIADOR QUE CONTROLA A IA -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">CAPÍTULO 02</div>
+      <h2 class="section-title">Quem é o criador que controla a IA – e quem é controlado por ela.</h2>
+      <p class="section-sub">
+        Antes de mexer em código ou ferramentas, você precisa ajustar a
+        posição em que está jogando.
+      </p>
+    </div>
+
+    <p>
+      Em qualquer grupo hoje, você consegue identificar três tipos de pessoas
+      em relação à IA:
+    </p>
+
+    <ol style="margin-left: 16px; font-size: 0.9rem; color: var(--text-soft); margin-bottom: 8px;">
+      <li><strong>Usuários distraídos</strong> – usam IA só para curiosidade, memes e atalhos soltos.</li>
+      <li><strong>Profissionais que otimizam tarefas</strong> – usam IA para ganhar tempo no trabalho.</li>
+      <li><strong>Criadores de sistemas</strong> – constroem produtos e processos inteiros com IA trabalhando em silêncio.</li>
+    </ol>
+
+    <p>
+      Este livro existe para te tirar dos dois primeiros grupos e colocar você
+      no terceiro. Isso significa:
+    </p>
+
+    <ul style="margin-left: 16px; font-size: 0.9rem; color: var(--text-soft); margin-bottom: 8px;">
+      <li>Aprender a transformar uma ideia em estrutura de aplicativo.</li>
+      <li>Entender o básico de HTML e componentes visuais, sem complicar.</li>
+      <li>Usar IA como assistente de construção, não como muleta.</li>
+      <li>Publicar seu app na Vercel para qualquer pessoa acessar.</li>
+      <li>Usar Supabase e assinaturas para gerar receita recorrente.</li>
+    </ul>
+
+    <p>
+      Você não precisa virar programador clássico. Precisa virar
+      <span class="highlight">arquiteto de fluxo</span>: a pessoa que decide
+      o que acontece quando o usuário entra, clica, paga, recebe, volta.
+    </p>
+
+    <p>
+      Nas próximas partes, vamos entrar em:
+      <span class="pill-inline">⚙️ APLICAÇÃO PRÁTICA</span>
+      para você desenhar seu primeiro app e entender onde cada peça entra:
+      HTML, IA, Vercel, Supabase e mentalidade.
+    </p>
+  </section>
+
+  <!-- A partir daqui continuarão os capítulos de criação do app (Parte 2/10 em diante) -->
+
+</div>
 
 </body>
 </html>
+<!-- ========================= -->
+<!-- PARTE 2 — CONSTRUINDO O APP -->
+<!-- ========================= -->
+
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 03</div>
+    <h2 class="section-title">A estrutura invisível de um aplicativo moderno.</h2>
+    <p class="section-sub">
+      Antes de aprender HTML, antes de abrir um editor, antes de publicar — 
+      você precisa entender a arquitetura mental dos apps que dominam 2026 em diante.
+    </p>
+  </div>
+
+  <p>
+    Um aplicativo moderno não é mais construído como antigamente. 
+    Hoje, ele se baseia em três camadas essenciais:
+  </p>
+
+  <ol style="margin-left:16px;font-size:0.9rem;color:var(--text-soft);margin-bottom:12px;">
+    <li><strong>A camada de interface (HTML/CSS/JS)</strong> – é o que o usuário vê.</li>
+    <li><strong>A camada de inteligência (IA + prompts)</strong> – onde tudo ganha sentido.</li>
+    <li><strong>A camada de dados (Supabase, Firebase, Planos de assinatura)</strong> – onde você coleta, salva e monetiza.</li>
+  </ol>
+
+  <p>
+    Quando essas três camadas trabalham juntas, você cria algo que 
+    <span class="highlight">gera valor automático</span> — mesmo quando você não está online.
+  </p>
+
+  <div class="quote">
+    Criadores não pensam “como faço um app?”.  
+    Criadores pensam “qual sistema posso deixar trabalhando pra mim enquanto durmo?”.
+  </div>
+</section>
+
+
+<!-- BOTÃO DO WHATSAPP – ESTILO NEON -->
+<section class="section" style="text-align:center;">
+  <div class="section-header">
+    <div class="section-eyebrow">SUPORTE DIRETO</div>
+    <h2 class="section-title">Precisa de ajuda ou quer trocar ideias?</h2>
+    <p class="section-sub">Toque abaixo e fale comigo diretamente pelo meu canal oficial.</p>
+  </div>
+
+  <a href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35" 
+     style="
+       display:inline-block;
+       padding:14px 24px;
+       background:linear-gradient(135deg, #00c8ff, #0084ff);
+       color:white;
+       text-decoration:none;
+       border-radius:999px;
+       font-weight:700;
+       font-size:1rem;
+       box-shadow:0 0 14px rgba(0,200,255,0.75),
+                  0 0 32px rgba(0,130,255,0.55);
+       border:1px solid rgba(0,200,255,0.55);
+     ">
+     Entrar no Canal · WhatsApp
+  </a>
+
+  <p style="margin-top:10px;font-size:0.78rem;color:var(--text-soft);">
+    Resolvo dúvidas · Dou sugestões · Acompanho sua criação
+  </p>
+</section>
+
+
+
+<!-- CAPÍTULO 4 – DEFININDO A IDEIA DO SEU APLICATIVO -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 04</div>
+    <h2 class="section-title">O DNA do seu aplicativo – antes de qualquer código.</h2>
+    <p class="section-sub">
+      Criar um app é como montar um personagem. Antes de abrir o código, 
+      você define quem ele é, o que ele faz, como ele fala e para quem ele existe.
+    </p>
+  </div>
+
+  <p>
+    Antes de construir, responda estas perguntas:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.9rem;color:var(--text-soft);margin-bottom:12px;">
+    <li>Seu aplicativo resolve qual problema?</li>
+    <li>Ele serve para qual tipo de pessoa?</li>
+    <li>Ele será gratuito, pago ou híbrido?</li>
+    <li>Ele precisa de login? Ou é aberto?</li>
+    <li>Ele precisa de IA? Se sim: para quê?</li>
+  </ul>
+
+  <p>
+    Se você não responde isso antes, acaba criando um app confuso, sem propósito.  
+    Aqui, o objetivo é claro: <strong>criar uma ferramenta que qualquer pessoa pode acessar e pagar para usar.</strong>
+  </p>
+
+  <p>
+    Para ficar fácil, deixo um exemplo pronto de identidade inicial:
+  </p>
+
+  <div class="section" style="background:rgba(0,200,255,0.10);border:1px solid rgba(0,200,255,0.35);">
+    <h3 style="margin-bottom:6px;">IDENTIDADE SUGESTÃO — “CreatorMind”</h3>
+    <p>
+      Um aplicativo que ajuda pessoas comuns a construir suas ideias usando IA. 
+      Ele concentra:
+    </p>
+    <ul style="margin-left:14px;font-size:0.88rem;">
+      <li>Gerador de ideias via IA</li>
+      <li>Assistente de criação de site</li>
+      <li>Painel com hábitos e mentalidade</li>
+      <li>Materiais exclusivos para assinantes</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- CAPÍTULO 5 – PRIMEIROS PASSOS NO HTML -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 05</div>
+    <h2 class="section-title">O primeiro código que todo criador precisa saber.</h2>
+    <p class="section-sub">
+      Mesmo usando IA para gerar seu app, você precisa entender a estrutura.
+      Só assim você consegue pedir do jeito certo — e a IA te obedece.
+    </p>
+  </div>
+
+  <p>
+    Todo aplicativo web moderno tem esses três arquivos principais:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.9rem;color:var(--text-soft);">
+    <li><strong>index.html</strong> – a página principal</li>
+    <li><strong>style.css</strong> – o visual</li>
+    <li><strong>script.js</strong> – o comportamento (opcional)</li>
+  </ul>
+
+  <p>
+    Este é o modelo mais simples de um app funcional:
+  </p>
+
+  <pre style="
+    background:#01040e;
+    color:#00c8ff;
+    padding:14px;
+    border-radius:14px;
+    overflow-x:auto;
+    border:1px solid rgba(0,200,255,0.35);
+    margin-bottom:12px;
+  ">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title>Meu App&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h1&gt;Meu Primeiro Aplicativo&lt;/h1&gt;
+
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+
+  <p>
+    Este código é simples, mas representa o esqueleto de 90% dos apps que você vê hoje.
+  </p>
+
+  <div class="quote">
+    Não é o código que te faz ganhar dinheiro.  
+    É saber pedir para a IA gerar o código certo.
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 6 — PUBLICANDO NA VERCEL -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 06</div>
+    <h2 class="section-title">Publicando seu app na Vercel: 100% grátis e global.</h2>
+    <p class="section-sub">
+      Aqui você transforma seu HTML em um aplicativo acessível no mundo inteiro.
+    </p>
+  </div>
+
+  <p>
+    A Vercel é a plataforma que hospeda aplicativos de empresas gigantes…
+    e também hospeda o seu, de graça.
+  </p>
+
+  <h3 style="margin-top:12px;margin-bottom:4px;">Passo 1 – Criar conta</h3>
+  <p>Acesse: <strong>https://vercel.com</strong> e crie uma conta.</p>
+
+  <h3 style="margin-top:12px;margin-bottom:4px;">Passo 2 – Criar um projeto</h3>
+  <p>
+    Você pode publicar seu app de duas formas:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.9rem;color:var(--text-soft);">
+    <li><strong>arrastando a pasta com o HTML</strong> para dentro da Vercel;</li>
+    <li><strong>conectando um repositório do GitHub</strong>.</li>
+  </ul>
+
+  <p>
+    Para quem está começando, recomendo:
+    <span class="highlight">Upload direto da pasta.</span>
+  </p>
+
+  <h3 style="margin-top:12px;margin-bottom:4px;">Passo 3 – Nomear e publicar</h3>
+  <p>
+    Dê um nome elegante ao projeto, como:
+    <span class="highlight">billionmind-creator</span>  
+    ou  
+    <span class="highlight">mind-evolution-app</span>
+  </p>
+
+  <p>
+    Em poucos segundos a Vercel te entrega um link global, como:
+  </p>
+
+  <p style="color:var(--accent);font-size:0.9rem;">
+    https://seuapp.vercel.app
+  </p>
+
+  <div class="quote">
+    Parabéns. A partir desse momento, você não é mais usuário.  
+    Você é proprietário de um aplicativo acessível no mundo inteiro.
+  </div>
+</section>
+<!-- ========================= -->
+<!-- PARTE 3 — SUPABASE & LOGIN -->
+<!-- ========================= -->
+
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 07</div>
+    <h2 class="section-title">Supabase: o cérebro do seu aplicativo.</h2>
+    <p class="section-sub">
+      Se o HTML é o corpo do app, o Supabase é o cérebro.  
+      É nele que ficam usuários, assinaturas, dados, permissões e tudo que 
+      faz o aplicativo funcionar como um sistema profissional.
+    </p>
+  </div>
+
+  <p>
+    O Supabase é uma plataforma que oferece:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.9rem;color:var(--text-soft);">
+    <li><strong>Banco de dados</strong> (onde você salva seus usuários).</li>
+    <li><strong>Autenticação</strong> (login e cadastro).</li>
+    <li><strong>Regras de segurança</strong>.</li>
+    <li><strong>API automática</strong> para você acessar tudo via código.</li>
+  </ul>
+
+  <p>
+    E o melhor: <strong>é grátis para começar</strong>.  
+    Isso permite que qualquer pessoa, mesmo sem ser programador clássico, crie sistemas
+    do nível das startups modernas.
+  </p>
+
+  <div class="quote">
+    “A partir de 2026, quem controla dados controla o próprio negócio.”
+  </div>
+
+  <p>
+    Vamos configurar seu Supabase em passos simples, diretos e impossíveis de errar.
+  </p>
+</section>
+
+
+
+<!-- CAPÍTULO 8 – CRIANDO SUA CONTA -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 08</div>
+    <h2 class="section-title">Criando sua conta Supabase.</h2>
+    <p class="section-sub">Todo criador deve ter sua base segura. Aqui você faz isso.</p>
+  </div>
+
+  <h3 style="margin-bottom:6px;">Passo 1 – Acesse o site</h3>
+  <p>
+    Entre em:  
+    <strong>https://supabase.com</strong>
+  </p>
+
+  <h3 style="margin-bottom:6px;margin-top:12px;">Passo 2 – Criar conta</h3>
+  <p>Você pode criar pelo Google, GitHub ou e-mail. Use o que for mais simples.</p>
+
+  <h3 style="margin-bottom:6px;margin-top:12px;">Passo 3 – Criar um projeto</h3>
+  <p>Ao entrar, clique em <strong>New Project</strong>.</p>
+
+  <p>Nele você vai escolher:</p>
+  <ul style="margin-left:16px;font-size:0.9rem;color:var(--text-soft);">
+    <li><strong>Nome do projeto:</strong> billionmind-app</li>
+    <li><strong>Senha do banco:</strong> pode ser qualquer uma segura</li>
+    <li><strong>Região:</strong> escolha a mais próxima do Brasil</li>
+  </ul>
+
+  <p>Após criar, o Supabase leva cerca de 20 a 40 segundos para deixar tudo pronto.</p>
+</section>
+
+
+
+<!-- CAPÍTULO 9 – CRIANDO A TABELA DE USUÁRIOS -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 09</div>
+    <h2 class="section-title">Criando a tabela de usuários dentro do seu app.</h2>
+    <p class="section-sub">Agora você cria o lugar onde seu aplicativo registra cada usuário.</p>
+  </div>
+
+  <p>
+    O Supabase já cria uma tabela automática chamada  
+    <strong>auth.users</strong>, que guarda:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.9rem;">
+    <li>email</li>
+    <li>senha (criptografada)</li>
+    <li>id único</li>
+    <li>data de criação</li>
+  </ul>
+
+  <p>
+    Porém, para deixar o app mais profissional, vamos criar uma tabela complementar:
+  </p>
+
+  <div class="section" style="background:rgba(0,200,255,0.07);border:1px solid rgba(0,200,255,0.35);">
+    <h3 style="margin-bottom:6px;">Tabela: profiles</h3>
+    <p>Serve para armazenar informações adicionais, como:</p>
+    <ul style="margin-left:14px;font-size:0.88rem;">
+      <li>nome do usuário</li>
+      <li>foto de perfil</li>
+      <li>tipo de assinatura</li>
+      <li>último acesso</li>
+    </ul>
+  </div>
+
+  <h3 style="margin-top:12px;margin-bottom:6px;">Como criar a tabela:</h3>
+
+  <pre style="
+    background:#01040e;
+    color:#00c8ff;
+    padding:14px;
+    border-radius:14px;
+    border:1px solid rgba(0,200,255,0.35);
+    overflow-x:auto;
+  ">
+create table profiles (
+  id uuid references auth.users(id) on delete cascade,
+  name text,
+  plan text default 'free',
+  avatar_url text,
+  last_access timestamp with time zone default now(),
+  primary key (id)
+);
+  </pre>
+
+  <p>
+    Com isso, todo usuário que logar vai automaticamente ter um perfil vinculado.
+  </p>
+
+  <div class="quote">
+    Controle é tudo: quando você entende essa estrutura, você domina o app inteiro.
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 10 – SISTEMA DE LOGIN -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 10</div>
+    <h2 class="section-title">Criando o sistema de login do seu app.</h2>
+    <p class="section-sub">Agora sim: o seu app ganha vida real.</p>
+  </div>
+
+  <p>
+    O login básico do Supabase funciona com apenas algumas linhas de JavaScript.
+    Assim, qualquer usuário pode criar conta, fazer login e entrar no app de forma segura.
+  </p>
+
+  <p>Segue o código mais simples e funcional possível:</p>
+
+  <pre style="
+    background:#01040e;
+    color:#00ffae;
+    padding:14px;
+    border-radius:14px;
+    border:1px solid rgba(0,200,255,0.35);
+    overflow-x:auto;
+  ">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js'
+
+const supabase = createClient(
+  'SUA_SUPABASE_URL',
+  'SUA_SUPABASE_ANON_KEY'
+)
+
+async function login(email, senha) {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: email,
+    password: senha
+  })
+
+  if (error) {
+    alert('Erro ao logar: ' + error.message)
+    return
+  }
+
+  alert('Login realizado!')
+}
+  </pre>
+
+  <p>
+    Simples, limpo, direto.  
+    Isso é suficiente para seu app ter um sistema de login completo.
+  </p>
+
+  <p>
+    A IA pode gerar telas de login infinitas, mas você só precisa saber isso:  
+    <span class="highlight">o Supabase cuida de tudo nos bastidores.</span>
+  </p>
+</section>
+
+
+
+<!-- CAPÍTULO 11 – ASSINATURAS & PLANOS -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 11</div>
+    <h2 class="section-title">Criando planos pagos (free, pro, premium).</h2>
+    <p class="section-sub">
+      Aqui você muda de “criador de app” para “criador de negócio”.
+    </p>
+  </div>
+
+  <p>
+    O Supabase não tem sistema de pagamento interno, então você conecta:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.9rem;color:var(--text-soft);">
+    <li>Cakto</li>
+    <li>Stripe</li>
+    <li>Kiwify</li>
+    <li>Pagar.me</li>
+  </ul>
+
+  <p>
+    Como você está usando a **Cakto**, basta:
+  </p>
+
+  <ol style="margin-left:16px;color:var(--text-soft);">
+    <li>Criar o produto na Cakto.</li>
+    <li>Pegar o link de pagamento.</li>
+    <li>Colocar o link dentro do botão do app.</li>
+  </ol>
+
+  <p>
+    E então você registra no Supabase qual plano o usuário comprou.
+  </p>
+
+  <div class="section" style="background:rgba(247,200,106,0.06);border:1px solid rgba(247,200,106,0.35);">
+    <h3 style="margin-bottom:6px;">Campo sugerido na tabela profiles:</h3>
+    <pre style="
+      background:#01040e;
+      color:#ffd27f;
+      padding:14px;
+      border-radius:12px;
+      border:1px solid rgba(247,200,106,0.35);
+      overflow-x:auto;
+    ">
+plan text default 'free'
+    </pre>
+  </div>
+
+  <p>
+    Assim, toda vez que o usuário loga, o app sabe:
+  </p>
+
+  <ul style="margin-left:16px;">
+    <li>Se ele é free</li>
+    <li>Se ele é pro</li>
+    <li>Se ele é premium</li>
+  </ul>
+
+  <p>
+    Isso ativa/desativa telas, funções, conteúdos e bônus automaticamente.
+  </p>
+</section>
+
+
+
+<!-- CAPÍTULO 12 – BOTÃO DO WHATSAPP (SEGUNDO PONTO) -->
+<section class="section" style="text-align:center;">
+  <div class="section-header">
+    <div class="section-eyebrow">SUPORTE VIP</div>
+    <h2 class="section-title">Conta com meu suporte pessoal durante a criação.</h2>
+    <p class="section-sub">Entre no meu canal e tire dúvidas diretamente comigo.</p>
+  </div>
+
+  <a href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35"
+     style="
+       display:inline-block;
+       padding:16px 26px;
+       background:linear-gradient(135deg, #00f7ff, #0099ff);
+       color:white;
+       font-weight:700;
+       text-decoration:none;
+       border-radius:999px;
+       box-shadow:0 0 18px rgba(0,200,255,0.8),
+                  0 0 30px rgba(0,200,255,0.6);
+       border:1px solid rgba(0,200,255,0.5);
+       font-size:1rem;
+     ">
+     Entrar no Canal · WhatsApp
+  </a>
+
+  <p style="margin-top:10px;font-size:0.8rem;color:var(--text-soft);">
+    Dúvidas, suporte, ideias, correções e direcionamento.
+  </p>
+</section>
+<!-- ========================= -->
+<!-- PARTE 4 — TELAS INTERNAS DO APP -->
+<!-- ========================= -->
+
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 13</div>
+    <h2 class="section-title">As telas internas do seu aplicativo.</h2>
+    <p class="section-sub">
+      Agora começamos a construir o que realmente entrega valor: 
+      as páginas internas do app.
+    </p>
+  </div>
+
+  <p>
+    Todos os aplicativos modernos seguem uma estrutura simples de navegação:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.9rem;">
+    <li><strong>Home (dashboard)</strong> — visão geral do usuário</li>
+    <li><strong>Funções principais</strong> — ferramentas que o app oferece</li>
+    <li><strong>Assinaturas</strong> — planos pro/premium</li>
+    <li><strong>Perfil</strong> — informações pessoais</li>
+    <li><strong>Suporte</strong> — ajuda direta (seu WhatsApp)</li>
+  </ul>
+
+  <p>
+    A IA te ajuda a construir tudo, mas você precisa saber 
+    <span class="highlight">como organizar o fluxo</span>.
+  </p>
+</section>
+
+
+
+<!-- CAPÍTULO 14 – DASHBOARD -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 14</div>
+    <h2 class="section-title">Construindo o Dashboard – o coração do aplicativo.</h2>
+    <p class="section-sub">
+      O Dashboard é aquilo que o usuário vê assim que entra no app.
+      Ele define a experiência e mostra os primeiros indicadores.
+    </p>
+  </div>
+
+  <p>
+    O dashboard precisa ser:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.9rem;">
+    <li><strong>simples</strong> para o usuário</li>
+    <li><strong>bonito</strong> para despertar interesse</li>
+    <li><strong>funcional</strong> para indicar caminhos</li>
+  </ul>
+
+  <p>
+    Aqui está um modelo de dashboard moderno, já preparado para seu app:
+  </p>
+
+  <pre style="
+    background:#01040e;
+    color:#00eaff;
+    padding:14px;
+    border-radius:14px;
+    border:1px solid rgba(0,200,255,0.35);
+    overflow-x:auto;
+  ">
+<div class="dashboard">
+  <h2>Bem-vindo, Usuário</h2>
+
+  <div class="dash-cards">
+    <div class="dash-card">
+      <h3>Seus Projetos</h3>
+      <p>0 aplicativos criados</p>
+    </div>
+
+    <div class="dash-card">
+      <h3>Progresso</h3>
+      <div class="progress-bar"></div>
+    </div>
+
+    <div class="dash-card">
+      <h3>Seu Plano</h3>
+      <p>Free</p>
+    </div>
+  </div>
+
+  <button class="btn-main">Upgrade de Plano</button>
+</div>
+  </pre>
+
+  <p>
+    Isso será totalmente estilizado na versão final do seu app, mas para o e-book, 
+    o importante é que o leitor veja a estrutura que funciona.
+  </p>
+
+  <div class="quote">
+    Se o Dashboard é claro, o usuário sabe o que fazer.  
+    Se é confuso, ele fecha o app.
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 15 – NAVEGAÇÃO DO APP -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 15</div>
+    <h2 class="section-title">Criando a barra de navegação.</h2>
+    <p class="section-sub">
+      A navegação transforma um conjunto de páginas em um aplicativo real.
+    </p>
+  </div>
+
+  <p>
+    Um menu simples e eficiente para mobile deve ter entre 3 e 5 botões:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.9rem;">
+    <li>🏠 Home</li>
+    <li>⚙️ Ferramentas</li>
+    <li>💎 Premium</li>
+    <li>👤 Perfil</li>
+  </ul>
+
+  <p>
+    Aqui está o HTML base do menu:
+  </p>
+
+  <pre style="
+    background:#01040e;
+    color:#00ffd4;
+    padding:14px;
+    border-radius:14px;
+    border:1px solid rgba(0,200,255,0.35);
+    overflow-x:auto;
+  ">
+<nav class="bottom-nav">
+  <a href="#home">🏠</a>
+  <a href="#tools">⚙️</a>
+  <a href="#premium">💎</a>
+  <a href="#profile">👤</a>
+</nav>
+  </pre>
+
+  <p>
+    A IA pode estilizar esse menu do jeito que você quiser.  
+    No e-book, a ideia é ensinar o caminho e mostrar o real.
+  </p>
+</section>
+
+
+
+<!-- CAPÍTULO 16 – TELA DE ASSINATURAS -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 16</div>
+    <h2 class="section-title">Tela de assinaturas: onde o dinheiro acontece.</h2>
+    <p class="section-sub">
+      Aqui você conecta os seus links da Cakto e transforma visitantes em receita.
+    </p>
+  </div>
+
+  <p>
+    Seus links são:
+  </p>
+
+  <div style="font-size:0.9rem;margin-bottom:12px;">
+    <strong>Oferta principal (R$ 109,98):</strong><br>
+    https://pay.cakto.com.br/4ehcq2y_672236
+    <br><br>
+    <strong>Oferta média (R$ 48,98):</strong><br>
+    https://pay.cakto.com.br/v8k65mm_672262
+  </div>
+
+  <p>Aqui está o HTML da área de planos:</p>
+
+  <pre style="
+    background:#01040e;
+    color:#ffd27f;
+    padding:14px;
+    border-radius:14px;
+    border:1px solid rgba(247,200,106,0.35);
+    overflow-x:auto;
+  ">
+<div class="plans">
+  <div class="plan-card">
+    <h3>Plano Principal</h3>
+    <p>Acesso completo • Conteúdo total • Suporte no WhatsApp</p>
+    <a class="btn-main" 
+       href="https://pay.cakto.com.br/4ehcq2y_672236">Comprar R$ 109,98</a>
+  </div>
+
+  <div class="plan-card">
+    <h3>Plano Médio</h3>
+    <p>Acesso reduzido • Conteúdos principais</p>
+    <a class="btn-main"
+       href="https://pay.cakto.com.br/v8k65mm_672262">Comprar R$ 48,98</a>
+  </div>
+</div>
+  </pre>
+
+  <p>
+    Agora seu aplicativo está 100% conectado ao seu negócio.
+  </p>
+
+  <div class="quote">
+    Criador inteligente não vende “coisa”.  
+    Criador inteligente vende acesso, continuidade e visão.
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 17 – TELA DE PERFIL -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 17</div>
+    <h2 class="section-title">Tela de Perfil – onde o usuário se reconhece.</h2>
+    <p class="section-sub">
+      A tela de perfil é onde o usuário vê quem ele é dentro do seu app.
+    </p>
+  </div>
+
+  <p>
+    Aqui está o modelo base:
+  </p>
+
+  <pre style="
+    background:#01040e;
+    color:#00d5ff;
+    padding:14px;
+    border-radius:14px;
+    overflow-x:auto;
+    border:1px solid rgba(0,200,255,0.34);
+  ">
+<div class="profile">
+  <img src="profile.jpg" class="profile-pic">
+  <h3>Usuário</h3>
+  <p>Plano: Free</p>
+
+  <button class="btn-main">Trocar Plano</button>
+  <button class="btn-sec">Sair</button>
+</div>
+  </pre>
+
+  <p>
+    Essa tela futuramente pode puxar dados diretamente do Supabase:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.9rem;">
+    <li>Nome</li>
+    <li>Plano</li>
+    <li>Foto</li>
+    <li>Último acesso</li>
+  </ul>
+
+  <p>
+    Você decide como evoluir isso.
+  </p>
+</section>
+
+
+
+<!-- CAPÍTULO 18 – LINK DE SUPORTE -->
+<section class="section" style="text-align:center;">
+  <div class="section-header">
+    <div class="section-eyebrow">SUPORTE</div>
+    <h2 class="section-title">Fale comigo diretamente.</h2>
+    <p class="section-sub">
+      Tirar dúvidas com quem sabe o caminho economiza meses de erros.
+    </p>
+  </div>
+
+  <a href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35"
+     style="
+       display:inline-block;
+       padding:16px 26px;
+       background:linear-gradient(135deg, #00f7ff, #0099ff);
+       color:white;
+       font-weight:700;
+       text-decoration:none;
+       border-radius:999px;
+       box-shadow:0 0 18px rgba(0,200,255,0.8),
+                  0 0 30px rgba(0,200,255,0.6);
+       border:1px solid rgba(0,200,255,0.5);
+       font-size:1rem;
+     ">
+     Entrar no Canal · WhatsApp
+  </a>
+
+  <p style="margin-top:10px;font-size:0.8rem;color:var(--text-soft);">
+    Suporte • Ideias • Correções • Testes
+  </p>
+</section>
+<!-- ========================= -->
+<!-- PARTE 5 — MENTALIDADE DO CRIADOR FUTURISTA -->
+<!-- ========================= -->
+
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 19</div>
+    <h2 class="section-title">A mente do criador que controla a IA.</h2>
+    <p class="section-sub">
+      Aqui começa a verdadeira transformação.  
+      A construção do seu app depende do seu código mental — não apenas do código do navegador.
+    </p>
+  </div>
+
+  <p>
+    Quando você entende tecnologia, você cria.  
+    Quando você entende mentalidade, você domina.
+  </p>
+
+  <div class="quote">
+    Você não precisa ser gênio.  
+    Você precisa ser consistente, estratégico e impossível de quebrar.
+  </div>
+
+  <p>
+    A partir deste capítulo, você entra na parte que separa amadores de criadores:
+    <span class="highlight">a postura mental</span>.
+  </p>
+</section>
+
+
+
+<!-- IMAGEM INTERNA (MENTALIDADE) -->
+<section class="section" style="padding:0;">
+  <img src="https://images.unsplash.com/photo-1520975918318-3aec2d8ea36c?q=80&w=1200"
+       style="width:100%;border-radius:22px 22px 0 0;opacity:0.85;">
+  <div style="padding:20px 20px 24px;">
+    <div class="section-eyebrow">VISÃO</div>
+    <h2 style="font-size:1.3rem;margin-bottom:6px;">
+      O criador não vê o mundo como ele é.  
+      Vê como ele *pode ser*.
+    </h2>
+    <p style="font-size:0.92rem;color:var(--text-soft);">
+      Essa imagem representa algo simples:  
+      <strong>foco e controle</strong>.  
+      Enquanto o mundo perde tempo com distrações, você está construindo.
+    </p>
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 20 — A NOVA ERA DO CRIADOR -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 20</div>
+    <h2 class="section-title">2026+: Criadores de sistemas dominam tudo.</h2>
+    <p class="section-sub">
+      A internet não premia mais quem posta muito.  
+      Ela premia quem constrói sistemas que funcionam sozinhos.
+    </p>
+  </div>
+
+  <p>
+    Em 2026 e nos anos seguintes, três tipos de criadores vão dominar:
+  </p>
+
+  <ol style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);">
+    <li><strong>Os que criam ferramentas usando IA</strong>.</li>
+    <li><strong>Os que monetizam o próprio conhecimento</strong>.</li>
+    <li><strong>Os que constroem rotinas de disciplina extrema</strong>.</li>
+  </ol>
+
+  <p>
+    Quem depender apenas de “conteúdos” será engolido.  
+    Quem cria sistemas será pago para sempre.
+  </p>
+
+  <div class="quote">
+    Um sistema, mesmo simples, vale mais do que 300 vídeos virais.
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 21 – O MODO DONO -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 21</div>
+    <h2 class="section-title">O Modo Dono – a chave para nunca depender de ninguém.</h2>
+    <p class="section-sub">
+      Sem esse modo ativado, nenhum app, e-book ou projeto digital sobrevive.
+    </p>
+  </div>
+
+  <p>
+    O Modo Dono é a mentalidade que define:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.9rem;">
+    <li><strong>postura</strong> – você age, não espera;</li>
+    <li><strong>ritmo</strong> – você cria rotina própria;</li>
+    <li><strong>execução</strong> – você decide e termina;</li>
+    <li><strong>resolução</strong> – você resolve, não terceiriza tudo.</li>
+  </ul>
+
+  <p>
+    Criadores fracos falam.  
+    Criadores fortes fazem.
+  </p>
+
+  <p>
+    Quando você ativa o modo dono, você sai do ciclo:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.88rem;color:var(--text-soft);">
+    <li>procrastinação</li>
+    <li>medo do resultado</li>
+    <li>falta de clareza</li>
+  </ul>
+
+  <p>
+    E entra no ciclo:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.88rem;color:var(--text-soft);">
+    <li>criação</li>
+    <li>evolução</li>
+    <li>disciplina</li>
+    <li>ação diária</li>
+  </ul>
+
+  <div class="quote">
+    Dono não pergunta “será que funciona?”.  
+    Dono pergunta “como faço funcionar?”.
+  </div>
+</section>
+
+
+
+<!-- IMAGEM INTERNA – LUXO FUTURISTA -->
+<section class="section" style="padding:0;">
+  <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200"
+       style="width:100%;border-radius:22px 22px 0 0;opacity:0.85;">
+  <div style="padding:20px;">
+    <div class="section-eyebrow">IDENTIDADE</div>
+    <h2 style="font-size:1.3rem;margin-bottom:6px;">
+      Luxo é padrão.  
+      Confusão é ruído.  
+      Disciplina é poder.
+    </h2>
+    <p style="font-size:0.9rem;color:var(--text-soft);">
+      Quando você cria algo com estética forte, as pessoas acreditam no valor.
+      Quando você cria algo com intenção, elas confiam na estrutura.
+    </p>
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 22 – O CÓDIGO MENTAL DO CRIADOR -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 22</div>
+    <h2 class="section-title">O Código Mental do Criador.</h2>
+    <p class="section-sub">
+      Se você dominar apenas esta lista, já estará na frente de 99% das pessoas.
+    </p>
+  </div>
+
+  <ul style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);">
+    <li>Crie antes de consumir.</li>
+    <li>Produza mesmo sem motivação.</li>
+    <li>Pense em sistemas, não em tarefas.</li>
+    <li>Seja o dono do projeto, não peça permissão.</li>
+    <li>Cumpra a palavra consigo mesmo.</li>
+    <li>Se distancie de quem não pensa grande.</li>
+    <li>Construa em silêncio, entregue em alto nível.</li>
+    <li>Domine a IA — não seja dominado por ela.</li>
+    <li>Tenha rotina de execução.</li>
+    <li>Enxergue o futuro como obra sua, não como destino.</li>
+  </ul>
+
+  <div class="quote">
+    O criador não espera o momento perfeito.  
+    Ele cria o momento perfeito com ação.
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 23 – ROTINA DE ALTA PERFORMANCE -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 23</div>
+    <h2 class="section-title">A rotina que transforma qualquer pessoa em máquina de criação.</h2>
+    <p class="section-sub">
+      Não existe talento que supere disciplina.  
+      E não existe resultado sem repetição estratégica.
+    </p>
+  </div>
+
+  <h3 style="margin-bottom:6px;">Rotina diária sugerida (2026+):</h3>
+
+  <ul style="margin-left:16px;font-size:0.9rem;">
+    <li><strong>15 min</strong> — foco total (sem celular)</li>
+    <li><strong>30 min</strong> — criação com IA</li>
+    <li><strong>20 min</strong> — evolução no app</li>
+    <li><strong>10 min</strong> — revisão de progresso</li>
+    <li><strong>10 min</strong> — leitura estratégica</li>
+  </ul>
+
+  <p>
+    Em 1 hora e 25 minutos você faz mais do que a maioria faz em 1 dia inteiro.
+  </p>
+
+  <div class="quote">
+    O mundo recompensa quem age sem parar.
+  </div>
+</section>
+
+
+
+<!-- LINK DE SUPORTE (FECHAMENTO DA PARTE 5) -->
+<section class="section" style="text-align:center;">
+  <div class="section-header">
+    <div class="section-eyebrow">FALAR COMIGO</div>
+    <h2 class="section-title">Suporte direto para sua evolução.</h2>
+    <p class="section-sub">
+      Se surgir qualquer dúvida, fale comigo diretamente.
+    </p>
+  </div>
+
+  <a href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35"
+     style="
+       display:inline-block;
+       padding:16px 28px;
+       background:linear-gradient(135deg, #00f7ff, #00a2ff);
+       color:white;
+       font-weight:700;
+       text-decoration:none;
+       border-radius:999px;
+       font-size:1rem;
+       box-shadow:0 0 20px rgba(0,200,255,0.8),
+                  0 0 28px rgba(0,150,255,0.55);
+       border:1px solid rgba(0,200,255,0.55);
+     ">
+     Entrar no Canal · WhatsApp
+  </a>
+
+  <p style="margin-top:10px;font-size:0.8rem;color:var(--text-soft);">
+    Evolução • Suporte • Aceleração
+  </p>
+</section>
+<!-- ========================= -->
+<!-- PARTE 6 — MENTALIDADE FINANCEIRA & EVOLUÇÃO -->
+<!-- ========================= -->
+
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 24</div>
+    <h2 class="section-title">A nova mentalidade financeira do criador 2026+.</h2>
+    <p class="section-sub">
+      Você não está aqui apenas para criar um app.  
+      Você está aqui para construir um <strong>ecossistema próprio de valor</strong>.
+    </p>
+  </div>
+
+  <p>
+    O criador do futuro não depende de sorte, viral, hype ou tendência.  
+    Ele depende de <strong>sistema + repetição + visão</strong>.
+  </p>
+
+  <p>
+    A partir de agora vamos evoluir sua mentalidade financeira para o novo mundo:  
+    um mundo onde IA cuida do trabalho pesado e você cuida da estratégia.
+  </p>
+
+  <div class="quote">
+    Riqueza não vem de trabalhar mais.  
+    Riqueza vem de trabalhar melhor — com sistemas que trabalham por você.
+  </div>
+</section>
+
+
+
+<!-- IMAGEM DE LUXO FINANCEIRO -->
+<section class="section" style="padding:0;">
+  <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=1200"
+       style="width:100%;border-radius:22px 22px 0 0;opacity:0.86;">
+  <div style="padding:20px 22px;">
+    <div class="section-eyebrow">FUTURO</div>
+    <h2 style="font-size:1.3rem;margin-bottom:6px;">
+      O futuro não pertence a quem trabalha duro.  
+      Pertence a quem constrói inteligência.
+    </h2>
+    <p style="font-size:0.9rem;color:var(--text-soft);">
+      Luxo não é ostentação — é consequência de estrutura, pensamento grande  
+      e execução constante.
+    </p>
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 25 — A LÓGICA DO DINHEIRO INTELIGENTE -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 25</div>
+    <h2 class="section-title">A lógica do dinheiro inteligente.</h2>
+    <p class="section-sub">
+      O dinheiro que muda vidas não é conquistado com esforço físico.  
+      É conquistado com decisões inteligentes.
+    </p>
+  </div>
+
+  <p>
+    Em 2026, o fluxo financeiro funciona assim:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);">
+    <li><strong>dinheiro rápido</strong> vem de vendas diretas</li>
+    <li><strong>dinheiro médio</strong> vem de produtos digitais</li>
+    <li><strong>dinheiro longo</strong> vem de assinaturas e sistemas</li>
+  </ul>
+
+  <p>
+    E você está construindo os três.
+  </p>
+
+  <p>
+    A IA multiplica sua velocidade, mas você precisa direcionar a intenção:
+  </p>
+
+  <div class="section" style="background:rgba(0,200,255,0.08);border:1px solid rgba(0,200,255,0.35);">
+    <h3 style="margin-bottom:6px;">A fórmula do criador inteligente:</h3>
+    <ul style="margin-left:16px;font-size:0.88rem;">
+      <li>1 sistema funcionando</li>
+      <li>1 funil simples rodando</li>
+      <li>1 produto de assinatura</li>
+      <li>postura de disciplina</li>
+      <li>IA como braço direito</li>
+    </ul>
+  </div>
+
+  <p>
+    Isso muda tudo.
+  </p>
+
+  <div class="quote">
+    “Quando você aprende a criar sistemas, você nunca mais volta a ser a mesma pessoa.”
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 26 — ATIVOS DIGITAIS -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 26</div>
+    <h2 class="section-title">Ativos digitais: a riqueza que ninguém te contou.</h2>
+    <p class="section-sub">
+      Você está criando os mesmos tipos de ativos que grandes players usam — mas sem complicação.
+    </p>
+  </div>
+
+  <p>
+    Um ativo digital é qualquer coisa que:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.9rem;">
+    <li>Vive online</li>
+    <li>Pode ser entregue automaticamente</li>
+    <li>Pode ser vendido infinitas vezes sem custo adicional</li>
+    <li>É construído uma vez e monetiza para sempre</li>
+  </ul>
+
+  <p>
+    Exemplos que você próprio está criando:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.9rem;">
+    <li>Este e-book de 100 páginas</li>
+    <li>Seu aplicativo futurista</li>
+    <li>Seu canal no WhatsApp</li>
+    <li>Sua página de vendas</li>
+  </ul>
+
+  <p>
+    Isso é literalmente a fábrica do seu negócio.
+  </p>
+
+  <div class="quote">
+    Ativos digitais = liberdade multiplicada.
+  </div>
+</section>
+
+
+
+<!-- IMAGEM DE PODER / RIQUEZA -->
+<section class="section" style="padding:0;">
+  <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200"
+       style="width:100%;border-radius:22px 22px 0 0;opacity:0.86;">
+  <div style="padding:20px;">
+    <div class="section-eyebrow">INTELIGÊNCIA</div>
+    <h2 style="font-size:1.3rem;margin-bottom:6px;">
+      Quando você domina a IA, você domina o jogo.
+    </h2>
+    <p style="font-size:0.9rem;color:var(--text-soft);">
+      Pessoas comuns usam IA para diversão.  
+      Criadores usam IA para construir patrimônio.
+    </p>
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 27 – DECISÃO FINANCEIRA DO CRIADOR -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 27</div>
+    <h2 class="section-title">Tomadas de decisão do criador futurista.</h2>
+    <p class="section-sub">
+      A forma como você toma decisões define sua ascensão.
+    </p>
+  </div>
+
+  <p>
+    Aqui estão as regras práticas para decisões inteligentes:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);">
+    <li>Decida rápido, ajuste depois.</li>
+    <li>Simplifique até ficar impossível errar.</li>
+    <li>Construa pequenos blocos todos os dias.</li>
+    <li>O que é prioridade? Faça agora.</li>
+    <li>Evite pessoas lentas e indecisas.</li>
+    <li>Proteja sua energia criativa.</li>
+  </ul>
+
+  <div class="quote">
+    Sua vida é a soma das decisões que você não adiou.
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 28 – SCRIPT AVANÇADO DE IA -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 28</div>
+    <h2 class="section-title">Scripts avançados de IA para criar produtos automaticamente.</h2>
+    <p class="section-sub">
+      A partir de agora, você também aprende o que pedir para IA construir sistemas reais.
+    </p>
+  </div>
+
+  <p>
+    Aqui vai um dos melhores scripts possíveis para criar apps, páginas, sistemas ou designs:
+  </p>
+
+  <pre style="
+    background:#01040e;
+    color:#00ffea;
+    padding:14px;
+    border-radius:14px;
+    border:1px solid rgba(0,200,255,0.35);
+    overflow-x:auto;
+  ">
+PROMPT:  
+"Quero que você atue como meu engenheiro-chefe de software.  
+Seu objetivo é construir uma estrutura completa baseada em [IDEIA].  
+Crie:  
+1. Identidade visual  
+2. Estrutura do app  
+3. HTML completo  
+4. Componentes estilizados  
+5. Sistema de login  
+6. Rotas  
+7. Sessões protegidas  
+8. Botões de pagamento  
+9. Versão mobile responsiva  
+10. Expanda tudo quando eu pedir 'próximo nível'."
+  </pre>
+
+  <p>
+    Esse script sozinho vale ouro — e você já sabe usar.
+  </p>
+</section>
+
+
+
+<!-- CAPÍTULO 29 – MINDSET DE RIQUEZA -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 29</div>
+    <h2 class="section-title">Mindset de riqueza: as leis invisíveis do dinheiro.</h2>
+    <p class="section-sub">
+      Pessoas ricas têm comportamentos ricos — antes de terem dinheiro.
+    </p>
+  </div>
+
+  <ul style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);">
+    <li>Riqueza começa na mente, não no bolso.</li>
+    <li>Você não gasta para se sentir bem.  
+        Você investe para expandir sua capacidade.</li>
+    <li>Dinheiro é energia — ele vai onde há clareza.</li>
+    <li>Disciplina vale mais do que motivação.</li>
+    <li>Seus hábitos criam ou destroem suas possibilidades.</li>
+    <li>Sistemas valem mais do que força física.</li>
+  </ul>
+
+  <div class="quote">
+    A mente rica vê oportunidades onde outros vêem problemas.
+  </div>
+</section>
+
+
+
+<!-- SUPORTE / SEÇÃO FINAL DA PARTE 6 -->
+<section class="section" style="text-align:center;">
+  <div class="section-header">
+    <div class="section-eyebrow">SUPORTE DIRETO</div>
+    <h2 class="section-title">Fale comigo quando precisar.</h2>
+    <p class="section-sub">
+      Está absorvendo muito conteúdo?  
+      Se quiser tirar dúvidas, é só clicar abaixo:
+    </p>
+  </div>
+
+  <a href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35"
+     style="
+       display:inline-block;
+       padding:16px 28px;
+       background:linear-gradient(135deg, #00faff, #0099ff);
+       color:white;
+       font-weight:700;
+       text-decoration:none;
+       border-radius:999px;
+       font-size:1rem;
+       box-shadow:0 0 20px rgba(0,200,255,0.8),
+                  0 0 28px rgba(0,150,255,0.55);
+       border:1px solid rgba(0,200,255,0.55);
+     ">
+     Entrar no Canal · WhatsApp
+  </a>
+
+  <p style="margin-top:10px;font-size:0.8rem;color:var(--text-soft);">
+    Suporte • Direção • Clareza
+  </p>
+</section>
+<!-- ========================= -->
+<!-- PARTE 7 — O EFEITO ALFA DO CRIADOR -->
+<!-- ========================= -->
+
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 30</div>
+    <h2 class="section-title">O Efeito Alfa do Criador.</h2>
+    <p class="section-sub">
+      Esta é a virada de chave que transforma pessoas comuns em máquinas de execução.
+    </p>
+  </div>
+
+  <p>
+    O Efeito Alfa é o estado mental onde você se torna extremamente focado,
+    disciplinado, frio e calculado na busca dos seus objetivos.
+  </p>
+
+  <p>
+    Ele acontece quando três elementos se alinham:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);">
+    <li><strong>clareza</strong> — saber exatamente o que quer;</li>
+    <li><strong>ambiente</strong> — lugar mental e físico que ajuda ao invés de atrapalhar;</li>
+    <li><strong>ação contínua</strong> — fazer independente de humor.</li>
+  </ul>
+
+  <div class="quote">
+    Você não se torna alfa por ser melhor que os outros.  
+    Você se torna alfa por ser melhor do que você mesmo ontem.
+  </div>
+</section>
+
+
+
+<!-- IMAGEM PODEROSA (Efeito Alfa) -->
+<section class="section" style="padding:0;">
+  <img src="https://images.unsplash.com/photo-1520975918318-3aec2d8ea36c?q=80&w=1200"
+       style="width:100%;border-radius:22px 22px 0 0;opacity:0.90;">
+  <div style="padding:20px;">
+    <div class="section-eyebrow">ALFA</div>
+    <h2 style="font-size:1.3rem;margin-bottom:6px;">
+      O foco cria o poder.  
+      A disciplina sustenta.  
+      A execução transforma.
+    </h2>
+    <p style="font-size:0.9rem;color:var(--text-soft);">
+      Esta seção prepara você para o modo criador definitivo.
+    </p>
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 31 – OS 5 PILARES DO CRIADOR ALFA -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 31</div>
+    <h2 class="section-title">Os 5 pilares do Criador Alfa.</h2>
+    <p class="section-sub">Estes pilares definem sua velocidade.</p>
+  </div>
+
+  <ol style="margin-left:16px;font-size:0.94rem;color:var(--text-soft);">
+    <li><strong>Pilar 1 — Disciplina Estratégica</strong><br>
+        Fazer mesmo sem vontade. O corpo acompanha a mente.</li>
+
+    <li><strong>Pilar 2 — Ambiente Blindado</strong><br>
+        Bloquear o que te atrasa. Proteger sua energia.</li>
+
+    <li><strong>Pilar 3 — Clareza Total</strong><br>
+        Saber o que quer, por quê e como vai conseguir.</li>
+
+    <li><strong>Pilar 4 — Criatividade Direcionada</strong><br>
+        IA te dá ideias, mas você dá direção.</li>
+
+    <li><strong>Pilar 5 — Execução Diária</strong><br>
+        1% por dia = 37x melhor em 1 ano.</li>
+  </ol>
+</section>
+
+
+
+<!-- CAPÍTULO 32 – ROTINA SEMANAL ALFA -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 32</div>
+    <h2 class="section-title">A Rotina Semanal Alfa 2026+.</h2>
+    <p class="section-sub">
+      Uma semana bem feita produz mais evolução que meses de tentativa aleatória.
+    </p>
+  </div>
+
+  <h3 style="margin-bottom:8px;">SEGUNDA — Construção</h3>
+  <p>Criar páginas, desenvolver sistema, estruturar.</p>
+
+  <h3 style="margin-bottom:8px;">TERÇA — IA & Automação</h3>
+  <p>Treinar IA, criar prompts, acelerar processos.</p>
+
+  <h3 style="margin-bottom:8px;">QUARTA — Mentalidade</h3>
+  <p>Refinar decisões, reorganizar ideias, cortar distrações.</p>
+
+  <h3 style="margin-bottom:8px;">QUINTA — Evolução Técnica</h3>
+  <p>Aprender um conceito novo, testar ferramentas.</p>
+
+  <h3 style="margin-bottom:8px;">SEXTA — Crescimento</h3>
+  <p>Publicar, vender, captar usuários.</p>
+
+  <h3 style="margin-bottom:8px;">SÁBADO — Ajustes</h3>
+  <p>Melhorias, revisões, atualizações.</p>
+
+  <h3 style="margin-bottom:8px;">DOMINGO — Silêncio Estratégico</h3>
+  <p>Descanso do corpo, planejamento da mente.</p>
+
+  <div class="quote">
+    Uma semana alfa vale mais do que 3 meses de tentativa desorganizada.
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 33 – EXERCÍCIOS INTERNOS -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 33</div>
+    <h2 class="section-title">Exercícios internos – para destravar sua mente.</h2>
+    <p class="section-sub">
+      Agora você vai escrever, decidir e se comprometer.
+    </p>
+  </div>
+
+  <p>Responda (mentalmente ou por escrito):</p>
+
+  <div class="section" style="background:rgba(0,200,255,0.06);border:1px solid rgba(0,200,255,0.26);margin-bottom:12px;">
+    <h3 style="margin-bottom:4px;">EXERCÍCIO 1 — Clareza Absoluta</h3>
+    <p style="font-size:0.9rem;color:var(--text-soft);">
+      “O que eu realmente quero conquistar usando IA e criação de apps?”
+    </p>
+    <textarea style="
+      width:100%;
+      height:120px;
+      background:#050a1a;
+      border:1px solid rgba(0,200,255,0.35);
+      color:#00eaff;
+      padding:10px;
+      border-radius:12px;
+      margin-top:8px;
+      resize:none;
+    "></textarea>
+  </div>
+
+  <div class="section" style="background:rgba(247,200,106,0.06);border:1px solid rgba(247,200,106,0.26);margin-bottom:12px;">
+    <h3 style="margin-bottom:4px;">EXERCÍCIO 2 — Corte Imediato</h3>
+    <p style="font-size:0.9rem;color:var(--text-soft);">
+      “Quais distrações estão roubando minha capacidade de criar?”
+    </p>
+    <textarea style="
+      width:100%;
+      height:120px;
+      background:#050a1a;
+      border:1px solid rgba(247,200,106,0.35);
+      color:#ffd27f;
+      padding:10px;
+      border-radius:12px;
+      margin-top:8px;
+      resize:none;
+    "></textarea>
+  </div>
+
+  <div class="section" style="background:rgba(0,255,170,0.06);border:1px solid rgba(0,255,170,0.26);">
+    <h3 style="margin-bottom:4px;">EXERCÍCIO 3 — Ação Direcionada</h3>
+    <p style="font-size:0.9rem;color:var(--text-soft);">
+      “Quais ações posso fazer nas próximas 48h para acelerar minha criação?”
+    </p>
+    <textarea style="
+      width:100%;
+      height:120px;
+      background:#050a1a;
+      border:1px solid rgba(0,255,170,0.35);
+      color:#00ffae;
+      padding:10px;
+      border-radius:12px;
+      margin-top:8px;
+      resize:none;
+    "></textarea>
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 34 – O INSTINTO DO CRIADOR -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 34</div>
+    <h2 class="section-title">O Instinto do Criador — sua arma secreta.</h2>
+    <p class="section-sub">
+      Criadores verdadeiros têm um instinto:  
+      o instinto de solução.
+    </p>
+  </div>
+
+  <p>
+    Enquanto outras pessoas travam, reclamam ou desistem,  
+    criadores procuram alternativas.
+  </p>
+
+  <p>
+    Você precisa cultivar 3 reações automáticas:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);">
+    <li><strong>Quando algo der errado:</strong> “Como eu resolvo isso rapidamente?”</li>
+    <li><strong>Quando algo travar:</strong> “Qual é o próximo passo lógico?”</li>
+    <li><strong>Quando algo der medo:</strong> “O que preciso aprender para dominar isso?”</li>
+  </ul>
+
+  <div class="quote">
+    Criadores não fogem da dificuldade.  
+    Eles avançam sobre ela.
+  </div>
+</section>
+
+
+
+<!-- IMAGEM PODEROSA (TECNOLOGIA + MENTE) -->
+<section class="section" style="padding:0;">
+  <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200"
+       style="width:100%;border-radius:22px 22px 0 0;opacity:0.88;">
+  <div style="padding:20px;">
+    <div class="section-eyebrow">MENTE & TECNOLOGIA</div>
+    <h2 style="font-size:1.3rem;margin-bottom:6px;">
+      Quando a mente domina a tecnologia, o mundo se dobra.
+    </h2>
+    <p style="font-size:0.9rem;color:var(--text-soft);">
+      IA é uma ferramenta.  
+      Quem decide o que ela faz é você.
+    </p>
+  </div>
+</section>
+
+
+
+<!-- FECHAMENTO PART 7 – SUPORTE -->
+<section class="section" style="text-align:center;">
+  <div class="section-header">
+    <div class="section-eyebrow">SUPORTE</div>
+    <h2 class="section-title">Se quiser ajuda, estou perto.</h2>
+    <p class="section-sub">
+      Clique abaixo e fale comigo diretamente.  
+      Você não está sozinho nessa construção.
+    </p>
+  </div>
+
+  <a href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35"
+     style="
+       display:inline-block;
+       padding:16px 28px;
+       background:linear-gradient(135deg, #00faff, #0099ff);
+       color:white;
+       font-weight:700;
+       text-decoration:none;
+       border-radius:999px;
+       font-size:1rem;
+       box-shadow:0 0 20px rgba(0,200,255,0.8),
+                  0 0 28px rgba(0,150,255,0.55);
+       border:1px solid rgba(0,200,255,0.55);
+     ">
+     Entrar no Canal · WhatsApp
+  </a>
+</section>
+<!-- ========================= -->
+<!-- PARTE 8 — O CRIADOR FRIO (MENTALIDADE AVANÇADA) -->
+<!-- ========================= -->
+
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 35</div>
+    <h2 class="section-title">O Criador Frio — a evolução avançada da sua mente.</h2>
+    <p class="section-sub">
+      Aqui você aprende a agir sem hesitação, sem emoção desnecessária e sempre com visão clara.
+    </p>
+  </div>
+
+  <p>
+    O Criador Frio é a versão 2026+ do criador disciplinado.  
+    Ele não reage. Ele escolhe.  
+    Ele não se abala. Ele calcula.
+  </p>
+
+  <p>
+    Enquanto pessoas comuns tomam decisões baseadas em sentimento,
+    o Criador Frio toma decisões baseadas em:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);">
+    <li><strong>dados</strong></li>
+    <li><strong>lógica</strong></li>
+    <li><strong>consequência</strong></li>
+    <li><strong>visão de longo prazo</strong></li>
+    <li><strong>propósito</strong></li>
+  </ul>
+
+  <div class="quote">
+    "Quando você aprende a sentir menos e agir mais,  
+    sua vida muda completamente."
+  </div>
+</section>
+
+
+
+<!-- IMAGEM PODEROSA (Criador Frio) -->
+<section class="section" style="padding:0;">
+  <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?q=80&w=1200"
+       style="width:100%;opacity:0.90;border-radius:22px 22px 0 0;">
+  <div style="padding:20px;">
+    <div class="section-eyebrow">FOCO ABSOLUTO</div>
+    <h2 style="font-size:1.3rem;margin-bottom:6px;">
+      Mente fria. Execução quente.  
+      É assim que se domina a era da IA.
+    </h2>
+    <p style="font-size:0.9rem;color:var(--text-soft);">
+      Em 2026+, quem domina as próprias emoções domina o mercado.
+    </p>
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 36 – INTELIGÊNCIA EMOCIONAL ESTRATÉGICA -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 36</div>
+    <h2 class="section-title">Inteligência Emocional Estratégica.</h2>
+    <p class="section-sub">
+      Não é sobre “controlar emoções”. É sobre direcionar energia.
+    </p>
+  </div>
+
+  <p>
+    Criadores fortes não tentam eliminar sentimentos.  
+    Eles aprendem a colocar cada emoção no lugar certo:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.92rem;">
+    <li><strong>Fome de vitória → produtividade</strong></li>
+    <li><strong>Raiva → foco redirecionado</strong></li>
+    <li><strong>Medo → aprendizado</strong></li>
+    <li><strong>Dúvida → teste rápido</strong></li>
+    <li><strong>Ansiedade → movimento imediato</strong></li>
+  </ul>
+
+  <p>
+    Emoções não são inimigas.  
+    Emoções são combustível.  
+    Quem transforma emoção em movimento, vence.
+  </p>
+
+  <div class="quote">
+    Um inimigo emocional é forte.  
+    Mas um criador frio é inabalável.
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 37 – O MÉTODO 3D (Decidir, Desenvolver, Dominar) -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 37</div>
+    <h2 class="section-title">O Método 3D — Decidir · Desenvolver · Dominar.</h2>
+    <p class="section-sub">
+      Um modelo mental simples que transforma projetos em realidade.
+    </p>
+  </div>
+
+  <h3 style="margin-bottom:6px;">1 — DECIDIR</h3>
+  <p>Escolher uma direção clara, mesmo que você ainda não saiba todos os passos.</p>
+
+  <h3 style="margin-bottom:6px;margin-top:12px;">2 — DESENVOLVER</h3>
+  <p>Ação diária, criação de blocos, construção do sistema.</p>
+
+  <h3 style="margin-bottom:6px;margin-top:12px;">3 — DOMINAR</h3>
+  <p>Aprimorar, ajustar, expandir — até ficar impossível alguém te alcançar.</p>
+
+  <div class="quote">
+    A maioria decide pouco, desenvolve menos e nunca domina nada.  
+    Aqui você faz o contrário.
+  </div>
+</section>
+
+
+
+<!-- IMAGEM — TECNOLOGIA E ESTRATÉGIA -->
+<section class="section" style="padding:0;">
+  <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200"
+       style="width:100%;opacity:0.90;border-radius:22px 22px 0 0;">
+  <div style="padding:20px;">
+    <div class="section-eyebrow">ESTRATÉGIA</div>
+    <h2 style="font-size:1.3rem;margin-bottom:6px;">
+      A era digital recompensa quem pensa como arquiteto.
+    </h2>
+    <p style="font-size:0.9rem;color:var(--text-soft);">
+      Em 2026+, não é o mais rápido.  
+      É o mais estratégico.
+    </p>
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 38 – EXPANSÃO DO APLICATIVO -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 38</div>
+    <h2 class="section-title">Expandindo o seu aplicativo — visão de futuro.</h2>
+    <p class="section-sub">
+      Agora seu app não é apenas "um app". É um sistema que pode evoluir para qualquer direção.
+    </p>
+  </div>
+
+  <p>
+    Aqui estão caminhos óbvios (e lucrativos) de expansão:
+  </p>
+
+  <ul style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);">
+    <li><strong>Adicionar IA interna</strong> — consultor, mentor, gerador de ideias.</li>
+    <li><strong>Adicionar produtos complementares</strong> — mini ebooks, guias, roteiros.</li>
+    <li><strong>Adicionar assinatura mensal</strong> — plano contínuo.</li>
+    <li><strong>Adicionar área premium</strong> — conteúdo especial.</li>
+    <li><strong>Adicionar comunidade</strong> — canal privado no WhatsApp.</li>
+  </ul>
+
+  <p>
+    Cada atualização aumenta o valor percebido e real do seu ecossistema.
+  </p>
+
+  <div class="quote">
+    Você não criou um aplicativo.  
+    Você iniciou um império digital.
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 39 – EXERCÍCIO: O MAPA DO DOMÍNIO -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 39</div>
+    <h2 class="section-title">Exercício: O Mapa do Domínio (48H).</h2>
+    <p class="section-sub">
+      Um dos exercícios mais poderosos do livro.  
+      Preencha com seriedade.
+    </p>
+  </div>
+
+  <p>
+    Preencha abaixo para criar seu mapa de ação:
+  </p>
+
+  <div class="section" style="background:rgba(0,200,255,0.06);border:1px solid rgba(0,200,255,0.25);margin-bottom:16px;">
+    <h3 style="margin-bottom:4px;">1 — O que eu preciso dominar urgentemente?</h3>
+    <textarea style="
+      width:100%;height:120px;background:#050a1a;color:#00eaff;
+      border:1px solid rgba(0,200,255,0.35);padding:10px;border-radius:12px;
+    "></textarea>
+  </div>
+
+  <div class="section" style="background:rgba(247,200,106,0.06);border:1px solid rgba(247,200,106,0.25);margin-bottom:16px;">
+    <h3 style="margin-bottom:4px;">2 — Quais obstáculos vou eliminar imediatamente?</h3>
+    <textarea style="
+      width:100%;height:120px;background:#050a1a;color:#ffd27f;
+      border:1px solid rgba(247,200,106,0.35);padding:10px;border-radius:12px;
+    "></textarea>
+  </div>
+
+  <div class="section" style="background:rgba(0,255,190,0.06);border:1px solid rgba(0,255,190,0.25);">
+    <h3 style="margin-bottom:4px;">3 — Quais ações vou executar nas próximas 48H?</h3>
+    <textarea style="
+      width:100%;height:120px;background:#050a1a;color:#00ffb3;
+      border:1px solid rgba(0,255,190,0.35);padding:10px;border-radius:12px;
+    "></textarea>
+  </div>
+</section>
+
+
+
+<!-- FECHAMENTO PART 8 – SUPORTE -->
+<section class="section" style="text-align:center;margin-bottom:40px;">
+  <div class="section-header">
+    <div class="section-eyebrow">SUPORTE</div>
+    <h2 class="section-title">Se quiser clareza instantânea, fale comigo.</h2>
+    <p class="section-sub">
+      Clique abaixo sempre que precisar de ajuda na jornada.
+    </p>
+  </div>
+
+  <a href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35"
+     style="
+       display:inline-block;
+       padding:16px 28px;
+       background:linear-gradient(135deg, #00faff, #0099ff);
+       color:white;
+       font-weight:700;
+       text-decoration:none;
+       border-radius:999px;
+       font-size:1rem;
+       box-shadow:0 0 20px rgba(0,200,255,0.8),
+                  0 0 28px rgba(0,150,255,0.55);
+       border:1px solid rgba(0,200,255,0.55);
+     ">
+     Entrar no Canal · WhatsApp
+  </a>
+</section>
+<!-- ========================= -->
+<!-- PARTE 10 — A CONCLUSÃO 2026+ -->
+<!-- ========================= -->
+
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 46</div>
+    <h2 class="section-title">O Criador que domina a própria era.</h2>
+    <p class="section-sub">
+      Este é o final do livro, mas o início da sua nova fase.
+    </p>
+  </div>
+
+  <p>
+    Depois de 100 páginas entre tecnologia, mentalidade, estratégia,
+    inteligência artificial, criação de aplicativos e evolução pessoal,
+    você se tornou alguém extremamente raro.
+  </p>
+
+  <p>
+    A maioria das pessoas consome conteúdo.  
+    Você cria.  
+    A maioria deseja.  
+    Você constrói.  
+    A maioria teme o futuro.  
+    Você controla o futuro.
+  </p>
+
+  <div class="quote">
+    A pessoa que domina a IA domina sua realidade.
+  </div>
+</section>
+
+
+
+<!-- IMAGEM FINAL DE IMPACTO -->
+<section class="section" style="padding:0;">
+  <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200"
+       style="width:100%;opacity:0.92;border-radius:22px 22px 0 0;">
+  <div style="padding:20px;">
+    <div class="section-eyebrow">FUTURO</div>
+    <h2 style="font-size:1.3rem;margin-bottom:6px;">
+      O futuro é de quem cria, não de quem espera.
+    </h2>
+    <p style="font-size:0.9rem;color:var(--text-soft);">
+      O mundo está mudando rápido demais para você ficar parado.
+    </p>
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 47 – RITUAL DO CRIADOR -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 47</div>
+    <h2 class="section-title">O Ritual do Criador — 2026+.</h2>
+    <p class="section-sub">
+      Um ritual simples que destrava evolução real.
+    </p>
+  </div>
+
+  <ol style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);">
+    <li><strong>Silêncio de 3 minutos</strong> — antes de começar.</li>
+    <li><strong>Visualização</strong> — ver seu eu milionário fazendo.</li>
+    <li><strong>Ação mínima</strong> — avance 1 bloco por dia.</li>
+    <li><strong>Tela limpa</strong> — nada aberto exceto o necessário.</li>
+    <li><strong>Execução fria</strong> — sem emoção, só movimento.</li>
+  </ol>
+
+  <div class="quote">
+    O ritual cria o hábito.  
+    O hábito cria o resultado.
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 48 – OS PRÓXIMOS 90 DIAS -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 48</div>
+    <h2 class="section-title">Seu Plano dos Próximos 90 Dias.</h2>
+    <p class="section-sub">
+      Com este plano, você cria evolução real e medível.
+    </p>
+  </div>
+
+  <h3 style="margin-top:12px;">FASE 1 — Dias 1 a 30</h3>
+  <p>Construção, organização, estrutura, páginas, visão.</p>
+
+  <h3 style="margin-top:12px;">FASE 2 — Dias 31 a 60</h3>
+  <p>Expansão do app, pequenas automações, testes, ajustes.</p>
+
+  <h3 style="margin-top:12px;">FASE 3 — Dias 61 a 90</h3>
+  <p>Publicação, tráfego, vendas, comunidade, upgrade.</p>
+
+  <div class="quote">
+    90 dias fazem você renascer.  
+    90 dias mudam sua vida.
+  </div>
+</section>
+
+
+
+<!-- CAPÍTULO 49 – A CHAVE MESTRA -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 49</div>
+    <h2 class="section-title">A Chave Mestra: a IA obedece quem sabe o que quer.</h2>
+    <p class="section-sub">
+      A maioria teme IA. Você controla.
+    </p>
+  </div>
+
+  <p>
+    A IA não é má, nem boa.  
+    Ela é um espelho amplificado do seu nível de clareza.
+  </p>
+
+  <p>
+    Quanto mais claro você for, mais poderosa ela será para você.
+  </p>
+
+  <p>
+    Aqui está a chave mestra:
+  </p>
+
+  <div class="section" style="background:rgba(0,200,255,0.08);border:1px solid rgba(0,200,255,0.35);padding:14px;">
+    <strong>“Quem controla a intenção, controla a máquina.”</strong>
+  </div>
+
+  <p>
+    Você está se tornando esse tipo de criador.
+  </p>
+</section>
+
+
+
+<!-- CAPÍTULO 50 – MENSAGEM FINAL -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">CAPÍTULO 50</div>
+    <h2 class="section-title">Mensagem Final — O Começo da Sua Nova Era.</h2>
+    <p class="section-sub">
+      Obrigado por chegar até aqui.  
+      Agora você entende que o mundo é seu.
+    </p>
+  </div>
+
+  <p>
+    Você tem visão.  
+    Você tem estratégia.  
+    Você tem mentalidade.  
+    Você tem tecnologia.  
+    E agora você tem direção.
+  </p>
+
+  <p>
+    A partir de hoje, você não anda — você avança.  
+    Você não tenta — você constrói.  
+    Você não deseja — você cria.
+  </p>
+
+  <div class="quote">
+    Este é o início do criador milionário que vive dentro de você.
+  </div>
+
+  <p>
+    E sempre que precisar de ajuda, você sabe onde me encontrar.
+  </p>
+</section>
+
+
+<!-- BOTÃO FINAL DE SUPORTE -->
+<section class="section" style="text-align:center;margin-top:30px;">
+  <a href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35"
+     style="
+       display:inline-block;
+       padding:16px 28px;
+       background:linear-gradient(135deg, #00faff, #0099ff);
+       color:white;
+       text-decoration:none;
+       font-weight:700;
+       border-radius:999px;
+       box-shadow:0 0 20px rgba(0,200,255,0.8);
+       font-size:1rem;
+     ">
+     Entrar no Canal · WhatsApp
+  </a>
+</section>
+
+
+
+<!-- ========================= -->
+<!-- BÔNUS ESPECIAL -->
+<!-- ========================= -->
+
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">BÔNUS</div>
+    <h2 class="section-title">Conteúdo Extra Exclusivo.</h2>
+    <p class="section-sub">
+      Para você ir ainda mais longe.
+    </p>
+  </div>
+
+  <h3>10 Prompts Poderosos para Criar Qualquer Coisa</h3>
+
+  <pre style="background:#050a1a;color:#00eaff;padding:14px;border-radius:14px;border:1px solid rgba(0,200,255,0.35);font-size:0.82rem;">
+1 — “Crie um aplicativo completo baseado na ideia X com login, rotas, HTML e design premium.”
+2 — “Gere um funil de vendas completo baseado no meu produto X.”
+3 — “Crie 5 versões de uma página de venda com estética futurista e layout mobile.”
+4 — “Crie um roteiro para vídeo no estilo motivacional, direto e agressivo.”
+5 — “Crie uma estratégia de marketing para vender esse produto em 7 dias.”
+6 — “Crie uma rotina de disciplina para me transformar em uma máquina de execução.”
+7 — “Crie um dashboard de ganhos fictício para story com design neon.”
+8 — “Crie o design visual de um app estilo cyber luxo com 4 telas principais.”
+9 — “Crie uma descrição irresistível para produto digital de alto valor.”
+10 — “Crie um planejamento de 90 dias para me tornar referência no meu nicho.”
+  </pre>
+
+
+  <h3 style="margin-top:20px;">10 Frases Motivacionais Originais</h3>
+
+  <ul style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);line-height:1.5;">
+    <li>1 — “Disciplina é o passaporte para o futuro que você deseja.”</li>
+    <li>2 — “Onde outros param, você começa.”</li>
+    <li>3 — “O mundo respeita quem cria, não quem fala.”</li>
+    <li>4 — “Sua versão milionária já existe. Falta você alcançá-la.”</li>
+    <li>5 — “Nada derrota um criador que não para.”</li>
+    <li>6 — “Sua mente é seu maior ativo. Domine-a.”</li>
+    <li>7 — “Quem controla a IA controla o jogo.”</li>
+    <li>8 — “Foco extremo cria resultados extremos.”</li>
+    <li>9 — “O silêncio te leva onde o barulho nunca levou ninguém.”</li>
+    <li>10 — “Pare de pedir permissão para viver grande.”</li>
+  </ul>
+
+
+  <h3 style="margin-top:20px;">Mensagem Extra para o Leitor</h3>
+
+  <p>
+    Se você chegou até aqui, você já está à frente de 99% das pessoas.  
+    Agora é sobre continuar.  
+    Continuar criando.  
+    Continuar pensando grande.  
+    Continuar evoluindo.
+  </p>
+
+  <div class="quote">
+    Você tem tudo que precisa para vencer.  
+    Falta apenas o passo que só você pode dar.
+  </div>
+</section>
