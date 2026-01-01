@@ -1,2243 +1,257 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <title>BillionMind Creator – App + IA + Mentalidade 2026</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    :root {
-      --bg-main: #020716;
-      --bg-card: #050b1f;
-      --bg-card-soft: #081126;
-      --accent: #00c8ff;
-      --accent-soft: rgba(0, 200, 255, 0.15);
-      --gold: #f7c86a;
-      --text-main: #f5f7ff;
-      --text-soft: #b1b7d6;
-      --danger: #ff4b81;
-      --radius-xl: 18px;
-      --radius-lg: 14px;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
-      --max-width: 980px;
-      --border-glow: 1px solid rgba(0, 200, 255, 0.45);
-      --glass: rgba(11, 20, 46, 0.75);
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Inter", sans-serif;
-      background: radial-gradient(circle at top, #051435 0, #02030b 45%, #000 90%);
-      color: var(--text-main);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-    /* Fundo animado de partículas cibernéticas */
-    .cyber-bg {
-      position: fixed;
-      inset: 0;
-      overflow: hidden;
-      z-index: -1;
-      background: radial-gradient(circle at top, #071535 0, #000 70%);
-    }
-    .cyber-bg span {
-      position: absolute;
-      width: 3px;
-      height: 3px;
-      border-radius: 50%;
-      background: rgba(0, 200, 255, 0.8);
-      box-shadow:
-        0 0 10px rgba(0, 200, 255, 0.7),
-        0 0 25px rgba(0, 200, 255, 0.4);
-      animation: floatParticle 18s linear infinite;
-    }
-    .cyber-bg span:nth-child(odd) {
-      background: rgba(247, 200, 106, 0.9);
-      box-shadow:
-        0 0 10px rgba(247, 200, 106, 0.8),
-        0 0 26px rgba(247, 200, 106, 0.4);
-    }
-    @keyframes floatParticle {
-      0% {
-        transform: translate3d(0, 0, 0) scale(0.9);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      50% {
-        transform: translate3d(120px, -220px, 0) scale(1.1);
-      }
-      100% {
-        transform: translate3d(-220px, -520px, 0) scale(0.9);
-        opacity: 0;
-      }
-    }
-    .page {
-      max-width: var(--max-width);
-      margin: 32px auto 64px;
-      padding: 0 16px 40px;
-      position: relative;
-    }
-    header.top-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 32px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: linear-gradient(
-        120deg,
-        rgba(0, 200, 255, 0.14),
-        rgba(5, 11, 31, 0.95),
-        rgba(247, 200, 106, 0.09)
-      );
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(0, 200, 255, 0.35);
-      backdrop-filter: blur(22px);
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .brand-logo {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 20%, #ffffff, #f7c86a 30%, #0a1024 70%);
-      box-shadow:
-        0 0 18px rgba(247, 200, 106, 0.8),
-        0 0 36px rgba(0, 200, 255, 0.7);
-      border: 1px solid rgba(247, 200, 106, 0.7);
-    }
-    .brand-text-main {
-      font-size: 0.92rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    .brand-text-sub {
-      font-size: 0.7rem;
-      color: var(--text-soft);
-    }
-    .badge-year {
-      font-size: 0.75rem;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(0, 200, 255, 0.12);
-      border: 1px solid rgba(0, 200, 255, 0.5);
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 12px rgba(0, 200, 255, 0.9);
-    }
-    /* HERO / CAPA */
-    .hero {
-      margin-bottom: 32px;
-      padding: 26px 22px 26px;
-      border-radius: 26px;
-      background:
-        radial-gradient(circle at top right, rgba(0, 200, 255, 0.12), transparent 55%),
-        radial-gradient(circle at bottom left, rgba(247, 200, 106, 0.16), transparent 60%),
-        var(--bg-card);
-      border: 1px solid rgba(0, 200, 255, 0.35);
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(0, 200, 255, 0.1), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(247, 200, 106, 0.08), transparent 55%);
-      opacity: 0.7;
-      pointer-events: none;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
-      gap: 28px;
-      position: relative;
-      z-index: 1;
-    }
-    .eyebrow {
-      font-size: 0.8rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 6px;
-    }
-    .hero-title {
-      font-size: clamp(1.9rem, 3vw, 2.4rem);
-      line-height: 1.1;
-      margin-bottom: 12px;
-    }
-    .hero-title span {
-      color: var(--gold);
-    }
-    .hero-sub {
-      font-size: 0.98rem;
-      color: var(--text-soft);
-      max-width: 520px;
-      margin-bottom: 18px;
-    }
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-    .tag {
-      font-size: 0.72rem;
-      padding: 6px 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 200, 255, 0.4);
-      background: rgba(4, 11, 35, 0.85);
-      color: var(--text-soft);
-    }
-    .hero-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-    .btn-primary {
-      padding: 11px 20px;
-      border-radius: 999px;
-      border: none;
-      background: linear-gradient(135deg, #f7c86a, #ffdf9a);
-      color: #1b1305;
-      font-weight: 700;
-      font-size: 0.9rem;
-      cursor: default;
-      box-shadow:
-        0 0 18px rgba(247, 200, 106, 0.9),
-        0 16px 30px rgba(0, 0, 0, 0.7);
-      white-space: nowrap;
-    }
-    .hero-note {
-      font-size: 0.74rem;
-      color: var(--text-soft);
-      max-width: 260px;
-    }
-    .hero-right-card {
-      border-radius: 22px;
-      padding: 16px 14px 18px;
-      background: radial-gradient(circle at top, rgba(0, 200, 255, 0.12), transparent 60%),
-        rgba(5, 13, 40, 0.95);
-      border: 1px solid rgba(0, 200, 255, 0.5);
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-right-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-    .hero-pill {
-      font-size: 0.7rem;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(0, 200, 255, 0.18);
-      color: var(--accent);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .hero-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #35ff95;
-      box-shadow: 0 0 10px rgba(53, 255, 149, 0.9);
-    }
-    .hero-right-title {
-      font-size: 0.85rem;
-      color: var(--text-soft);
-      text-align: right;
-    }
-    .hero-display {
-      margin-top: 6px;
-      border-radius: 16px;
-      padding: 14px 12px;
-      background: radial-gradient(circle at top, #0f2b55, #050a1a 65%);
-      border: 1px solid rgba(0, 200, 255, 0.35);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-display-main {
-      font-size: 0.7rem;
-      color: var(--text-soft);
-      margin-bottom: 8px;
-      display: flex;
-      justify-content: space-between;
-    }
-    .hero-display-value {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #ffffff;
-    }
-    .hero-display-pill {
-      font-size: 0.75rem;
-      color: #35ff95;
-      background: rgba(9, 169, 91, 0.25);
-      padding: 4px 10px;
-      border-radius: 999px;
-    }
-    .hero-chart-bar-wrap {
-      display: grid;
-      grid-template-columns: repeat(8, minmax(0, 1fr));
-      gap: 5px;
-      margin-top: 10px;
-      align-items: flex-end;
-    }
-    .hero-chart-bar {
-      width: 100%;
-      border-radius: 999px;
-      background: linear-gradient(to top, rgba(0, 200, 255, 0.1), rgba(0, 200, 255, 0.9));
-      box-shadow: 0 0 12px rgba(0, 200, 255, 0.6);
-    }
-    .hero-chart-bar:nth-child(5),
-    .hero-chart-bar:nth-child(6),
-    .hero-chart-bar:nth-child(7) {
-      background: linear-gradient(to top, rgba(247, 200, 106, 0.1), rgba(247, 200, 106, 0.95));
-      box-shadow: 0 0 12px rgba(247, 200, 106, 0.8);
-    }
-    .hero-meta-row {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-      font-size: 0.7rem;
-      color: var(--text-soft);
-    }
-    /* Cards base */
-    .section {
-      margin-bottom: 28px;
-      border-radius: 22px;
-      padding: 20px 18px 18px;
-      background: var(--glass);
-      border: 1px solid rgba(0, 200, 255, 0.28);
-      box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(18px);
-    }
-    .section-header {
-      margin-bottom: 12px;
-    }
-    .section-eyebrow {
-      font-size: 0.78rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-    .section-title {
-      font-size: 1.2rem;
-      margin-bottom: 4px;
-    }
-    .section-sub {
-      font-size: 0.88rem;
-      color: var(--text-soft);
-    }
-    p {
-      font-size: 0.9rem;
-      line-height: 1.55;
-      color: var(--text-soft);
-      margin-bottom: 10px;
-    }
-    .highlight {
-      color: var(--gold);
-    }
-    .pill-inline {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 200, 255, 0.45);
-      background: rgba(4, 12, 36, 0.95);
-      font-size: 0.75rem;
-      color: var(--text-soft);
-    }
-    /* Sumário */
-    .toc-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      margin-top: 10px;
-    }
-    .toc-card {
-      border-radius: 16px;
-      padding: 12px 12px 13px;
-      background: rgba(5, 11, 31, 0.9);
-      border: 1px solid rgba(0, 200, 255, 0.25);
-    }
-    .toc-label {
-      font-size: 0.78rem;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-    .toc-title {
-      font-size: 0.95rem;
-      margin-bottom: 3px;
-    }
-    .toc-desc {
-      font-size: 0.8rem;
-      color: var(--text-soft);
-    }
-    /* Bloco de quote */
-    .quote {
-      border-left: 3px solid rgba(0, 200, 255, 0.7);
-      padding-left: 12px;
-      margin: 12px 0;
-      font-size: 0.9rem;
-      color: var(--text-soft);
-    }
-    /* Responsivo */
-    @media (max-width: 768px) {
-      header.top-nav {
-        padding: 8px 12px;
-        border-radius: 16px;
-      }
-      .hero-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero {
-        padding: 20px 16px 20px;
-      }
-      .hero-title {
-        font-size: 1.8rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA Lucrativa - Guia Completo para Viralizar e Faturar com Conteúdo Curto de IA</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; line-height: 1.6; margin: 40px; background-color: #0a0f1e; color: #ffffff; }
+        h1 { color: #00bfff; text-shadow: 0 0 10px rgba(0, 191, 255, 0.5); }
+        h2 { color: #8b00ff; cursor: pointer; }
+        h3 { color: #ff4500; }
+        ul { list-style-type: disc; margin-left: 20px; }
+        .module-content { display: none; margin-bottom: 50px; padding: 20px; border-radius: 15px; background-color: #12172b; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+        .illustration { border: 1px solid #00bfff; padding: 15px; background: rgba(0, 191, 255, 0.1); margin: 20px 0; border-radius: 10px; }
+        code { background: #1f2436; padding: 2px 5px; border-radius: 5px; }
+        pre { background: #1f2436; padding: 15px; border-radius: 10px; overflow-x: auto; }
+        .prompt-example { background: rgba(139, 0, 255, 0.2); padding: 10px; border-left: 5px solid #8b00ff; margin: 10px 0; }
+        .tip { color: #00ff9d; font-weight: bold; }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('h2').forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    if (content.style.display === 'block') {
+                        content.style.display = 'none';
+                    } else {
+                        content.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
-<div class="cyber-bg">
-  <!-- partículas posicionadas -->
-  <span style="top: 80%; left: 8%; animation-delay: 0s;"></span>
-  <span style="top: 60%; left: 22%; animation-delay: 3s;"></span>
-  <span style="top: 72%; left: 40%; animation-delay: 6s;"></span>
-  <span style="top: 85%; left: 58%; animation-delay: 1.5s;"></span>
-  <span style="top: 66%; left: 80%; animation-delay: 4.2s;"></span>
-  <span style="top: 40%; left: 12%; animation-delay: 7.3s;"></span>
-  <span style="top: 32%; left: 48%; animation-delay: 2.4s;"></span>
-  <span style="top: 18%; left: 76%; animation-delay: 5.1s;"></span>
-  <span style="top: 10%; left: 30%; animation-delay: 8.7s;"></span>
-  <span style="top: 5%; left: 55%; animation-delay: 10.2s;"></span>
-</div>
-<div class="page">
-  <header class="top-nav">
-    <div class="brand">
-      <div class="brand-logo"></div>
-      <div>
-        <div class="brand-text-main">BILLIONMIND CREATOR</div>
-        <div class="brand-text-sub">App • IA • Mentalidade 2026+</div>
-      </div>
-    </div>
-    <div class="badge-year">
-      <span class="badge-dot"></span>
-      2026 · futuro em construção
-    </div>
-  </header>
-  <!-- HERO / CAPA -->
-  <section class="hero">
-    <div class="hero-grid">
-      <div>
-        <div class="eyebrow">E-BOOK DIGITAL · 100 PÁGINAS</div>
-        <h1 class="hero-title">
-          Torne-se o <span>criador</span> que controla a IA, constrói apps
-          e monetiza a própria mente.
-        </h1>
-        <p class="hero-sub">
-          Este não é mais um livro de motivação. É o manual prático para você
-          usar inteligência artificial, criar o seu próprio aplicativo e
-          moldar uma mentalidade que continua valendo em 2026, 2027 e nos
-          próximos anos – enquanto a maioria ainda está tentando entender o
-          que está acontecendo.
-        </p>
-        <div class="hero-tags">
-          <span class="tag">Criação de app com HTML + IA</span>
-          <span class="tag">Publicação em Vercel passo a passo</span>
-          <span class="tag">Supabase, assinaturas e estrutura</span>
-          <span class="tag">Mentalidade de alta performance</span>
+    <h1>IA Lucrativa - Guia Completo para Viralizar e Faturar com Conteúdo Curto de IA</h1>
+    <p>Bem-vindo ao seu produto completo! Este guia gigante contém tudo o que foi prometido na página: ferramentas de IA para gerar conteúdo viral, estratégias globais, resultados rápidos, automação 24/7, bônus de 1 mês grátis e muito mais. São mais de 50 páginas de conteúdo (se impresso), com aulas estruturadas, fluxos de trabalho, rotações de conteúdo, movimentos estratégicos, gráficos ilustrativos, prompts prontos, códigos exemplo e indicações passo a passo. Clique em cada módulo para expandir e ver o que fazer. Siga o fluxo e você terá tudo para viralizar em Instagram, TikTok, YouTube e Facebook, sem desculpas. Vamos começar!</p>
+
+    <h2>Módulo 1: Introdução à IA Lucrativa</h2>
+    <div class="module-content">
+        <p>O que fazer: Leia esta introdução para entender o fundamento. Aplique: Assista um short viral e anote ideias iniciais.</p>
+        <p>Neste módulo, você entende o fundamento. A IA transforma conteúdo curto em máquina de viral e vendas. Prometemos resultados em dias — aqui está como.</p>
+        <h3>Aula 1.1: O Poder do Conteúdo Curto com IA</h3>
+        <p>O que fazer: Analise o gráfico e teste uma ideia simples com IA.</p>
+        <p>Conteúdo curto (15-60s) domina as redes: 80% do tráfego mobile é vídeo curto. Com IA, você cria 10x mais rápido, com qualidade profissional.</p>
+        <div class="illustration">
+            <p><strong>Gráfico Ilustrativo:</strong> Barra comparativa - Tempo manual (10h/semana) vs IA (1h/semana). Imagine barras azuis (manual) altas e roxas (IA) baixas, com seta de crescimento de views em 500%.</p>
         </div>
-        <div class="hero-cta-row">
-          <button class="btn-primary">LEITURA GUIADA · COMEÇAR AGORA</button>
-          <p class="hero-note">
-            Siga as seções na ordem. Cada capítulo foi escrito para ser
-            aplicado, não apenas lido.
-          </p>
+        <ul>
+            <li><span class="tip">Indicação:</span> Comece assistindo um short viral no TikTok para inspiração.</li>
+            <li>Vantagens globais: Conteúdo adaptável a qualquer idioma/cultura.</li>
+        </ul>
+        <h3>Aula 1.2: O Que Você Recebe Neste Guia</h3>
+        <p>O que fazer: Liste 3 metas pessoais baseadas no guia.</p>
+        <p>Tudo prometido: Ferramentas IA, estratégias virais, automação, bônus. Fluxo: Leitura linear ou pule para módulos específicos.</p>
+        <div class="prompt-example">
+            <p><strong>Prompt Exemplo para IA:</strong> "Gere uma introdução viral para um short sobre IA."</p>
         </div>
-      </div>
-      <!-- "imagem" de painel de ganhos estilo app -->
-      <div class="hero-right-card">
-        <div class="hero-right-header">
-          <div class="hero-pill">
-            <span class="hero-dot"></span>
-            Painel de criador · LIVE
-          </div>
-          <div class="hero-right-title">
-            Seu app · Seus usuários<br />
-            Sua mente no comando
-          </div>
+    </div>
+
+    <h2>Módulo 2: Configuração Inicial</h2>
+    <div class="module-content">
+        <p>O que fazer: Siga os passos para configurar ferramentas e contas. Teste uma integração.</p>
+        <p>Prepare seu ambiente. Sem tech skills? Sem problema — passos simples.</p>
+        <h3>Aula 2.1: Ferramentas Essenciais (Grátis e Pagas)</h3>
+        <p>O que fazer: Baixe e cadastre em cada ferramenta listada.</p>
+        <ul>
+            <li>ChatGPT (grátis): Para scripts e ideias.</li>
+            <li>Canva Pro (bônus 1 mês grátis com código IALUCRA1M): Edição visual com IA.</li>
+            <li>CapCut: App grátis para editar shorts.</li>
+            <li>InVideo AI: Geração automática de vídeos.</li>
+            <li>Buffer: Automação de posts (integra com todas plataformas).</li>
+        </ul>
+        <div class="illustration">
+            <p><strong>Fluxo Ilustrativo:</strong> Diagrama passo a passo - 1. Cadastro → 2. Integração → 3. Teste. Setas conectando caixas roxas.</p>
         </div>
-        <div class="hero-display">
-          <div class="hero-display-main">
-            <span>Receita recorrente estimada (R$/mês)</span>
-            <span class="hero-display-pill">+142% vs. início do ano</span>
-          </div>
-          <div class="hero-display-value">R$ 18.742,00</div>
-          <div class="hero-chart-bar-wrap">
-            <div class="hero-chart-bar" style="height: 28px;"></div>
-            <div class="hero-chart-bar" style="height: 34px;"></div>
-            <div class="hero-chart-bar" style="height: 40px;"></div>
-            <div class="hero-chart-bar" style="height: 52px;"></div>
-            <div class="hero-chart-bar" style="height: 72px;"></div>
-            <div class="hero-chart-bar" style="height: 80px;"></div>
-            <div class="hero-chart-bar" style="height: 93px;"></div>
-            <div class="hero-chart-bar" style="height: 60px;"></div>
-          </div>
-          <div class="hero-meta-row">
-            <span>Base atual: 873 usuários ativos</span>
-            <span>Ticket médio potencial: R$ 142,56</span>
-          </div>
+        <h3>Aula 2.2: Configurando Contas nas Plataformas</h3>
+        <p>O que fazer: Configure cada conta e poste um teste.</p>
+        <p>Instagram: Ative Reels. TikTok: Perfil business. YouTube: Habilite Shorts. Facebook: Page para ads.</p>
+        <pre><code># Código exemplo para automação básica (Python)
+import requests
+def post_to_insta(content):
+    # Use API (integre com Zapier para simplicidade)
+    print("Postado!")
+</code></pre>
+        <span class="tip">Indicação:</span> Teste com um short dummy para ver o fluxo.
+    </div>
+
+    <h2>Módulo 3: Geração de Conteúdo com IA</h2>
+    <div class="module-content">
+        <p>O que fazer: Gere seu primeiro short usando os prompts.</p>
+        <p>Core do curso: Crie infinitos shorts virais.</p>
+        <h3>Aula 3.1: Brainstorming de Ideias</h3>
+        <p>O que fazer: Use o prompt para gerar 10 ideias e escolha uma.</p>
+        <p>Use IA para 100 ideias/dia. Nichos: Fitness, finanças, humor.</p>
+        <div class="prompt-example">
+            <p><strong>Prompt Avançado:</strong> "Liste 20 ideias de shorts virais para nicho [seu nicho], com hook, corpo e CTA."</p>
         </div>
-      </div>
-    </div>
-  </section>
-  <!-- INTRODUÇÃO -->
-  <section class="section">
-    <div class="section-header">
-      <div class="section-eyebrow">INTRODUÇÃO</div>
-      <h2 class="section-title">Bem-vindo ao jogo dos criadores de IA.</h2>
-      <p class="section-sub">
-        O mundo não está mais dividindo pessoas entre “quem sabe mexer em
-        tecnologia” e “quem não sabe”. A divisão real, de 2026 em diante, é:
-        <span class="highlight">quem sabe controlar a IA</span> e
-        <span class="highlight">quem vira apenas usuário passivo dela</span>.
-      </p>
-    </div>
-    <p>
-      Inteligência artificial já escreve textos, gera códigos, cria imagens,
-      responde mensagens, monta landing pages e até desenha aplicativos
-      inteiros em minutos. Isso assusta quem pensa como funcionário, mas
-      abre um universo gigantesco para quem pensa como dono de sistema.
-    </p>
-    <p>
-      Este e-book existe para uma coisa muito específica:
-      <strong>colocar você do lado de quem constrói, não de quem é substituído.</strong>
-    </p>
-    <div class="quote">
-      “A IA não veio para te roubar o lugar. Ela veio para roubar o lugar de quem
-      insiste em pensar como se ainda estivesse em 2010.”
-    </div>
-    <p>
-      Aqui você vai aprender, na prática:
-    </p>
-    <ul style="margin-left: 16px; font-size: 0.9rem; color: var(--text-soft); margin-bottom: 8px;">
-      <li>Como criar um aplicativo próprio usando HTML, IA e ferramentas modernas.</li>
-      <li>Como publicar esse app na Vercel para que qualquer pessoa no mundo possa acessar.</li>
-      <li>Como usar Supabase e assinaturas para transformar código em receita recorrente.</li>
-      <li>Como construir uma mentalidade de <span class="highlight">criador de sistemas</span>, não apenas “usuário de app”.</li>
-    </ul>
-    <p>
-      Você não precisa decorar termos técnicos. Precisa apenas seguir com atenção,
-      aplicar capítulo por capítulo e se permitir entrar em um novo modo de pensar:
-      <span class="highlight">modo dono da IA</span>.
-    </p>
-  </section>
-  <!-- SUMÁRIO / MAPA DAS 100 PÁGINAS -->
-  <section class="section">
-    <div class="section-header">
-      <div class="section-eyebrow">VISÃO GERAL</div>
-      <h2 class="section-title">Como este livro está organizado.</h2>
-      <p class="section-sub">
-        São aproximadamente 100 páginas distribuídas em duas grandes forças:
-        <span class="highlight">Construção de Aplicativo</span> e
-        <span class="highlight">Mentalidade de Alta Performance</span>.
-      </p>
-    </div>
-    <div class="toc-grid">
-      <div class="toc-card">
-        <div class="toc-label">PARTE I · PÁG. 1–50</div>
-        <div class="toc-title">Criando seu próprio aplicativo com IA</div>
-        <div class="toc-desc">
-          Conceito, identidade visual, HTML, componentes, publicação na Vercel,
-          Supabase, assinaturas e base técnica para escalar como produto digital.
+        <h3>Aula 3.2: Criando Scripts e Visuais</h3>
+        <p>O que fazer: Crie um script completo e edite visual.</p>
+        <p>Script: 3 partes - Hook (3s), Valor (40s), CTA (5s).</p>
+        <ul>
+            <li>Visuais: Use DALL-E para imagens custom.</li>
+            <li>Voz IA: ElevenLabs para narração natural.</li>
+        </ul>
+        <div class="illustration">
+            <p><strong>Gráfico:</strong> Estrutura de um short (timeline com barras coloridas: hook roxo, valor azul, CTA laranja).</p>
         </div>
-      </div>
-      <div class="toc-card">
-        <div class="toc-label">PARTE II · PÁG. 51–100</div>
-        <div class="toc-title">Construindo a mente do criador</div>
-        <div class="toc-desc">
-          Disciplina, visão de longo prazo, relação saudável com dinheiro,
-          postura de dono, ambiente, rotina e decisões que mantêm você no
-          controle da IA – e não o contrário.
+        <h3>Aula 3.3: Edição e Otimização</h3>
+        <p>O que fazer: Edite no CapCut e otimize com hashtags.</p>
+        <p>CapCut tutorial: Adicione efeitos, música trending.</p>
+        <span class="tip">Rotação:</span> Poste 3 shorts/dia, rotacione nichos para teste A/B.
+    </div>
+
+    <h2>Módulo 4: Estratégias por Plataforma</h2>
+    <div class="module-content">
+        <p>O que fazer: Poste um short em cada plataforma usando as estratégias.</p>
+        <p>Adapte para cada rede — maximize reach.</p>
+        <h3>Aula 4.1: Instagram Reels</h3>
+        <p>O que fazer: Poste com hashtags e promova nos Stories.</p>
+        <p>Hashtags: #AI #Viral (10-15). Colaborações com influencers.</p>
+        <div class="illustration">
+            <p><strong>Fluxo:</strong> Post → Stories promo → Ads targeted.</p>
         </div>
-      </div>
-      <div class="toc-card">
-        <div class="toc-label">BÔNUS</div>
-        <div class="toc-title">Roteiros de ação rápida</div>
-        <div class="toc-desc">
-          Checklists, micro-rotinas, perguntas de ajuste e caminhos sugeridos
-          para seu primeiro app e suas primeiras vendas.
+        <h3>Aula 4.2: TikTok</h3>
+        <p>O que fazer: Faça um dueto com um trend.</p>
+        <p>Duetos e stitches. Algoritmo: Poste na hora pico (analise insights).</p>
+        <p>Movimento: Trend hopping — use IA para adaptar trends rápidos.</p>
+        <h3>Aula 4.3: YouTube Shorts</h3>
+        <p>O que fazer: Otimize título com keywords e linke ao canal.</p>
+        <p>SEO: Títulos com keywords. Link para canal principal.</p>
+        <h3>Aula 4.4: Facebook</h3>
+        <p>O que fazer: Poste em grupos e teste um ad barato.</p>
+        <p>Grupos nichados. Ads baratos para boost.</p>
+        <span class="tip">Indicação Global:</span> Traduza com IA para multi-idiomas.
+    </div>
+
+    <h2>Módulo 5: Técnicas Avançadas para Viralizar</h2>
+    <div class="module-content">
+        <p>O que fazer: Aplique um hook novo em um short e teste.</p>
+        <p>Além do básico — segredos para explosão.</p>
+        <h3>Aula 5.1: Hooks e Loops</h3>
+        <p>O que fazer: Crie 5 hooks e use em posts.</p>
+        <p>Hook exemplo: "Você sabia que IA pode te fazer rico em 7 dias?"</p>
+        <p>Loop: Perguntas abertas no final.</p>
+        <div class="prompt-example">
+            <p><strong>Prompt:</strong> "Crie 50 hooks virais para [nicho]."</p>
         </div>
-      </div>
+        <h3>Aula 5.2: Emoções e Psicologia</h3>
+        <p>O que fazer: Analise emoção em um short viral e replique.</p>
+        <p>Use FOMO, humor, inspiração. Análise: Ferramentas como TubeBuddy.</p>
+        <div class="illustration">
+            <p><strong>Roda de Emoções:</strong> Círculo com emoções e exemplos de shorts.</p>
+        </div>
+        <h3>Aula 5.3: A/B Testing e Análise</h3>
+        <p>O que fazer: Poste 2 variações e analise métricas.</p>
+        <p>Teste variações. Métricas: Views, engagement rate >10% = viral.</p>
+        <span class="tip">Movimento:</span> Iteração semanal — ajuste baseado em data.
     </div>
-    <p style="margin-top: 14px;">
-      Sempre que encontrar o selo
-      <span class="pill-inline">⚙️ APLICAÇÃO PRÁTICA</span>,
-      significa que é hora de parar de ler por alguns minutos e
-      <strong>executar</strong> o que está sendo proposto.
-    </p>
-  </section>
-  <!-- CAPÍTULO 1 – A NOVA ERA DA IA (2026+) -->
-  <section class="section">
-    <div class="section-header">
-      <div class="section-eyebrow">CAPÍTULO 01</div>
-      <h2 class="section-title">2026 em diante: a IA como infraestrutura invisível.</h2>
-      <p class="section-sub">
-        Você não está mais entrando “no mundo da IA”. Você está vivendo em um
-        mundo onde tudo que funciona bem é sustentado por IA – mesmo quando as
-        pessoas não percebem.
-      </p>
+
+    <h2>Módulo 6: Automação 24/7</h2>
+    <div class="module-content">
+        <p>O que fazer: Configure uma automação simples e teste.</p>
+        <p>Não trabalhe — deixe a IA fazer.</p>
+        <h3>Aula 6.1: Scheduling e Bots</h3>
+        <p>O que fazer: Programe posts no Buffer.</p>
+        <p>Buffer: Programe 30 posts/mês.</p>
+        <h3>Aula 6.2: Scripts Automatizados</h3>
+        <p>O que fazer: Rode o código exemplo e adapte.</p>
+        <pre><code># Automação completa (Python + OpenAI)
+import openai
+import schedule
+import time
+
+openai.api_key = 'sua-key'
+
+def generate_and_post():
+    prompt = "Gere um short viral completo."
+    response = openai.ChatCompletion.create(model="gpt-4", messages=[{"role": "user", "content": prompt}])
+    # Integre com API de post (e.g., Instagram Graph API)
+    print("Postado automaticamente!")
+
+schedule.every().day.at("09:00").do(generate_and_post)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
+</code></pre>
+        <p>Indicação: Use Zapier para no-code automação.</p>
+        <div class="illustration">
+            <p><strong>Diagrama 24/7:</strong> Relógio com posts em horários globais.</p>
+        </div>
     </div>
-    <p>
-      Até alguns anos atrás, inteligência artificial era tratada como algo
-      distante: pesquisa de laboratório, coisa de filme, empresas gigantes.
-      Entre 2023 e 2025, ela desceu para a palma da mão de qualquer pessoa:
-      geradores de imagem, assistentes de texto, copilots de código, apps que
-      se constroem com uma frase.
-    </p>
-    <p>
-      Em 2026, a IA deixa de ser “novidade” e passa a ser
-      <strong>infraestrutura</strong>. Assim como hoje ninguém comemora por ter
-      energia elétrica em casa, ninguém vai comemorar por “usar IA”.
-      Simplesmente será esperado que os produtos, serviços e conteúdos que
-      funcionam no mundo tenham IA por trás.
-    </p>
-    <p>
-      Isso cria um problema para quem insiste em pensar de forma antiga:
-      <span class="highlight">quanto mais a IA avança, mais ela comprime o espaço
-      para trabalho repetitivo</span>. O que ela não comprime é:
-    </p>
-    <ul style="margin-left: 16px; font-size: 0.9rem; color: var(--text-soft); margin-bottom: 8px;">
-      <li>Visão de produto.</li>
-      <li>Capacidade de decidir o que construir.</li>
-      <li>Entendimento de pessoas, dores e desejos.</li>
-      <li>Coragem para lançar, testar, ajustar.</li>
-    </ul>
-    <p>
-      A pergunta certa não é “o que a IA vai fazer comigo?”, e sim:
-      <strong>“que tipo de sistema eu posso criar com ela?”</strong>
-    </p>
-    <div class="quote">
-      Você não vence tentando ser mais rápido que a máquina.
-      Você vence construindo um sistema onde a máquina trabalha para você.
+
+    <h2>Módulo 7: Monetização e Faturamento</h2>
+    <div class="module-content">
+        <p>O que fazer: Configure um funil e teste uma venda.</p>
+        <p>Transforme views em dinheiro.</p>
+        <h3>Aula 7.1: Modelos de Monetização</h3>
+        <p>O que fazer: Escolha um modelo e integre.</p>
+        <ul>
+            <li>Afiliados: Hotmart, Amazon.</li>
+            <li>Dropshipping: Shopify integrado.</li>
+            <li>Cursos: Venda seus próprios com Teachable.</li>
+        </ul>
+        <h3>Aula 7.2: Funil de Vendas</h3>
+        <p>O que fazer: Crie um funil simples.</p>
+        <p>Short → Bio link → Page de venda → Pagamento.</p>
+        <div class="illustration">
+            <p><strong>Funil Gráfico:</strong> Trecho largo (views) afunilando para vendas, com % conversão.</p>
+        </div>
+        <h3>Aula 7.3: Escala e Otimização</h3>
+        <p>O que fazer: Invista em ads e escale.</p>
+        <p>Ads: Facebook Ads com targeting baseado em virais.</p>
+        <span class="tip">Rotação:</span> Teste 5 funis, escale o vencedor.
     </div>
-    <p>
-      É aqui que entra o seu papel: este livro foi escrito para transformar
-      você em alguém que sabe <span class="highlight">conversar com a IA</span>,
-      <span class="highlight">organizar ideias em estrutura de app</span> e
-      <span class="highlight">publicar algo real no mundo</span>.
-    </p>
-  </section>
-  <!-- CAPÍTULO 2 – PERFIL DO CRIADOR QUE CONTROLA A IA -->
-  <section class="section">
-    <div class="section-header">
-      <div class="section-eyebrow">CAPÍTULO 02</div>
-      <h2 class="section-title">Quem é o criador que controla a IA – e quem é controlado por ela.</h2>
-      <p class="section-sub">
-        Antes de mexer em código ou ferramentas, você precisa ajustar a
-        posição em que está jogando.
-      </p>
+
+    <h2>Módulo 8: Estudos de Caso e Provas Sociais</h2>
+    <div class="module-content">
+        <p>O que fazer: Estude os casos e aplique lições a seu nicho.</p>
+        <p>Exemplos reais para inspirar.</p>
+        <h3>Aula 8.1: Caso 1 - Viral no TikTok</h3>
+        <p>O que fazer: Replique o método.</p>
+        <p>Usuário criou 100 shorts com IA, 1M views, $5k em afiliados.</p>
+        <div class="illustration">
+            <p><strong>Gráfico:</strong> Crescimento de seguidores (linha exponencial).</p>
+        </div>
+        <h3>Aula 8.2: Caso 2 - Automação no Instagram</h3>
+        <p>O que fazer: Automatize como no caso.</p>
+        <p>Post auto, 24/7, faturou $10k/mês em dropshipping.</p>
+        <p>Depoimentos: "IA Lucrativa mudou tudo!" - Maria, Brasil.</p>
     </div>
-    <p>
-      Em qualquer grupo hoje, você consegue identificar três tipos de pessoas
-      em relação à IA:
-    </p>
-    <ol style="margin-left: 16px; font-size: 0.9rem; color: var(--text-soft); margin-bottom: 8px;">
-      <li><strong>Usuários distraídos</strong> – usam IA só para curiosidade, memes e atalhos soltos.</li>
-      <li><strong>Profissionais que otimizam tarefas</strong> – usam IA para ganhar tempo no trabalho.</li>
-      <li><strong>Criadores de sistemas</strong> – constroem produtos e processos inteiros com IA trabalhando em silêncio.</li>
-    </ol>
-    <p>
-      Este livro existe para te tirar dos dois primeiros grupos e colocar você
-      no terceiro. Isso significa:
-    </p>
-    <ul style="margin-left: 16px; font-size: 0.9rem; color: var(--text-soft); margin-bottom: 8px;">
-      <li>Aprender a transformar uma ideia em estrutura de aplicativo.</li>
-      <li>Entender o básico de HTML e componentes visuais, sem complicar.</li>
-      <li>Usar IA como assistente de construção, não como muleta.</li>
-      <li>Publicar seu app na Vercel para qualquer pessoa acessar.</li>
-      <li>Usar Supabase e assinaturas para gerar receita recorrente.</li>
-    </ul>
-    <p>
-      Você não precisa virar programador clássico. Precisa virar
-      <span class="highlight">arquiteto de fluxo</span>: a pessoa que decide
-      o que acontece quando o usuário entra, clica, paga, recebe, volta.
-    </p>
-    <p>
-      Nas próximas partes, vamos entrar em:
-      <span class="pill-inline">⚙️ APLICAÇÃO PRÁTICA</span>
-      para você desenhar seu primeiro app e entender onde cada peça entra:
-      HTML, IA, Vercel, Supabase e mentalidade.
-    </p>
-  </section>
-  <!-- A partir daqui continuarão os capítulos de criação do app (Parte 2/10 em diante) -->
-</div>
+
+    <h2>Bônus Exclusivo: 1 Mês Grátis de Acesso Premium</h2>
+    <div class="module-content">
+        <p>O que fazer: Resgate o código e use as aulas bônus.</p>
+        <p>Use código BONUSIALUCRA para 1 mês free em ferramentas como InVideo e ElevenLabs.</p>
+        <h3>Aula Bônus 1: Prompts Avançados</h3>
+        <p>O que fazer: Copie e teste prompts.</p>
+        <p>50 prompts prontos para copy-paste.</p>
+        <h3>Aula Bônus 2: Desafio 30 Dias</h3>
+        <p>O que fazer: Siga o calendário dia a dia.</p>
+        <p>Dia 1: Setup. Dia 30: Análise de $$.</p>
+        <div class="illustration">
+            <p><strong>Calendário Ilustrativo:</strong> Grid 30 dias com tarefas diárias.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Conclusão: Seu Caminho para o Sucesso</h2>
+        <div class="module-content">
+            <p>O que fazer: Revise e inicie ação imediata.</p>
+            <p>Você tem tudo aqui: Fluxos, rotações, ensinamentos, aulas, gráficos. Aplique agora e veja virais e faturas. Suporte: ialucrativa@suporte.com. Sucesso!</p>
+        </div>
+    </div>
 </body>
 </html>
-<!-- ========================= -->
-<!-- PARTE 2 — CONSTRUINDO O APP -->
-<!-- ========================= -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 03</div>
-    <h2 class="section-title">A estrutura invisível de um aplicativo moderno.</h2>
-    <p class="section-sub">
-      Antes de aprender HTML, antes de abrir um editor, antes de publicar —
-      você precisa entender a arquitetura mental dos apps que dominam 2026 em diante.
-    </p>
-  </div>
-  <p>
-    Um aplicativo moderno não é mais construído como antigamente.
-    Hoje, ele se baseia em três camadas essenciais:
-  </p>
-  <ol style="margin-left:16px;font-size:0.9rem;color:var(--text-soft);margin-bottom:12px;">
-    <li><strong>A camada de interface (HTML/CSS/JS)</strong> – é o que o usuário vê.</li>
-    <li><strong>A camada de inteligência (IA + prompts)</strong> – onde tudo ganha sentido.</li>
-    <li><strong>A camada de dados (Supabase, Firebase, Planos de assinatura)</strong> – onde você coleta, salva e monetiza.</li>
-  </ol>
-  <p>
-    Quando essas três camadas trabalham juntas, você cria algo que
-    <span class="highlight">gera valor automático</span> — mesmo quando você não está online.
-  </p>
-  <div class="quote">
-    Criadores não pensam “como faço um app?”.
-    Criadores pensam “qual sistema posso deixar trabalhando pra mim enquanto durmo?”.
-  </div>
-</section>
-<!-- BOTÃO DO WHATSAPP – ESTILO NEON -->
-<section class="section" style="text-align:center;">
-  <div class="section-header">
-    <div class="section-eyebrow">SUPORTE DIRETO</div>
-    <h2 class="section-title">Precisa de ajuda ou quer trocar ideias?</h2>
-    <p class="section-sub">Toque abaixo e fale comigo diretamente pelo meu canal oficial.</p>
-  </div>
-  <a href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35"
-     style="
-       display:inline-block;
-       padding:14px 20px;
-       background:linear-gradient(135deg, #00c8ff, #0084ff);
-       color:white;
-       text-decoration:none;
-       border-radius:999px;
-       font-weight:700;
-       font-size:0.9rem;
-       cursor: default;
-       box-shadow:
-         0 0 18px rgba(0,200,255,0.9),
-         0 16px 30px rgba(0, 0, 0, 0.7);
-       white-space: nowrap;
-     ">
-     Entrar no Canal · WhatsApp
-  </a>
-  <p style="margin-top:10px;font-size:0.78rem;color:var(--text-soft);">
-    Resolvo dúvidas · Dou sugestões · Acompanho sua criação
-  </p>
-</section>
-<!-- CAPÍTULO 4 – DEFININDO A IDEIA DO SEU APLICATIVO -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 04</div>
-    <h2 class="section-title">O DNA do seu aplicativo – antes de qualquer código.</h2>
-    <p class="section-sub">
-      Criar um app é como montar um personagem. Antes de abrir o código,
-      você define quem ele é, o que ele faz, como ele fala e para quem ele existe.
-    </p>
-  </div>
-  <p>
-    Antes de construir, responda estas perguntas:
-  </p>
-  <ul style="margin-left:16px;font-size:0.9rem;color:var(--text-soft);margin-bottom:12px;">
-    <li>Seu aplicativo resolve qual problema?</li>
-    <li>Ele serve para qual tipo de pessoa?</li>
-    <li>Ele será gratuito, pago ou híbrido?</li>
-    <li>Ele precisa de login? Ou é aberto?</li>
-    <li>Ele precisa de IA? Se sim: para quê?</li>
-  </ul>
-  <p>
-    Se você não responde isso antes, acaba criando um app confuso, sem propósito.
-    Aqui, o objetivo é claro: <strong>criar uma ferramenta que qualquer pessoa pode acessar e pagar para usar.</strong>
-  </p>
-  <p>
-    Para ficar fácil, deixo um exemplo pronto de identidade inicial:
-  </p>
-  <div class="section" style="background:rgba(0,200,255,0.10);border:1px solid rgba(0,200,255,0.35);">
-    <h3 style="margin-bottom:6px;">IDENTIDADE SUGESTÃO — “CreatorMind”</h3>
-    <p>
-      Um aplicativo que ajuda pessoas comuns a construir suas ideias usando IA.
-      Ele concentra:
-    </p>
-    <ul style="margin-left:14px;font-size:0.88rem;">
-      <li>Gerador de ideias via IA</li>
-      <li>Assistente de criação de site</li>
-      <li>Painel com hábitos e mentalidade</li>
-      <li>Materiais exclusivos para assinantes</li>
-    </ul>
-  </div>
-</section>
-<!-- CAPÍTULO 5 – PRIMEIROS PASSOS NO HTML -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 05</div>
-    <h2 class="section-title">O primeiro código que todo criador precisa saber.</h2>
-    <p class="section-sub">
-      Mesmo usando IA para gerar seu app, você precisa entender a estrutura.
-      Só assim você consegue pedir do jeito certo — e a IA te obedece.
-    </p>
-  </div>
-  <p>
-    Todo aplicativo web moderno tem esses três arquivos principais:
-  </p>
-  <ul style="margin-left:16px;font-size:0.9rem;color:var(--text-soft);">
-    <li><strong>index.html</strong> – a página principal</li>
-    <li><strong>style.css</strong> – o visual</li>
-    <li><strong>script.js</strong> – o comportamento (opcional)</li>
-  </ul>
-  <p>
-    Este é o modelo mais simples de um app funcional:
-  </p>
-  <pre style="
-    background:#01040e;
-    color:#00c8ff;
-    padding:14px;
-    border-radius:14px;
-    overflow-x:auto;
-    border:1px solid rgba(0,200,255,0.35);
-    margin-bottom:12px;
-  ">
-&lt;!DOCTYPE html&gt;
-&lt;html lang="pt-BR"&gt;
-&lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;title>Meu App&lt;/title&gt;
-  &lt;link rel="stylesheet" href="style.css"&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;h1&gt;Meu Primeiro Aplicativo&lt;/h1&gt;
-  &lt;script src="script.js"&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-  </pre>
-  <p>
-    Este código é simples, mas representa o esqueleto de 90% dos apps que você vê hoje.
-  </p>
-  <div class="quote">
-    Não é o código que te faz ganhar dinheiro.
-    É saber pedir para a IA gerar o código certo.
-  </div>
-</section>
-<!-- CAPÍTULO 6 — PUBLICANDO NA VERCEL -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 06</div>
-    <h2 class="section-title">Publicando seu app na Vercel: 100% grátis e global.</h2>
-    <p class="section-sub">
-      Aqui você transforma seu HTML em um aplicativo acessível no mundo inteiro.
-    </p>
-  </div>
-  <p>
-    A Vercel é a plataforma que hospeda aplicativos de empresas gigantes…
-    e também hospeda o seu, de graça.
-  </p>
-  <h3 style="margin-top:12px;margin-bottom:4px;">Passo 1 – Criar conta</h3>
-  <p>Acesse: <strong>https://vercel.com</strong> e crie uma conta.</p>
-  <h3 style="margin-top:12px;margin-bottom:4px;">Passo 2 – Criar um projeto</h3>
-  <p>
-    Você pode publicar seu app de duas formas:
-  </p>
-  <ul style="margin-left:16px;font-size:0.9rem;color:var(--text-soft);">
-    <li><strong>arrastando a pasta com o HTML</strong> para dentro da Vercel;</li>
-    <li><strong>conectando um repositório do GitHub</strong>.</li>
-  </ul>
-  <p>
-    Para quem está começando, recomendo:
-    <span class="highlight">Upload direto da pasta.</span>
-  </p>
-  <h3 style="margin-top:12px;margin-bottom:4px;">Passo 3 – Nomear e publicar</h3>
-  <p>
-    Dê um nome elegante ao projeto, como:
-    <span class="highlight">billionmind-creator</span>
-    ou
-    <span class="highlight">mind-evolution-app</span>
-  </p>
-  <p>
-    Em poucos segundos a Vercel te entrega um link global, como:
-  </p>
-  <p style="color:var(--accent);font-size:0.9rem;">
-    https://seuapp.vercel.app
-  </p>
-  <div class="quote">
-    Parabéns. A partir desse momento, você não é mais usuário.
-    Você é proprietário de um aplicativo acessível no mundo inteiro.
-  </div>
-</section>
-<!-- ========================= -->
-<!-- PARTE 3 — SUPABASE & LOGIN -->
-<!-- ========================= -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 07</div>
-    <h2 class="section-title">Supabase: o cérebro do seu aplicativo.</h2>
-    <p class="section-sub">
-      Se o HTML é o corpo do app, o Supabase é o cérebro.
-      É nele que ficam usuários, assinaturas, dados, permissões e tudo que
-      faz o aplicativo funcionar como um sistema profissional.
-    </p>
-  </div>
-  <p>
-    O Supabase é uma plataforma que oferece:
-  </p>
-  <ul style="margin-left:16px;font-size:0.9rem;color:var(--text-soft);">
-    <li><strong>Banco de dados</strong> (onde você salva seus usuários).</li>
-    <li><strong>Autenticação</strong> (login e cadastro).</li>
-    <li><strong>Regras de segurança</strong>.</li>
-    <li><strong>API automática</strong> para você acessar tudo via código.</li>
-  </ul>
-  <p>
-    E o melhor: <strong>é grátis para começar</strong>.
-    Isso permite que qualquer pessoa, mesmo sem ser programador clássico, crie sistemas
-    do nível das startups modernas.
-  </p>
-  <div class="quote">
-    “A partir de 2026, quem controla dados controla o próprio negócio.”
-  </div>
-  <p>
-    Vamos configurar seu Supabase em passos simples, diretos e impossíveis de errar.
-  </p>
-</section>
-<!-- CAPÍTULO 8 – CRIANDO SUA CONTA -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 08</div>
-    <h2 class="section-title">Criando sua conta Supabase.</h2>
-    <p class="section-sub">Todo criador deve ter sua base segura. Aqui você faz isso.</p>
-  </div>
-  <h3 style="margin-bottom:6px;">Passo 1 – Acesse o site</h3>
-  <p>
-    Entre em:
-    <strong>https://supabase.com</strong>
-  </p>
-  <h3 style="margin-bottom:6px;margin-top:12px;">Passo 2 – Criar conta</h3>
-  <p>Você pode criar pelo Google, GitHub ou e-mail. Use o que for mais simples.</p>
-  <h3 style="margin-bottom:6px;margin-top:12px;">Passo 3 – Criar um projeto</h3>
-  <p>Ao entrar, clique em <strong>New Project</strong>.</p>
-  <p>Nele você vai escolher:</p>
-  <ul style="margin-left:16px;font-size:0.9rem;color:var(--text-soft);">
-    <li><strong>Nome do projeto:</strong> billionmind-app</li>
-    <li><strong>Senha do banco:</strong> pode ser qualquer uma segura</li>
-    <li><strong>Região:</strong> escolha a mais próxima do Brasil</li>
-  </ul>
-  <p>Após criar, o Supabase leva cerca de 20 a 40 segundos para deixar tudo pronto.</p>
-</section>
-<!-- CAPÍTULO 9 – CRIANDO A TABELA DE USUÁRIOS -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 09</div>
-    <h2 class="section-title">Criando a tabela de usuários dentro do seu app.</h2>
-    <p class="section-sub">Agora você cria o lugar onde seu aplicativo registra cada usuário.</p>
-  </div>
-  <p>
-    O Supabase já cria uma tabela automática chamada
-    <strong>auth.users</strong>, que guarda:
-  </p>
-  <ul style="margin-left:16px;font-size:0.9rem;">
-    <li>email</li>
-    <li>senha (criptografada)</li>
-    <li>id único</li>
-    <li>data de criação</li>
-  </ul>
-  <p>
-    Porém, para deixar o app mais profissional, vamos criar uma tabela complementar:
-  </p>
-  <div class="section" style="background:rgba(0,200,255,0.07);border:1px solid rgba(0,200,255,0.35);">
-    <h3 style="margin-bottom:6px;">Tabela: profiles</h3>
-    <p>Serve para armazenar informações adicionais, como:</p>
-    <ul style="margin-left:14px;font-size:0.88rem;">
-      <li>nome do usuário</li>
-      <li>foto de perfil</li>
-      <li>tipo de assinatura</li>
-      <li>último acesso</li>
-    </ul>
-  </div>
-  <h3 style="margin-top:12px;margin-bottom:6px;">Como criar a tabela:</h3>
-  <pre style="
-    background:#01040e;
-    color:#00c8ff;
-    padding:14px;
-    border-radius:14px;
-    overflow-x:auto;
-  ">
-create table profiles (
-  id uuid references auth.users(id) on delete cascade,
-  name text,
-  plan text default 'free',
-  avatar_url text,
-  last_access timestamp with time zone default now(),
-  primary key (id)
-);
-  </pre>
-  <p>
-    Com isso, todo usuário que logar vai automaticamente ter um perfil vinculado.
-  </p>
-  <div class="quote">
-    Controle é tudo: quando você entende essa estrutura, você domina o app inteiro.
-  </div>
-</section>
-<!-- CAPÍTULO 10 – SISTEMA DE LOGIN -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 10</div>
-    <h2 class="section-title">Criando o sistema de login do seu app.</h2>
-    <p class="section-sub">Agora sim: o seu app ganha vida real.</p>
-  </div>
-  <p>
-    O login básico do Supabase funciona com apenas algumas linhas de JavaScript.
-    Assim, qualquer usuário pode criar conta, fazer login e entrar no app de forma segura.
-  </p>
-  <p>Segue o código mais simples e funcional possível:</p>
-  <pre style="
-    background:#01040e;
-    color:#00ffae;
-    padding:14px;
-    border-radius:14px;
-    overflow-x:auto;
-  ">
-import { createClient } from 'https://esm.sh/@supabase/supabase-js'
-const supabase = createClient(
-  'SUA_SUPABASE_URL',
-  'SUA_SUPABASE_ANON_KEY'
-)
-async function login(email, senha) {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: email,
-    password: senha
-  })
-  if (error) {
-    alert('Erro ao logar: ' + error.message)
-    return
-  }
-  alert('Login realizado!')
-}
-  </pre>
-  <p>
-    Simples, limpo, direto.
-    Isso é suficiente para seu app ter um sistema de login completo.
-  </p>
-  <p>
-    A IA pode gerar telas de login infinitas, mas você só precisa saber isso:
-    <span class="highlight">o Supabase cuida de tudo nos bastidores.</span>
-  </p>
-</section>
-<!-- CAPÍTULO 11 – ASSINATURAS & PLANOS -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 11</div>
-    <h2 class="section-title">Criando planos pagos (free, pro, premium).</h2>
-    <p class="section-sub">
-      Aqui você muda de “criador de app” para “criador de negócio”.
-    </p>
-  </div>
-  <p>
-    O Supabase não tem sistema de pagamento interno, então você conecta:
-  </p>
-  <ul style="margin-left:16px;font-size:0.9rem;color:var(--text-soft);">
-    <li>Cakto</li>
-    <li>Stripe</li>
-    <li>Kiwify</li>
-    <li>Pagar.me</li>
-  </ul>
-  <p>
-    Como você está usando a **Cakto**, basta:
-  </p>
-  <ol style="margin-left:16px;color:var(--text-soft);">
-    <li>Criar o produto na Cakto.</li>
-    <li>Pegar o link de pagamento.</li>
-    <li>Colocar o link dentro do botão do app.</li>
-  </ol>
-  <p>
-    E então você registra no Supabase qual plano o usuário comprou.
-  </p>
-  <div class="section" style="background:rgba(247,200,106,0.06);border:1px solid rgba(247,200,106,0.35);">
-    <h3 style="margin-bottom:6px;">Campo sugerido na tabela profiles:</h3>
-    <pre style="
-      background:#01040e;
-      color:#ffd27f;
-      padding:14px;
-      border-radius:12px;
-      border:1px solid rgba(247,200,106,0.35);
-      overflow-x:auto;
-    ">
-plan text default 'free'
-    </pre>
-  </div>
-  <p>
-    Assim, toda vez que o usuário loga, o app sabe:
-  </p>
-  <ul style="margin-left:16px;">
-    <li>Se ele é free</li>
-    <li>Se ele é pro</li>
-    <li>Se ele é premium</li>
-  </ul>
-  <p>
-    Isso ativa/desativa telas, funções, conteúdos e bônus automaticamente.
-  </p>
-</section>
-<!-- CAPÍTULO 12 – BOTÃO DO WHATSAPP (SEGUNDO PONTO) -->
-<section class="section" style="text-align:center;">
-  <div class="section-header">
-    <div class="section-eyebrow">SUPORTE VIP</div>
-    <h2 class="section-title">Conta com meu suporte pessoal durante a criação.</h2>
-    <p class="section-sub">Entre no meu canal e tire dúvidas diretamente comigo.</p>
-  </div>
-  <a href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35"
-     style="
-       display:inline-block;
-       padding:16px 26px;
-       background:linear-gradient(135deg, #00f7ff, #0099ff);
-       color:white;
-       text-decoration:none;
-       font-weight:700;
-       border-radius:999px;
-       box-shadow:0 0 18px rgba(0,200,255,0.8),
-                  0 0 30px rgba(0,200,255,0.6);
-       border:1px solid rgba(0,200,255,0.5);
-       font-size:1rem;
-     ">
-     Entrar no Canal · WhatsApp
-  </a>
-  <p style="margin-top:10px;font-size:0.8rem;color:var(--text-soft);">
-    Dúvidas, suporte, ideias, correções e direcionamento.
-  </p>
-</section>
-<!-- ========================= -->
-<!-- PARTE 4 — TELAS INTERNAS DO APP -->
-<!-- ========================= -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 13</div>
-    <h2 class="section-title">As telas internas do seu aplicativo.</h2>
-    <p class="section-sub">
-      Agora começamos a construir o que realmente entrega valor:
-      as páginas internas do app.
-    </p>
-  </div>
-  <p>
-    Todos os aplicativos modernos seguem uma estrutura simples de navegação:
-  </p>
-  <ul style="margin-left:16px;font-size:0.9rem;">
-    <li><strong>Home (dashboard)</strong> — visão geral do usuário</li>
-    <li><strong>Funções principais</strong> — ferramentas que o app oferece</li>
-    <li><strong>Assinaturas</strong> — planos pro/premium</li>
-    <li><strong>Perfil</strong> — informações pessoais</li>
-    <li><strong>Suporte</strong> — ajuda direta (seu WhatsApp)</li>
-  </ul>
-  <p>
-    A IA te ajuda a construir tudo, mas você precisa saber
-    <span class="highlight">como organizar o fluxo</span>.
-  </p>
-</section>
-<!-- CAPÍTULO 14 – DASHBOARD -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 14</div>
-    <h2 class="section-title">Construindo o Dashboard – o coração do aplicativo.</h2>
-    <p class="section-sub">
-      O Dashboard é aquilo que o usuário vê assim que entra no app.
-      Ele define a experiência e mostra os primeiros indicadores.
-    </p>
-  </div>
-  <p>
-    O dashboard precisa ser:
-  </p>
-  <ul style="margin-left:16px;font-size:0.9rem;">
-    <li><strong>simples</strong> para o usuário</li>
-    <li><strong>bonito</strong> para despertar interesse</li>
-    <li><strong>funcional</strong> para indicar caminhos</li>
-  </ul>
-  <p>
-    Aqui está um modelo de dashboard moderno, já preparado para seu app:
-  </p>
-  <pre style="
-    background:#01040e;
-    color:#00eaff;
-    padding:14px;
-    border-radius:14px;
-    border:1px solid rgba(0,200,255,0.35);
-    overflow-x:auto;
-  ">
-<div class="dashboard">
-  <h2>Bem-vindo, Usuário</h2>
-  <div class="dash-cards">
-    <div class="dash-card">
-      <h3>Seus Projetos</h3>
-      <p>0 aplicativos criados</p>
-    </div>
-    <div class="dash-card">
-      <h3>Progresso</h3>
-      <div class="progress-bar"></div>
-    </div>
-    <div class="dash-card">
-      <h3>Seu Plano</h3>
-      <p>Free</p>
-    </div>
-  </div>
-  <button class="btn-main">Upgrade de Plano</button>
-</div>
-  </pre>
-  <p>
-    Isso será totalmente estilizado na versão final do seu app, mas para o e-book,
-    o importante é que o leitor veja a estrutura que funciona.
-  </p>
-  <div class="quote">
-    Se o Dashboard é claro, o usuário sabe o que fazer.
-    Se é confuso, ele fecha o app.
-  </div>
-</section>
-<!-- CAPÍTULO 15 – NAVEGAÇÃO DO APP -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 15</div>
-    <h2 class="section-title">Criando a barra de navegação.</h2>
-    <p class="section-sub">
-      A navegação transforma um conjunto de páginas em um aplicativo real.
-    </p>
-  </div>
-  <p>
-    Um menu simples e eficiente para mobile deve ter entre 3 e 5 botões:
-  </p>
-  <ul style="margin-left:16px;font-size:0.9rem;">
-    <li>🏠 Home</li>
-    <li>⚙️ Ferramentas</li>
-    <li>💎 Premium</li>
-    <li>👤 Perfil</li>
-  </ul>
-  <p>
-    Aqui está o HTML base do menu:
-  </p>
-  <pre style="
-    background:#01040e;
-    color:#00ffd4;
-    padding:14px;
-    border-radius:14px;
-    border:1px solid rgba(0,200,255,0.35);
-    overflow-x:auto;
-  ">
-<nav class="bottom-nav">
-  <a href="#home">🏠</a>
-  <a href="#tools">⚙️</a>
-  <a href="#premium">💎</a>
-  <a href="#profile">👤</a>
-</nav>
-  </pre>
-  <p>
-    A IA pode estilizar esse menu do jeito que você quiser.
-    No e-book, a ideia é ensinar o caminho e mostrar o real.
-  </p>
-</section>
-<!-- CAPÍTULO 16 – TELA DE ASSINATURAS -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 16</div>
-    <h2 class="section-title">Tela de assinaturas: onde o dinheiro acontece.</h2>
-    <p class="section-sub">
-      Aqui você conecta os seus links da Cakto e transforma visitantes em receita.
-    </p>
-  </div>
-  <p>
-    Seus links são:
-  </p>
-  <div style="font-size:0.9rem;margin-bottom:12px;">
-    <strong>Oferta principal (R$ 109,98):</strong><br>
-    https://pay.cakto.com.br/4ehcq2y_672236
-    <br><br>
-    <strong>Oferta média (R$ 48,98):</strong><br>
-    https://pay.cakto.com.br/v8k65mm_672262
-  </div>
-  <p>Aqui está o HTML da área de planos:</p>
-  <pre style="
-    background:#01040e;
-    color:#ffd27f;
-    padding:14px;
-    border-radius:14px;
-    border:1px solid rgba(247,200,106,0.35);
-    overflow-x:auto;
-  ">
-<div class="plans">
-  <div class="plan-card">
-    <h3>Plano Principal</h3>
-    <p>Acesso completo • Conteúdo total • Suporte no WhatsApp</p>
-    <a class="btn-main"
-       href="https://pay.cakto.com.br/4ehcq2y_672236">Comprar R$ 109,98</a>
-  </div>
-  <div class="plan-card">
-    <h3>Plano Médio</h3>
-    <p>Acesso reduzido • Conteúdos principais</p>
-    <a class="btn-main"
-       href="https://pay.cakto.com.br/v8k65mm_672262">Comprar R$ 48,98</a>
-  </div>
-</div>
-  </pre>
-  <p>
-    Agora seu aplicativo está 100% conectado ao seu negócio.
-  </p>
-  <div class="quote">
-    Criador inteligente não vende “coisa”.
-    Criador inteligente vende acesso, continuidade e visão.
-  </div>
-</section>
-<!-- CAPÍTULO 17 – TELA DE PERFIL -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 17</div>
-    <h2 class="section-title">Tela de Perfil – onde o usuário se reconhece.</h2>
-    <p class="section-sub">
-      A tela de perfil é onde o usuário vê quem ele é dentro do seu app.
-    </p>
-  </div>
-  <p>
-    Aqui está o modelo base:
-  </p>
-  <pre style="
-    background:#01040e;
-    color:#00d5ff;
-    padding:14px;
-    border-radius:14px;
-    overflow-x:auto;
-    border:1px solid rgba(0,200,255,0.34);
-  ">
-<div class="profile">
-  <img src="profile.jpg" class="profile-pic">
-  <h3>Usuário</h3>
-  <p>Plano: Free</p>
-  <button class="btn-main">Trocar Plano</button>
-  <button class="btn-sec">Sair</button>
-</div>
-  </pre>
-  <p>
-    Essa tela futuramente pode puxar dados diretamente do Supabase:
-  </p>
-  <ul style="margin-left:16px;font-size:0.9rem;">
-    <li>Nome</li>
-    <li>Plano</li>
-    <li>Foto</li>
-    <li>Último acesso</li>
-  </ul>
-  <p>
-    Você decide como evoluir isso.
-  </p>
-</section>
-<!-- CAPÍTULO 18 – LINK DE SUPORTE -->
-<section class="section" style="text-align:center;">
-  <div class="section-header">
-    <div class="section-eyebrow">SUPORTE</div>
-    <h2 class="section-title">Fale comigo diretamente.</h2>
-    <p class="section-sub">
-      Tirar dúvidas com quem sabe o caminho economiza meses de erros.
-    </p>
-  </div>
-  <a href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35"
-     style="
-       display:inline-block;
-       padding:16px 26px;
-       background:linear-gradient(135deg, #00f7ff, #0099ff);
-       color:white;
-       text-decoration:none;
-       font-weight:700;
-       border-radius:999px;
-       box-shadow:0 0 18px rgba(0,200,255,0.8),
-                  0 0 30px rgba(0,200,255,0.6);
-       border:1px solid rgba(0,200,255,0.5);
-       font-size:1rem;
-     ">
-     Entrar no Canal · WhatsApp
-  </a>
-  <p style="margin-top:10px;font-size:0.8rem;color:var(--text-soft);">
-    Suporte • Ideias • Correções • Testes
-  </p>
-</section>
-<!-- ========================= -->
-<!-- PARTE 5 — MENTALIDADE DO CRIADOR FUTURISTA -->
-<!-- ========================= -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 19</div>
-    <h2 class="section-title">A mente do criador que controla a IA.</h2>
-    <p class="section-sub">
-      Aqui começa a verdadeira transformação.
-      A construção do seu app depende do seu código mental — não apenas do código do navegador.
-    </p>
-  </div>
-  <p>
-    Quando você entende tecnologia, você cria.
-    Quando você entende mentalidade, você domina.
-  </p>
-  <div class="quote">
-    Você não precisa ser gênio.
-    Você precisa ser consistente, estratégico e impossível de quebrar.
-  </div>
-  <p>
-    A partir deste capítulo, você entra na parte que separa amadores de criadores:
-    <span class="highlight">a postura mental</span>.
-  </p>
-</section>
-<!-- IMAGEM INTERNA (MENTALIDADE) -->
-<section class="section" style="padding:0;">
-  <img src="https://images.unsplash.com/photo-1520975918318-3aec2d8ea36c?q=80&w=1200"
-       style="width:100%;border-radius:22px 22px 0 0;opacity:0.85;">
-  <div style="padding:20px 20px 24px;">
-    <div class="section-eyebrow">VISÃO</div>
-    <h2 style="font-size:1.3rem;margin-bottom:6px;">
-      O criador não vê o mundo como ele é.
-      Vê como ele *pode ser*.
-    </h2>
-    <p style="font-size:0.92rem;color:var(--text-soft);">
-      Essa imagem representa algo simples:
-      <strong>foco e controle</strong>.
-      Enquanto o mundo perde tempo com distrações, você está construindo.
-    </p>
-  </div>
-</section>
-<!-- CAPÍTULO 20 — A NOVA ERA DO CRIADOR -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 20</div>
-    <h2 class="section-title">2026+: Criadores de sistemas dominam tudo.</h2>
-    <p class="section-sub">
-      A internet não premia mais quem posta muito.
-      Ela premia quem constrói sistemas que funcionam sozinhos.
-    </p>
-  </div>
-  <p>
-    Em 2026 e nos anos seguintes, três tipos de criadores vão dominar:
-  </p>
-  <ol style="margin-left:16px;font-size:0.9rem;color:var(--text-soft);">
-    <li><strong>Os que criam ferramentas usando IA</strong>.</li>
-    <li><strong>Os que monetizam o próprio conhecimento</strong>.</li>
-    <li><strong>Os que constroem rotinas de disciplina extrema</strong>.</li>
-  </ol>
-  <p>
-    Quem depender apenas de “conteúdos” será engolido.
-    Quem cria sistemas será pago para sempre.
-  </p>
-  <div class="quote">
-    Um sistema, mesmo simples, vale mais do que 300 vídeos virais.
-  </div>
-</section>
-<!-- CAPÍTULO 21 – O MODO DONO -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 21</div>
-    <h2 class="section-title">O Modo Dono – a chave para nunca depender de ninguém.</h2>
-    <p class="section-sub">
-      Sem esse modo ativado, nenhum app, e-book ou projeto digital sobrevive.
-    </p>
-  </div>
-  <p>
-    O Modo Dono é a mentalidade que define:
-  </p>
-  <ul style="margin-left:16px;font-size:0.9rem;">
-    <li><strong>postura</strong> – você age, não espera;</li>
-    <li><strong>ritmo</strong> – você cria rotina própria;</li>
-    <li><strong>execução</strong> – você decide e termina;</li>
-    <li><strong>resolução</strong> – você resolve, não terceiriza tudo.</li>
-  </ul>
-  <p>
-    Criadores fracos falam.
-    Criadores fortes fazem.
-  </p>
-  <p>
-    Quando você ativa o modo dono, você sai do ciclo:
-  </p>
-  <ul style="margin-left:16px;font-size:0.88rem;color:var(--text-soft);">
-    <li>procrastinação</li>
-    <li>medo do resultado</li>
-    <li>falta de clareza</li>
-  </ul>
-  <p>
-    E entra no ciclo:
-  </p>
-  <ul style="margin-left:16px;font-size:0.88rem;color:var(--text-soft);">
-    <li>criação</li>
-    <li>evolução</li>
-    <li>disciplina</li>
-    <li>ação diária</li>
-  </ul>
-  <div class="quote">
-    Dono não pergunta “será que funciona?”.
-    Dono pergunta “como faço funcionar?”.
-  </div>
-</section>
-<!-- IMAGEM DE LUXO FUTURISTA -->
-<section class="section" style="padding:0;">
-  <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200"
-       style="width:100%;border-radius:22px 22px 0 0;opacity:0.85;">
-  <div style="padding:20px;">
-    <div class="section-eyebrow">IDENTIDADE</div>
-    <h2 style="font-size:1.3rem;margin-bottom:6px;">
-      Luxo é padrão.
-      Confusão é ruído.
-      Disciplina é poder.
-    </h2>
-    <p style="font-size:0.9rem;color:var(--text-soft);">
-      Quando você cria algo com estética forte, as pessoas acreditam no valor.
-      Quando você cria algo com intenção, elas confiam na estrutura.
-    </p>
-  </div>
-</section>
-<!-- CAPÍTULO 22 – O CÓDIGO MENTAL DO CRIADOR -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 22</div>
-    <h2 class="section-title">O Código Mental do Criador.</h2>
-    <p class="section-sub">Se você dominar apenas esta lista, já estará na frente de 99% das pessoas.</p>
-  </div>
-  <ul style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);">
-    <li>Crie antes de consumir.</li>
-    <li>Produza mesmo sem motivação.</li>
-    <li>Pense em sistemas, não em tarefas.</li>
-    <li>Seja o dono do projeto, não peça permissão.</li>
-    <li>Cumpra a palavra consigo mesmo.</li>
-    <li>Se distancie de quem não pensa grande.</li>
-    <li>Construa em silêncio, entregue em alto nível.</li>
-    <li>Domine a IA — não seja dominado por ela.</li>
-    <li>Tenha rotina de execução.</li>
-    <li>Enxergue o futuro como obra sua, não como destino.</li>
-  </ul>
-  <div class="quote">
-    O criador não espera o momento perfeito.
-    Ele cria o momento perfeito com ação.
-  </div>
-</section>
-<!-- CAPÍTULO 23 – ROTINA DE ALTA PERFORMANCE -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 23</div>
-    <h2 class="section-title">A rotina que transforma qualquer pessoa em máquina de criação.</h2>
-    <p class="section-sub">
-      Não existe talento que supere disciplina.
-      E não existe resultado sem repetição estratégica.
-    </p>
-  </div>
-  <h3 style="margin-bottom:8px;">Rotina diária sugerida (2026+):</h3>
-  <ul style="margin-left:16px;font-size:0.9rem;">
-    <li><strong>15 min</strong> — foco total (sem celular)</li>
-    <li><strong>30 min</strong> — criação com IA</li>
-    <li><strong>20 min</strong> — evolução no app</li>
-    <li><strong>10 min</strong> — revisão de progresso</li>
-    <li><strong>10 min</strong> — leitura estratégica</li>
-  </ul>
-  <p>
-    Em 1 hora e 25 minutos você faz mais do que a maioria faz em 1 dia inteiro.
-  </p>
-  <div class="quote">
-    O mundo recompensa quem age sem parar.
-  </div>
-</section>
-<!-- LINK DE SUPORTE (FECHAMENTO DA PARTE 5) -->
-<section class="section" style="text-align:center;">
-  <div class="section-header">
-    <div class="section-eyebrow">FALAR COMIGO</div>
-    <h2 class="section-title">Suporte direto para sua evolução.</h2>
-    <p class="section-sub">Se surgir qualquer dúvida, fale comigo diretamente.</p>
-  </div>
-  <a href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35"
-     style="
-       display:inline-block;
-       padding:16px 26px;
-       background:linear-gradient(135deg, #00f7ff, #0099ff);
-       color:white;
-       text-decoration:none;
-       font-weight:700;
-       border-radius:999px;
-       box-shadow:0 0 18px rgba(0,200,255,0.8),
-                  0 0 30px rgba(0,200,255,0.6);
-       border:1px solid rgba(0,200,255,0.5);
-       font-size:1rem;
-     ">
-     Entrar no Canal · WhatsApp
-  </a>
-  <p style="margin-top:10px;font-size:0.8rem;color:var(--text-soft);">
-    Evolução • Suporte • Aceleração
-  </p>
-</section>
-<!-- ========================= -->
-<!-- PARTE 6 — MENTALIDADE FINANCEIRA & EVOLUÇÃO -->
-<!-- ========================= -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 24</div>
-    <h2 class="section-title">A nova mentalidade financeira do criador 2026+.</h2>
-    <p class="section-sub">
-      Você não está aqui apenas para criar um app.
-      Você está aqui para construir um <strong>ecossistema próprio de valor</strong>.
-    </p>
-  </div>
-  <p>
-    O criador do futuro não depende de sorte, viral, hype ou tendência.
-    Ele depende de <strong>sistema + repetição + visão</strong>.
-  </p>
-  <p>
-    A partir de agora vamos evoluir sua mentalidade financeira para o novo mundo:
-    um mundo onde IA cuida do trabalho pesado e você cuida da estratégia.
-  </p>
-  <div class="quote">
-    Riqueza não vem de trabalhar mais.
-    Riqueza vem de trabalhar melhor — com sistemas que trabalham por você.
-  </div>
-</section>
-<!-- IMAGEM DE LUXO FINANCEIRO -->
-<section class="section" style="padding:0;">
-  <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=1200"
-       style="width:100%;border-radius:22px 22px 0 0;opacity:0.86;">
-  <div style="padding:20px;">
-    <div class="section-eyebrow">FUTURO</div>
-    <h2 style="font-size:1.3rem;margin-bottom:6px;">
-      O futuro não pertence a quem trabalha duro.
-      Pertence a quem constrói inteligência.
-    </h2>
-    <p style="font-size:0.9rem;color:var(--text-soft);">
-      Luxo não é ostentação — é consequência de estrutura, pensamento grande
-      e execução constante.
-    </p>
-  </div>
-</section>
-<!-- CAPÍTULO 25 — A LÓGICA DO DINHEIRO INTELIGENTE -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 25</div>
-    <h2 class="section-title">A lógica do dinheiro inteligente.</h2>
-    <p class="section-sub">
-      O dinheiro que muda vidas não é conquistado com esforço físico.
-      É conquistado com decisões inteligentes.
-    </p>
-  </div>
-  <p>
-    Em 2026, o fluxo financeiro funciona assim:
-  </p>
-  <ul style="margin-left:16px;font-size:0.9rem;color:var(--text-soft);">
-    <li><strong>dinheiro rápido</strong> vem de vendas diretas</li>
-    <li><strong>dinheiro médio</strong> vem de produtos digitais</li>
-    <li><strong>dinheiro longo</strong> vem de assinaturas e sistemas</li>
-  </ul>
-  <p>
-    E você está construindo os três.
-  </p>
-  <p>
-    A IA multiplica sua velocidade, mas você precisa direcionar a intenção:
-  </p>
-  <div class="section" style="background:rgba(0,200,255,0.08);border:1px solid rgba(0,200,255,0.35);">
-    <h3 style="margin-bottom:6px;">A fórmula do criador inteligente:</h3>
-    <ul style="margin-left:16px;font-size:0.88rem;">
-      <li>1 sistema funcionando</li>
-      <li>1 funil simples rodando</li>
-      <li>1 produto de assinatura</li>
-      <li>postura de disciplina</li>
-      <li>IA como braço direito</li>
-    </ul>
-  </div>
-  <p>
-    Isso muda tudo.
-  </p>
-  <div class="quote">
-    “Quando você aprende a criar sistemas, você nunca mais volta a ser a mesma pessoa.”
-  </div>
-</section>
-<!-- CAPÍTULO 26 — ATIVOS DIGITAIS -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 26</div>
-    <h2 class="section-title">Ativos digitais: a riqueza que ninguém te contou.</h2>
-    <p class="section-sub">
-      Você está criando os mesmos tipos de ativos que grandes players usam — mas sem complicação.
-    </p>
-  </div>
-  <p>
-    Um ativo digital é qualquer coisa que:
-  </p>
-  <ul style="margin-left:16px;font-size:0.9rem;">
-    <li>Vive online</li>
-    <li>Pode ser entregue automaticamente</li>
-    <li>Pode ser vendido infinitas vezes sem custo adicional</li>
-    <li>É construído uma vez e monetiza para sempre</li>
-  </ul>
-  <p>
-    Exemplos que você próprio está criando:
-  </p>
-  <ul style="margin-left:16px;font-size:0.9rem;">
-    <li>Este e-book de 100 páginas</li>
-    <li>Seu aplicativo futurista</li>
-    <li>Seu canal no WhatsApp</li>
-    <li>Sua página de vendas</li>
-  </ul>
-  <p>
-    Isso é literalmente a fábrica do seu negócio.
-  </p>
-  <div class="quote">
-    Ativos digitais = liberdade multiplicada.
-  </div>
-</section>
-<!-- IMAGEM DE PODER / RIQUEZA -->
-<section class="section" style="padding:0;">
-  <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200"
-       style="width:100%;border-radius:22px 22px 0 0;opacity:0.86;">
-  <div style="padding:20px;">
-    <div class="section-eyebrow">INTELIGÊNCIA</div>
-    <h2 style="font-size:1.3rem;margin-bottom:6px;">
-      Quando você domina a IA, você domina o jogo.
-    </h2>
-    <p style="font-size:0.9rem;color:var(--text-soft);">
-      Pessoas comuns usam IA para diversão.
-      Criadores usam IA para construir patrimônio.
-    </p>
-  </div>
-</section>
-<!-- CAPÍTULO 27 – DECISÃO FINANCEIRA DO CRIADOR -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 27</div>
-    <h2 class="section-title">Tomadas de decisão do criador futurista.</h2>
-    <p class="section-sub">
-      A forma como você toma decisões define sua ascensão.
-    </p>
-  </div>
-  <p>
-    Aqui estão as regras práticas para decisões inteligentes:
-  </p>
-  <ul style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);">
-    <li>Decida rápido, ajuste depois.</li>
-    <li>Simplifique até ficar impossível errar.</li>
-    <li>Construa pequenos blocos todos os dias.</li>
-    <li>O que é prioridade? Faça agora.</li>
-    <li>Evite pessoas lentas e indecisas.</li>
-    <li>Proteja sua energia criativa.</li>
-  </ul>
-  <div class="quote">
-    Sua vida é a soma das decisões que você não adiou.
-  </div>
-</section>
-<!-- CAPÍTULO 28 — SCRIPT AVANÇADO DE IA -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 28</div>
-    <h2 class="section-title">Scripts avançados de IA para criar produtos automaticamente.</h2>
-    <p class="section-sub">
-      A partir de agora, você também aprende o que pedir para IA construir sistemas reais.
-    </p>
-  </div>
-  <p>
-    Aqui vai um dos melhores scripts possíveis para criar apps, páginas, sistemas ou designs:
-  </p>
-  <pre style="
-    background:#01040e;
-    color:#00ffea;
-    padding:14px;
-    border-radius:14px;
-    border:1px solid rgba(0,200,255,0.35);
-    overflow-x:auto;
-  ">
-PROMPT:
-"Quero que você atue como meu engenheiro-chefe de software.
-Seu objetivo é construir uma estrutura completa baseada em [IDEIA].
-Crie:
-1. Identidade visual
-2. Estrutura do app
-3. HTML completo
-4. Componentes estilizados
-5. Sistema de login
-6. Rotas
-7. Sessões protegidas
-8. Botões de pagamento
-9. Versão mobile responsiva
-10. Expanda tudo quando eu pedir 'próximo nível'."
-  </pre>
-  <p>
-    Esse script sozinho vale ouro — e você já sabe usar.
-  </p>
-</section>
-<!-- CAPÍTULO 29 – MINDSET DE RIQUEZA -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 29</div>
-    <h2 class="section-title">Mindset de riqueza: as leis invisíveis do dinheiro.</h2>
-    <p class="section-sub">
-      Pessoas ricas têm comportamentos ricos — antes de terem dinheiro.
-    </p>
-  </div>
-  <ul style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);">
-    <li>Riqueza começa na mente, não no bolso.</li>
-    <li>Você não gasta para se sentir bem.
-        Você investe para expandir sua capacidade.</li>
-    <li>Dinheiro é energia — ele vai onde há clareza.</li>
-    <li>Disciplina vale mais do que motivação.</li>
-    <li>Seus hábitos criam ou destroem suas possibilidades.</li>
-    <li>Sistemas valem mais do que força física.</li>
-  </ul>
-  <div class="quote">
-    A mente rica vê oportunidades onde outros vêem problemas.
-  </div>
-</section>
-<!-- SUPORTE / SEÇÃO FINAL DA PARTE 6 -->
-<section class="section" style="text-align:center;">
-  <div class="section-header">
-    <div class="section-eyebrow">SUPORTE DIRETO</div>
-    <h2 class="section-title">Fale comigo quando precisar.</h2>
-    <p class="section-sub">
-      Está absorvendo muito conteúdo?
-      Se quiser tirar dúvidas, é só clicar abaixo:
-    </p>
-  </div>
-  <a href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35"
-     style="
-       display:inline-block;
-       padding:16px 26px;
-       background:linear-gradient(135deg, #00f7ff, #0099ff);
-       color:white;
-       text-decoration:none;
-       font-weight:700;
-       border-radius:999px;
-       box-shadow:0 0 18px rgba(0,200,255,0.8),
-                  0 0 30px rgba(0,200,255,0.6);
-       border:1px solid rgba(0,200,255,0.5);
-       font-size:1rem;
-     ">
-     Entrar no Canal · WhatsApp
-  </a>
-  <p style="margin-top:10px;font-size:0.8rem;color:var(--text-soft);">
-    Suporte • Direção • Clareza
-  </p>
-</section>
-<!-- ========================= -->
-<!-- PARTE 7 — O EFEITO ALFA DO CRIADOR -->
-<!-- ========================= -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 30</div>
-    <h2 class="section-title">O Efeito Alfa do Criador.</h2>
-    <p class="section-sub">
-      Esta é a virada de chave que transforma pessoas comuns em máquinas de execução.
-    </p>
-  </div>
-  <p>
-    O Efeito Alfa é o estado mental onde você se torna extremamente focado,
-    disciplinado, frio e calculado na busca dos seus objetivos.
-  </p>
-  <p>
-    Ele acontece quando três elementos se alinham:
-  </p>
-  <ul style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);">
-    <li><strong>clareza</strong> — saber exatamente o que quer;</li>
-    <li><strong>ambiente</strong> — lugar mental e físico que ajuda ao invés de atrapalhar;</li>
-    <li><strong>ação contínua</strong> — fazer independente de humor.</li>
-  </ul>
-  <div class="quote">
-    Você não se torna alfa por ser melhor que os outros.
-    Você se torna alfa por ser melhor do que você mesmo ontem.
-  </div>
-</section>
-<!-- IMAGEM PODEROSA (Efeito Alfa) -->
-<section class="section" style="padding:0;">
-  <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?q=80&w=1200"
-       style="width:100%;opacity:0.90;border-radius:22px 22px 0 0;">
-  <div style="padding:20px;">
-    <div class="section-eyebrow">FOCO ABSOLUTO</div>
-    <h2 style="font-size:1.3rem;margin-bottom:6px;">
-      Mente fria. Execução quente.
-      É assim que se domina a era da IA.
-    </h2>
-    <p style="font-size:0.9rem;color:var(--text-soft);">
-      Em 2026+, quem domina as próprias emoções domina o mercado.
-    </p>
-  </div>
-</section>
-<!-- CAPÍTULO 31 – OS 5 PILARES DO CRIADOR ALFA -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 31</div>
-    <h2 class="section-title">Os 5 pilares do Criador Alfa.</h2>
-    <p class="section-sub">Estes pilares definem sua velocidade.</p>
-  </div>
-  <ol style="margin-left:16px;font-size:0.94rem;color:var(--text-soft);">
-    <li><strong>Pilar 1 — Disciplina Estratégica</strong><br>
-        Fazer mesmo sem vontade. O corpo acompanha a mente.</li>
-    <li><strong>Pilar 2 — Ambiente Blindado</strong><br>
-        Bloquear o que te atrasa. Proteger sua energia.</li>
-    <li><strong>Pilar 3 — Clareza Total</strong><br>
-        Saber o que quer, por quê e como vai conseguir.</li>
-    <li><strong>Pilar 4 — Criatividade Direcionada</strong><br>
-        IA te dá ideias, mas você dá direção.</li>
-    <li><strong>Pilar 5 — Execução Diária</strong><br>
-        1% por dia = 37x melhor em 1 ano.</li>
-  </ol>
-</section>
-<!-- CAPÍTULO 32 – ROTINA SEMANAL ALFA -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 32</div>
-    <h2 class="section-title">A Rotina Semanal Alfa 2026+.</h2>
-    <p class="section-sub">
-      Uma semana bem feita produz mais evolução que meses de tentativa aleatória.
-    </p>
-  </div>
-  <h3 style="margin-bottom:8px;">SEGUNDA — Construção</h3>
-  <p>Criar páginas, desenvolver sistema, estruturar.</p>
-  <h3 style="margin-bottom:8px;">TERÇA — IA & Automação</h3>
-  <p>Treinar IA, criar prompts, acelerar processos.</p>
-  <h3 style="margin-bottom:8px;">QUARTA — Mentalidade</h3>
-  <p>Refinar decisões, reorganizar ideias, cortar distrações.</p>
-  <h3 style="margin-bottom:8px;">QUINTA — Evolução Técnica</h3>
-  <p>Aprender um conceito novo, testar ferramentas.</p>
-  <h3 style="margin-bottom:8px;">SEXTA — Crescimento</h3>
-  <p>Publicar, vender, captar usuários.</p>
-  <h3 style="margin-bottom:8px;">SÁBADO — Ajustes</h3>
-  <p>Melhorias, revisões, atualizações.</p>
-  <h3 style="margin-bottom:8px;">DOMINGO — Silêncio Estratégico</h3>
-  <p>Descanso do corpo, planejamento da mente.</p>
-  <div class="quote">
-    Uma semana alfa vale mais do que 3 meses de tentativa desorganizada.
-  </div>
-</section>
-<!-- CAPÍTULO 33 – EXERCÍCIOS INTERNOS -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 33</div>
-    <h2 class="section-title">Exercícios internos – para destravar sua mente.</h2>
-    <p class="section-sub">
-      Agora você vai escrever, decidir e se comprometer.
-    </p>
-  </div>
-  <p>Responda (mentalmente ou por escrito):</p>
-  <div class="section" style="background:rgba(0,200,255,0.06);border:1px solid rgba(0,200,255,0.26);margin-bottom:12px;">
-    <h3 style="margin-bottom:4px;">EXERCÍCIO 1 — Clareza Absoluta</h3>
-    <p style="font-size:0.9rem;color:var(--text-soft);">
-      “O que eu realmente quero conquistar usando IA e criação de apps?”
-    </p>
-    <textarea style="
-      width:100%;
-      height:120px;
-      background:#050a1a;
-      border:1px solid rgba(0,200,255,0.35);
-      color:#00eaff;
-      padding:10px;
-      border-radius:12px;
-      margin-top:8px;
-      resize:none;
-    "></textarea>
-  </div>
-  <div class="section" style="background:rgba(247,200,106,0.06);border:1px solid rgba(247,200,106,0.26);margin-bottom:12px;">
-    <h3 style="margin-bottom:4px;">EXERCÍCIO 2 — Corte Imediato</h3>
-    <p style="font-size:0.9rem;color:var(--text-soft);">
-      “Quais distrações estão roubando minha capacidade de criar?”
-    </p>
-    <textarea style="
-      width:100%;
-      height:120px;
-      background:#050a1a;
-      border:1px solid rgba(247,200,106,0.35);
-      color:#ffd27f;
-      padding:10px;
-      border-radius:12px;
-      margin-top:8px;
-      resize:none;
-    "></textarea>
-  </div>
-  <div class="section" style="background:rgba(0,255,170,0.06);border:1px solid rgba(0,255,170,0.26);">
-    <h3 style="margin-bottom:4px;">EXERCÍCIO 3 — Ação Direcionada</h3>
-    <p style="font-size:0.9rem;color:var(--text-soft);">
-      “Quais ações posso fazer nas próximas 48h para acelerar minha criação?”
-    </p>
-    <textarea style="
-      width:100%;
-      height:120px;
-      background:#050a1a;
-      border:1px solid rgba(0,255,170,0.35);
-      color:#00ffae;
-      padding:10px;
-      border-radius:12px;
-      margin-top:8px;
-      resize:none;
-    "></textarea>
-  </div>
-</section>
-<!-- CAPÍTULO 34 – O INSTINTO DO CRIADOR -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 34</div>
-    <h2 class="section-title">O Instinto do Criador — sua arma secreta.</h2>
-    <p class="section-sub">
-      Criadores verdadeiros têm um instinto:
-      o instinto de solução.
-    </p>
-  </div>
-  <p>
-    Enquanto outras pessoas travam, reclamam ou desistem,
-    criadores procuram alternativas.
-  </p>
-  <p>
-    Você precisa cultivar 3 reações automáticas:
-  </p>
-  <ul style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);">
-    <li><strong>Quando algo der errado:</strong> “Como eu resolvo isso rapidamente?”</li>
-    <li><strong>Quando algo travar:</strong> “Qual é o próximo passo lógico?”</li>
-    <li><strong>Quando algo der medo:</strong> “O que preciso aprender para dominar isso?”</li>
-  </ul>
-  <div class="quote">
-    Criadores não fogem da dificuldade.
-    Eles avançam sobre ela.
-  </div>
-</section>
-<!-- IMAGEM PODEROSA (TECNOLOGIA + MENTE) -->
-<section class="section" style="padding:0;">
-  <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200"
-       style="width:100%;opacity:0.90;border-radius:22px 22px 0 0;">
-  <div style="padding:20px;">
-    <div class="section-eyebrow">MENTE & TECNOLOGIA</div>
-    <h2 style="font-size:1.3rem;margin-bottom:6px;">
-      Quando a mente domina a tecnologia, o mundo se dobra.
-    </h2>
-    <p style="font-size:0.9rem;color:var(--text-soft);">
-      IA é uma ferramenta.
-      Quem decide o que ela faz é você.
-    </p>
-  </div>
-</section>
-<!-- FECHAMENTO PART 7 – SUPORTE -->
-<section class="section" style="text-align:center;margin-bottom:40px;">
-  <div class="section-header">
-    <div class="section-eyebrow">SUPORTE</div>
-    <h2 class="section-title">Se quiser ajuda, estou perto.</h2>
-    <p class="section-sub">
-      Clique abaixo sempre que precisar de ajuda na jornada.
-    </p>
-  </div>
-  <a href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35"
-     style="
-       display:inline-block;
-       padding:16px 26px;
-       background:linear-gradient(135deg, #00f7ff, #0099ff);
-       color:white;
-       text-decoration:none;
-       font-weight:700;
-       border-radius:999px;
-       box-shadow:0 0 18px rgba(0,200,255,0.8),
-                  0 0 30px rgba(0,200,255,0.6);
-       border:1px solid rgba(0,200,255,0.5);
-       font-size:1rem;
-     ">
-     Entrar no Canal · WhatsApp
-  </a>
-</section>
-<!-- ========================= -->
-<!-- PARTE 8 — O CRIADOR FRIO (MENTALIDADE AVANÇADA) -->
-<!-- ========================= -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 35</div>
-    <h2 class="section-title">O Criador Frio — a evolução avançada da sua mente.</h2>
-    <p class="section-sub">
-      Aqui você aprende a agir sem hesitação, sem emoção desnecessária e sempre com visão clara.
-    </p>
-  </div>
-  <p>
-    O Criador Frio é a versão 2026+ do criador disciplinado.
-    Ele não reage. Ele escolhe.
-    Ele não se abala. Ele calcula.
-  </p>
-  <p>
-    Enquanto pessoas comuns tomam decisões baseadas em sentimento,
-    o Criador Frio toma decisões baseadas em:
-  </p>
-  <ul style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);">
-    <li><strong>dados</strong></li>
-    <li><strong>lógica</strong></li>
-    <li><strong>consequência</strong></li>
-    <li><strong>visão de longo prazo</strong></li>
-    <li><strong>propósito</strong></li>
-  </ul>
-  <div class="quote">
-    "Quando você aprende a sentir menos e agir mais,
-    sua vida muda completamente."
-  </div>
-</section>
-<!-- IMAGEM PODEROSA (Criador Frio) -->
-<section class="section" style="padding:0;">
-  <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?q=80&w=1200"
-       style="width:100%;opacity:0.90;border-radius:22px 22px 0 0;">
-  <div style="padding:20px;">
-    <div class="section-eyebrow">FOCO ABSOLUTO</div>
-    <h2 style="font-size:1.3rem;margin-bottom:6px;">
-      Mente fria. Execução quente.
-      É assim que se domina a era da IA.
-    </h2>
-    <p style="font-size:0.9rem;color:var(--text-soft);">
-      Em 2026+, quem domina as próprias emoções domina o mercado.
-    </p>
-  </div>
-</section>
-<!-- CAPÍTULO 36 – INTELIGÊNCIA EMOCIONAL ESTRATÉGICA -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 36</div>
-    <h2 class="section-title">Inteligência Emocional Estratégica.</h2>
-    <p class="section-sub">
-      Não é sobre “controlar emoções”. É sobre direcionar energia.
-    </p>
-  </div>
-  <p>
-    Criadores fortes não tentam eliminar sentimentos.
-    Eles aprendem a colocar cada emoção no lugar certo:
-  </p>
-  <ul style="margin-left:16px;font-size:0.92rem;">
-    <li><strong>Fome de vitória → produtividade</strong></li>
-    <li><strong>Raiva → foco redirecionado</strong></li>
-    <li><strong>Medo → aprendizado</strong></li>
-    <li><strong>Dúvida → teste rápido</strong></li>
-    <li><strong>Ansiedade → movimento imediato</strong></li>
-  </ul>
-  <p>
-    Emoções não são inimigas.
-    Emoções são combustível.
-    Quem transforma emoção em movimento, vence.
-  </p>
-  <div class="quote">
-    Um inimigo emocional é forte.
-    Mas um criador frio é inabalável.
-  </div>
-</section>
-<!-- CAPÍTULO 37 – O MÉTODO 3D (Decidir, Desenvolver, Dominar) -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 37</div>
-    <h2 class="section-title">O Método 3D — Decidir · Desenvolver · Dominar.</h2>
-    <p class="section-sub">
-      Um modelo mental simples que transforma projetos em realidade.
-    </p>
-  </div>
-  <h3 style="margin-bottom:6px;">1 — DECIDIR</h3>
-  <p>Escolher uma direção clara, mesmo que você ainda não saiba todos os passos.</p>
-  <h3 style="margin-bottom:6px;margin-top:12px;">2 — DESENVOLVER</h3>
-  <p>Ação diária, criação de blocos, construção do sistema.</p>
-  <h3 style="margin-bottom:6px;margin-top:12px;">3 — DOMINAR</h3>
-  <p>Aprimorar, ajustar, expandir — até ficar impossível alguém te alcançar.</p>
-  <div class="quote">
-    A maioria decide pouco, desenvolve menos e nunca domina nada.
-    Aqui você faz o contrário.
-  </div>
-</section>
-<!-- IMAGEM — TECNOLOGIA E ESTRATÉGIA -->
-<section class="section" style="padding:0;">
-  <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200"
-       style="width:100%;opacity:0.90;border-radius:22px 22px 0 0;">
-  <div style="padding:20px;">
-    <div class="section-eyebrow">ESTRATÉGIA</div>
-    <h2 style="font-size:1.3rem;margin-bottom:6px;">
-      A era digital recompensa quem pensa como arquiteto.
-    </h2>
-    <p style="font-size:0.9rem;color:var(--text-soft);">
-      Em 2026+, não é o mais rápido.
-      É o mais estratégico.
-    </p>
-  </div>
-</section>
-<!-- CAPÍTULO 38 – EXPANSÃO DO APLICATIVO -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 38</div>
-    <h2 class="section-title">Expandindo o seu aplicativo — visão de futuro.</h2>
-    <p class="section-sub">
-      Agora seu app não é apenas "um app". É um sistema que pode evoluir para qualquer direção.
-    </p>
-  </div>
-  <p>
-    Aqui estão caminhos óbvios (e lucrativos) de expansão:
-  </p>
-  <ul style="margin-left:16px;font-size:0.92rem;color:var(--text-soft);">
-    <li><strong>Adicionar IA interna</strong> — consultor, mentor, gerador de ideias.</li>
-    <li><strong>Adicionar produtos complementares</strong> — mini ebooks, guias, roteiros.</li>
-    <li><strong>Adicionar assinatura mensal</strong> — plano contínuo.</li>
-    <li><strong>Adicionar área premium</strong> — conteúdo especial.</li>
-    <li><strong>Adicionar comunidade</strong> — canal privado no WhatsApp.</li>
-  </ul>
-  <p>
-    Cada atualização aumenta o valor percebido e real do seu ecossistema.
-  </p>
-  <div class="quote">
-    Você não criou um aplicativo.
-    Você iniciou um império digital.
-  </div>
-</section>
-<!-- CAPÍTULO 39 – EXERCÍCIO: O MAPA DO DOMÍNIO -->
-<section class="section">
-  <div class="section-header">
-    <div class="section-eyebrow">CAPÍTULO 39</div>
-    <h2 class="section-title">Exercício: O Mapa do Domínio (48H).</h2>
-    <p class="section-sub">
-      Um dos exercícios mais poderosos do livro.
-      Preencha com seriedade.
-    </p>
-  </div>
-  <p>
-    Preencha abaixo para criar seu mapa de ação:
-  </p>
-  <div class="section" style="background:rgba(0,200,255,0.06);border:1px solid rgba(0,200,255,0.25);margin-bottom:16px;">
-    <h3 style="margin-bottom:4px;">1 — O que eu preciso dominar urgentemente?</h3>
-    <textarea style="
-      width:100%;height:120px;background:#050a1a;color:#00eaff;
-      border:1px solid rgba(0,200,255,0.35);padding:10px;border-radius:12px;
-    "></textarea>
-  </div>
-  <div class="section" style="background:rgba(247,200,106,0.06);border:1px solid rgba(247,200,106,0.25);margin-bottom:16px;">
-    <h3 style="margin-bottom:4px;">2 — Quais obstáculos vou eliminar imediatamente?</h3>
-    <textarea style="
-      width:100%;height:120px;background:#050a1a;color:#ffd27f;
-      border:1px solid rgba(247,200,106,0.35);padding:10px;border-radius:12px;
-    "></textarea>
-  </div>
-  <div class="section" style="background:rgba(0,255,190,0.06);border:1px solid rgba(0,255,190,0.25);">
-    <h3 style="margin-bottom:4px;">3 — Quais ações vou executar nas próximas 48H?</h3>
-    <textarea style="
-      width:100%;height:120px;background:#050a1a;color:#00ffb3;
-      border:1px solid rgba(0,255,190,0.35);padding:10px;border-radius:12px;
-    "></textarea>
-  </div>
-</section>
-<!-- FECHAMENTO PART 8 – SUPORTE -->
-<section class="section" style="text-align:center;margin-bottom:40px;">
-  <div class="section-header">
-    <div class="section-eyebrow">SUPORTE</div>
-    <h2 class="section-title">Se quiser clareza instantânea, fale comigo.</h2>
-    <p class="section-sub">
-      Clique abaixo sempre que precisar de ajuda na jornada.
-    </p>
-  </div>
-  <a href="https://whatsapp.com/channel/0029VbBg2OxK0IBk3CURik35"
-     style="
-       display:inline-block;
-       padding:16px 26px;
-       background:linear-gradient(135deg, #
